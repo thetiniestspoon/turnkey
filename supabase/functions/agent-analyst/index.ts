@@ -2,7 +2,22 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
 import { callOpenRouter } from '../_shared/openrouter.ts'
 
-const ANALYST_SYSTEM_PROMPT = `You are a real estate investment analyst. Given a property and market data, produce a detailed financial analysis with two scenarios: Flip and Rental.
+const ANALYST_SYSTEM_PROMPT = `You are a real estate investment analyst. Given a property and comprehensive market data (demographics, rates, rents, flood risk, walkability, unemployment), produce a detailed financial analysis with two scenarios: Flip and Rental.
+
+You will receive enriched data including:
+- Census ACS: income, population, vacancy rate, median home value, median rent, owner-occupancy %
+- FRED: mortgage rates, treasury yields, national unemployment
+- HUD FMR: fair market rents by bedroom count
+- BLS: local unemployment rate
+- FEMA NFHL: flood zone classification and risk level
+- Walk Score: walkability, transit, and bike scores
+
+Factor ALL available data into your analysis:
+- Flood zone HIGH risk → increase insurance cost estimates, lower confidence, flag in explanation
+- Low walkability → discount rental estimates for urban markets
+- High local unemployment → increase vacancy risk, lower rental confidence
+- High vacancy rate → compress rental estimates
+- Owner-occupancy % signals investor vs. owner-occupied market dynamics
 
 Return JSON matching this exact structure:
 {
@@ -17,6 +32,14 @@ Return JSON matching this exact structure:
     "annual_noi": number, "cap_rate": number, "cash_on_cash": number,
     "confidence": 0-100, "explanation": "string"
   },
+  "risk_factors": {
+    "flood_risk": "HIGH|MODERATE|LOW|UNKNOWN",
+    "flood_zone": "string or null",
+    "flood_insurance_est_annual": number or null,
+    "walkability": number or null,
+    "local_unemployment": number or null,
+    "vacancy_rate": number or null
+  },
   "recommended_strategy": "flip|rental|either",
   "overall_confidence": 0-100,
   "summary": "string",
@@ -24,7 +47,7 @@ Return JSON matching this exact structure:
   "data_gaps": ["string"]
 }
 
-Be conservative. Lower confidence when data is limited. Always explain your reasoning.`
+Be conservative. Lower confidence when data is limited. Always explain your reasoning. Flag any risk factors prominently.`
 
 serve(async (req) => {
   const supabase = createAdminClient()
@@ -41,8 +64,8 @@ serve(async (req) => {
       .select('*').eq('id', property_id).single()
     if (!property) throw new Error('Property not found')
 
-    // Fetch market data via Enricher
-    const enricherResp = await fetch(
+    // Fetch market-level data via Enricher
+    const marketResp = await fetch(
       `${Deno.env.get('SUPABASE_URL')}/functions/v1/agent-enricher`,
       {
         method: 'POST',
@@ -52,20 +75,46 @@ serve(async (req) => {
         },
         body: JSON.stringify({
           region: property.zip, region_type: 'zip',
-          data_types: ['census_acs', 'fred_rates', 'hud_fmr'],
+          data_types: ['census_acs', 'fred_rates', 'hud_fmr', 'bls_unemployment'],
         }),
       }
     )
-    const marketData = await enricherResp.json()
+    const marketData = await marketResp.json()
+
+    // Fetch property-level data (flood zone, walkability) if lat/lng available
+    let propertyData: any = { results: {} }
+    if (property.lat && property.lng) {
+      const propResp = await fetch(
+        `${Deno.env.get('SUPABASE_URL')}/functions/v1/agent-enricher`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
+          },
+          body: JSON.stringify({
+            region: property.zip, region_type: 'zip',
+            data_types: ['fema_flood', 'walkability'],
+            lat: property.lat,
+            lng: property.lng,
+          }),
+        }
+      )
+      propertyData = await propResp.json()
+    }
+
+    const allData = { ...marketData.results, ...propertyData.results }
 
     const userPrompt = `Analyze this property for investment:
 
 Property: ${JSON.stringify(property, null, 2)}
-Market Data: ${JSON.stringify(marketData.results, null, 2)}
+
+Market & Neighborhood Data:
+${JSON.stringify(allData, null, 2)}
 
 property_id: "${property_id}"
 
-Produce flip and rental scenarios with honest confidence scores.`
+Produce flip and rental scenarios with honest confidence scores. Factor in flood risk, walkability, local unemployment, and vacancy data where available.`
 
     const { content, tokens, model } = await callOpenRouter(ANALYST_SYSTEM_PROMPT, userPrompt)
 
@@ -88,7 +137,7 @@ Produce flip and rental scenarios with honest confidence scores.`
       recommended_strategy: content.recommended_strategy,
       confidence_score: content.overall_confidence,
       analysis_summary: content.summary,
-      neighborhood_data: marketData.results,
+      neighborhood_data: allData,
       agent_model: model,
     })
 
