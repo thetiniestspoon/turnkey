@@ -44,7 +44,7 @@ serve(async (req) => {
         body: JSON.stringify({
           region: market,
           region_type: 'zip',
-          data_types: ['census_acs', 'fred_rates', 'hud_fmr'],
+          data_types: ['census_acs', 'fred_rates', 'hud_fmr', 'bls_unemployment'],
         }),
       }
     )
