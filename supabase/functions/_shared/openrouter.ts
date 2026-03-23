@@ -1,4 +1,4 @@
-const GATEWAY_URL = Deno.env.get('LLM_GATEWAY_URL') || 'https://gateway.vercel.ai/v1/chat/completions'
+const GATEWAY_URL = Deno.env.get('LLM_GATEWAY_URL') || 'https://ai-gateway.vercel.sh/v1/chat/completions'
 const GATEWAY_KEY = Deno.env.get('LLM_GATEWAY_API_KEY') || ''
 
 export async function callOpenRouter(
@@ -7,7 +7,7 @@ export async function callOpenRouter(
   options: { model?: string; temperature?: number; max_tokens?: number; json?: boolean } = {}
 ) {
   const {
-    model = 'claude-sonnet-4-20250514',
+    model = 'anthropic/claude-sonnet-4.6',
     temperature = 0.3,
     max_tokens = 4096,
   } = options
@@ -22,10 +22,8 @@ export async function callOpenRouter(
     max_tokens,
   }
 
-  // Only request JSON format when caller expects it (not for Advisor)
-  if (options.json !== false) {
-    body.response_format = { type: 'json_object' }
-  }
+  // Note: Vercel AI Gateway with Anthropic doesn't support response_format.
+  // JSON output is enforced via system prompts instead.
 
   const response = await fetch(GATEWAY_URL, {
     method: 'POST',
@@ -42,8 +40,13 @@ export async function callOpenRouter(
   }
 
   const data = await response.json()
-  const content = data.choices[0].message.content
+  let content = data.choices[0].message.content
   const usage = data.usage
+
+  // Strip markdown code fences if the model wraps JSON in ```json ... ```
+  if (options.json !== false && typeof content === 'string') {
+    content = content.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim()
+  }
 
   return {
     content: options.json !== false ? JSON.parse(content) : content,
