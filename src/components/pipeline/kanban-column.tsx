@@ -1,4 +1,5 @@
-import { STAGE_LABELS, STAGE_COLORS, PipelineStage } from '@/data/pipeline-stages'
+import { STAGE_LABELS, STAGE_COLORS } from '@/data/pipeline-stages'
+import type { PipelineStage } from '@/data/pipeline-stages'
 import { KanbanCard } from './kanban-card'
 import type { PipelineEntry } from '@/hooks/use-pipeline'
 

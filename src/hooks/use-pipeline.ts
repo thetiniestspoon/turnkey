@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/auth-context'
-import { PipelineStage, isValidTransition } from '@/data/pipeline-stages'
+import { isValidTransition } from '@/data/pipeline-stages'
+import type { PipelineStage } from '@/data/pipeline-stages'
 
 export interface PipelineEntry {
   id: string

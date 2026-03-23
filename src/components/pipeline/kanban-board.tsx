@@ -1,4 +1,5 @@
-import { PIPELINE_STAGES, PipelineStage } from '@/data/pipeline-stages'
+import { PIPELINE_STAGES } from '@/data/pipeline-stages'
+import type { PipelineStage } from '@/data/pipeline-stages'
 import { KanbanColumn } from './kanban-column'
 import type { PipelineEntry } from '@/hooks/use-pipeline'
 

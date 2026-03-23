@@ -12,6 +12,8 @@ export interface Property {
   bathrooms: number | null
   sqft: number | null
   list_price: number | null
+  lat: number | null
+  lng: number | null
   source: string | null
   raw_data: any
   created_at: string

@@ -1,7 +1,7 @@
 import { PageLayout } from '@/components/layout/page-layout'
 import { KanbanBoard } from '@/components/pipeline/kanban-board'
 import { usePipeline } from '@/hooks/use-pipeline'
-import { PipelineStage } from '@/data/pipeline-stages'
+import type { PipelineStage } from '@/data/pipeline-stages'
 
 export default function PipelinePage() {
   const { entries, loading, moveStage } = usePipeline()

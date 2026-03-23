@@ -37,7 +37,7 @@ export default function ContactsPage() {
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Contacts</h1>
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild><Button>+ Add Contact</Button></DialogTrigger>
+            <DialogTrigger render={<Button />}>+ Add Contact</DialogTrigger>
             <DialogContent>
               <DialogHeader><DialogTitle>New Contact</DialogTitle></DialogHeader>
               <div className="space-y-3">
