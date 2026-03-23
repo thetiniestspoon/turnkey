@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { path: '/map', label: 'Map' },
   { path: '/contacts', label: 'Contacts' },
   { path: '/predictions', label: 'Predictions' },
+  { path: '/watchlists', label: 'Watchlists' },
 ]
 
 export function NavBar({ onToggleAdvisor }: { onToggleAdvisor: () => void }) {

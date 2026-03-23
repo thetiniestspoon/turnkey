@@ -20,9 +20,14 @@ export function TopDealsList({ properties }: { properties: Property[] }) {
                 {p.bedrooms}bd/{p.bathrooms}ba · {formatCurrency(p.list_price || 0)}
               </p>
             </div>
-            {p.raw_data?.score && (
-              <Badge variant="secondary">★ {p.raw_data.score}</Badge>
-            )}
+            <div className="flex items-center gap-1.5">
+              {p.raw_data?.scouted_at && (Date.now() - new Date(p.raw_data.scouted_at).getTime()) < 24 * 60 * 60 * 1000 && (
+                <Badge variant="default" className="bg-emerald-500">New</Badge>
+              )}
+              {p.raw_data?.score && (
+                <Badge variant="secondary">★ {p.raw_data.score}</Badge>
+              )}
+            </div>
           </Link>
         ))}
       </CardContent>

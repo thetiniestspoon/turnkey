@@ -196,6 +196,45 @@ export type Database = {
           },
         ]
       }
+      investment_criteria: {
+        Row: {
+          created_at: string | null
+          id: string
+          max_price: number | null
+          min_cap_rate: number | null
+          min_flip_roi: number | null
+          min_score: number | null
+          property_types: string[] | null
+          strategies: string[] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          max_price?: number | null
+          min_cap_rate?: number | null
+          min_flip_roi?: number | null
+          min_score?: number | null
+          property_types?: string[] | null
+          strategies?: string[] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          max_price?: number | null
+          min_cap_rate?: number | null
+          min_flip_roi?: number | null
+          min_score?: number | null
+          property_types?: string[] | null
+          strategies?: string[] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       market_data: {
         Row: {
           data: Json
@@ -497,6 +536,48 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      watchlists: {
+        Row: {
+          active: boolean | null
+          city: string | null
+          created_at: string | null
+          criteria_overrides: Json | null
+          id: string
+          last_scouted_at: string | null
+          name: string
+          state: string | null
+          updated_at: string | null
+          user_id: string
+          zip: string
+        }
+        Insert: {
+          active?: boolean | null
+          city?: string | null
+          created_at?: string | null
+          criteria_overrides?: Json | null
+          id?: string
+          last_scouted_at?: string | null
+          name: string
+          state?: string | null
+          updated_at?: string | null
+          user_id: string
+          zip: string
+        }
+        Update: {
+          active?: boolean | null
+          city?: string | null
+          created_at?: string | null
+          criteria_overrides?: Json | null
+          id?: string
+          last_scouted_at?: string | null
+          name?: string
+          state?: string | null
+          updated_at?: string | null
+          user_id?: string
+          zip?: string
+        }
+        Relationships: []
       }
     }
     Views: {

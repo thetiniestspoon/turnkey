@@ -8,6 +8,7 @@ import PipelinePage from '@/pages/pipeline'
 import MapViewPage from '@/pages/map-view'
 import ContactsPage from '@/pages/contacts'
 import PredictionsPage from '@/pages/predictions'
+import WatchlistsPage from '@/pages/watchlists'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -27,6 +28,7 @@ function AppRoutes() {
       <Route path="/map" element={<ProtectedRoute><MapViewPage /></ProtectedRoute>} />
       <Route path="/contacts" element={<ProtectedRoute><ContactsPage /></ProtectedRoute>} />
       <Route path="/predictions" element={<ProtectedRoute><PredictionsPage /></ProtectedRoute>} />
+      <Route path="/watchlists" element={<ProtectedRoute><WatchlistsPage /></ProtectedRoute>} />
     </Routes>
   )
 }

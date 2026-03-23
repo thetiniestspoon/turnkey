@@ -16,12 +16,17 @@ export function DealCardMini({ property: p, onAddToPipeline, onDeepAnalyze }: Pr
   const strategy = p.raw_data?.recommended_strategy
   const rationale = p.raw_data?.rationale
   const analysis = p.property_analyses?.[0]
+  const scoutedAt = p.raw_data?.scouted_at
+  const isNew = scoutedAt && (Date.now() - new Date(scoutedAt).getTime()) < 24 * 60 * 60 * 1000
 
   return (
     <Card>
       <CardContent className="pt-4 space-y-3">
         <div className="flex justify-between items-center">
-          {score && <Badge variant="default" className="bg-green-600">★ {score}</Badge>}
+          <div className="flex items-center gap-1.5">
+            {score && <Badge variant="default" className="bg-green-600">★ {score}</Badge>}
+            {isNew && <Badge variant="default" className="bg-emerald-500">New</Badge>}
+          </div>
           {strategy && <span className="text-xs text-muted-foreground capitalize">{strategy}</span>}
         </div>
         <div className="bg-muted rounded h-24 flex items-center justify-center text-xs text-muted-foreground">
