@@ -1,10 +1,13 @@
+const GATEWAY_URL = Deno.env.get('LLM_GATEWAY_URL') || 'https://gateway.vercel.ai/v1/chat/completions'
+const GATEWAY_KEY = Deno.env.get('LLM_GATEWAY_API_KEY') || ''
+
 export async function callOpenRouter(
   systemPrompt: string,
   userPrompt: string,
   options: { model?: string; temperature?: number; max_tokens?: number; json?: boolean } = {}
 ) {
   const {
-    model = 'anthropic/claude-sonnet-4-20250514',
+    model = 'claude-sonnet-4-20250514',
     temperature = 0.3,
     max_tokens = 4096,
   } = options
@@ -24,18 +27,18 @@ export async function callOpenRouter(
     body.response_format = { type: 'json_object' }
   }
 
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  const response = await fetch(GATEWAY_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${Deno.env.get('OPENROUTER_API_KEY')}`,
+      'Authorization': `Bearer ${GATEWAY_KEY}`,
     },
     body: JSON.stringify(body),
   })
 
   if (!response.ok) {
     const error = await response.text()
-    throw new Error(`OpenRouter error (${response.status}): ${error}`)
+    throw new Error(`LLM Gateway error (${response.status}): ${error}`)
   }
 
   const data = await response.json()
