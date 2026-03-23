@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from '@/contexts/auth-context'
 import LoginPage from '@/pages/login'
+import DashboardPage from '@/pages/dashboard'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -13,7 +14,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/" element={<ProtectedRoute><div>Dashboard (coming soon)</div></ProtectedRoute>} />
+      <Route path="/" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
     </Routes>
   )
 }
