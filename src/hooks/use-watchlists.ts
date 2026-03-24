@@ -76,8 +76,12 @@ export function useWatchlists() {
     return updateWatchlist(id, { active })
   }
 
-  async function scoutNow(zip: string) {
-    return invokeAgent('scout', { market: zip })
+  async function scoutNow(watchlistId: string, zip: string) {
+    const result = await invokeAgent('scout', { market: zip })
+    // Update last_scouted_at regardless of result
+    await supabase.from('watchlists').update({ last_scouted_at: new Date().toISOString() }).eq('id', watchlistId)
+    await fetchWatchlists()
+    return result
   }
 
   return {

@@ -4,17 +4,22 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatCurrency, formatPercent } from '@/lib/utils'
+import { useToast } from '@/components/ui/toast'
 import type { Property } from '@/hooks/use-properties'
+import type { PipelineEntry } from '@/hooks/use-pipeline'
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
 interface Props {
   property: Property
+  pipelineEntry?: PipelineEntry | null
   onAddToPipeline: (id: string) => void
   onDeepAnalyze: (id: string) => void
+  analyzing?: boolean
 }
 
-export function DealCardMini({ property: p, onAddToPipeline, onDeepAnalyze }: Props) {
+export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDeepAnalyze, analyzing }: Props) {
+  const { toast } = useToast()
   const score = p.raw_data?.score
   const strategy = p.raw_data?.recommended_strategy
   const rationale = p.raw_data?.rationale
@@ -22,6 +27,16 @@ export function DealCardMini({ property: p, onAddToPipeline, onDeepAnalyze }: Pr
   const scoutedAt = p.raw_data?.scouted_at
   const [now] = useState(() => Date.now())
   const isNew = scoutedAt && (now - new Date(scoutedAt).getTime()) < ONE_DAY_MS
+  const inPipeline = !!pipelineEntry
+
+  async function handlePipeline() {
+    if (inPipeline) {
+      toast(`Already in pipeline (${pipelineEntry!.stage})`, 'info')
+      return
+    }
+    onAddToPipeline(p.id)
+    toast('Added to pipeline', 'success')
+  }
 
   return (
     <Card>
@@ -51,8 +66,12 @@ export function DealCardMini({ property: p, onAddToPipeline, onDeepAnalyze }: Pr
         )}
         {rationale && <p className="text-xs text-muted-foreground line-clamp-2">{rationale}</p>}
         <div className="flex gap-2">
-          <Button size="sm" variant="outline" className="flex-1" onClick={() => onAddToPipeline(p.id)}>+ Pipeline</Button>
-          <Button size="sm" className="flex-1" onClick={() => onDeepAnalyze(p.id)}>Deep Analyze</Button>
+          <Button size="sm" variant="outline" className="flex-1" onClick={handlePipeline}>
+            {inPipeline ? `${pipelineEntry!.stage}` : '+ Pipeline'}
+          </Button>
+          <Button size="sm" className="flex-1" onClick={() => onDeepAnalyze(p.id)} disabled={analyzing}>
+            {analyzing ? 'Analyzing...' : 'Deep Analyze'}
+          </Button>
         </div>
       </CardContent>
     </Card>

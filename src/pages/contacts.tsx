@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useContacts } from '@/hooks/use-contacts'
+import { useToast } from '@/components/ui/toast'
 import type { Contact } from '@/hooks/use-contacts'
 
 const ROLE_COLORS: Record<string, string> = {
@@ -15,10 +16,12 @@ const ROLE_COLORS: Record<string, string> = {
 
 export default function ContactsPage() {
   const { contacts, loading, addContact } = useContacts()
+  const { toast } = useToast()
   const [search, setSearch] = useState('')
   const [newContact, setNewContact] = useState({ name: '', role: 'agent', email: '', phone: '', company: '', notes: '' })
   const [dialogOpen, setDialogOpen] = useState(false)
 
+  const isSearching = search.trim().length > 0
   const filtered = contacts.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase()) ||
     c.company?.toLowerCase().includes(search.toLowerCase()) ||
@@ -26,9 +29,14 @@ export default function ContactsPage() {
   )
 
   async function handleAdd() {
+    if (!newContact.name.trim()) {
+      toast('Name is required', 'error')
+      return
+    }
     await addContact(newContact as Omit<Contact, 'id'>)
     setNewContact({ name: '', role: 'agent', email: '', phone: '', company: '', notes: '' })
     setDialogOpen(false)
+    toast('Contact added', 'success')
   }
 
   return (
@@ -59,9 +67,11 @@ export default function ContactsPage() {
         <Input placeholder="Search contacts..." value={search} onChange={(e) => setSearch(e.target.value)} />
 
         {loading ? <p>Loading...</p> : filtered.length === 0 ? (
-          <p className="text-muted-foreground text-center py-12">No contacts yet.</p>
+          <p className="text-muted-foreground text-center py-12">
+            {isSearching ? 'No contacts match your search.' : 'No contacts yet.'}
+          </p>
         ) : (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {filtered.map((c) => (
               <Card key={c.id}>
                 <CardContent className="pt-4 flex justify-between items-start">

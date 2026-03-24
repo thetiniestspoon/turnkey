@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import { AuthProvider, useAuth } from '@/contexts/auth-context'
+import { ToastProvider } from '@/components/ui/toast'
 import LoginPage from '@/pages/login'
 import DashboardPage from '@/pages/dashboard'
 import ScoutPage from '@/pages/scout'
@@ -17,6 +18,16 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
+function NotFoundPage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+      <h1 className="text-4xl font-bold">404</h1>
+      <p className="text-muted-foreground">Page not found</p>
+      <Link to="/" className="text-primary underline">Back to Dashboard</Link>
+    </div>
+  )
+}
+
 function AppRoutes() {
   return (
     <Routes>
@@ -29,6 +40,7 @@ function AppRoutes() {
       <Route path="/contacts" element={<ProtectedRoute><ContactsPage /></ProtectedRoute>} />
       <Route path="/predictions" element={<ProtectedRoute><PredictionsPage /></ProtectedRoute>} />
       <Route path="/watchlists" element={<ProtectedRoute><WatchlistsPage /></ProtectedRoute>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
@@ -37,7 +49,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
+        <ToastProvider>
+          <AppRoutes />
+        </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   )

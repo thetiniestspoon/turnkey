@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/table'
 import { useWatchlists } from '@/hooks/use-watchlists'
 import { useCriteria } from '@/hooks/use-criteria'
+import { useToast } from '@/components/ui/toast'
 import type { Watchlist } from '@/hooks/use-watchlists'
 
 const PROPERTY_TYPES = ['single_family', 'multi_family', 'condo', 'townhouse']
@@ -171,6 +172,7 @@ export default function WatchlistsPage() {
     scoutNow,
   } = useWatchlists()
   const { criteria, loading: criteriaLoading, saveCriteria } = useCriteria()
+  const { toast } = useToast()
 
   // Global criteria form state
   const [globalForm, setGlobalForm] = useState({
@@ -234,9 +236,14 @@ export default function WatchlistsPage() {
       strategies: globalForm.strategies,
     })
     setGlobalSaving(false)
+    toast('Criteria saved', 'success')
   }
 
   async function handleAddMarket() {
+    if (!newMarket.name.trim() || !newMarket.zip.trim()) {
+      toast('Name and ZIP are required', 'error')
+      return
+    }
     await addWatchlist({
       name: newMarket.name,
       zip: newMarket.zip,
@@ -245,6 +252,7 @@ export default function WatchlistsPage() {
     })
     setNewMarket({ name: '', zip: '', city: '', state: '' })
     setAddDialogOpen(false)
+    toast('Market added', 'success')
   }
 
   function openEditCriteria(wl: Watchlist) {
@@ -435,7 +443,10 @@ export default function WatchlistsPage() {
                             size="sm"
                             variant="outline"
                             disabled={agentLoading}
-                            onClick={() => scoutNow(wl.zip)}
+                            onClick={async () => {
+                              const result = await scoutNow(wl.id, wl.zip)
+                              toast(result ? 'Scout complete' : 'Scout failed — check Edge Functions', result ? 'success' : 'error')
+                            }}
                           >
                             {agentLoading ? 'Scouting...' : 'Scout Now'}
                           </Button>

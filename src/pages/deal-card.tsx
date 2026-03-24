@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { PageLayout } from '@/components/layout/page-layout'
 import { DealCardFull } from '@/components/property/deal-card-full'
@@ -6,17 +7,48 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { useProperty } from '@/hooks/use-properties'
 import { usePipeline } from '@/hooks/use-pipeline'
+import { useAgent } from '@/hooks/use-agent'
+import { useToast } from '@/components/ui/toast'
 import { formatCurrency } from '@/lib/utils'
 
 export default function DealCardPage() {
   const { id } = useParams<{ id: string }>()
   const { property, loading } = useProperty(id!)
-  const { addToPipeline } = usePipeline()
+  const { addToPipeline, getPipelineEntry } = usePipeline()
+  const { invokeAgent, loading: agentLoading } = useAgent()
+  const { toast } = useToast()
+  const [analyzing, setAnalyzing] = useState(false)
 
   if (loading) return <PageLayout><p>Loading...</p></PageLayout>
   if (!property) return <PageLayout><p>Property not found.</p></PageLayout>
 
   const analysis = property.property_analyses?.[0]
+  const pipelineEntry = getPipelineEntry(property.id)
+
+  async function handlePipeline() {
+    if (pipelineEntry) {
+      toast(`Already in pipeline (${pipelineEntry.stage})`, 'info')
+      return
+    }
+    const error = await addToPipeline(property!.id)
+    if (error) {
+      toast(error.message || 'Failed to add', 'error')
+    } else {
+      toast('Added to pipeline', 'success')
+    }
+  }
+
+  async function handleDeepAnalyze() {
+    setAnalyzing(true)
+    const result = await invokeAgent('analyst', { property_id: property!.id })
+    setAnalyzing(false)
+    if (result) {
+      toast('Analysis complete', 'success')
+      window.location.reload()
+    } else {
+      toast('Analysis failed — check Edge Function deployment', 'error')
+    }
+  }
 
   return (
     <PageLayout>
@@ -30,7 +62,12 @@ export default function DealCardPage() {
           </div>
           <div className="flex gap-2">
             {property.raw_data?.score && <Badge className="bg-green-600 text-lg">★ {property.raw_data.score}</Badge>}
-            <Button onClick={() => addToPipeline(property.id)}>+ Add to Pipeline</Button>
+            <Button variant="outline" onClick={handleDeepAnalyze} disabled={analyzing || agentLoading}>
+              {analyzing ? 'Analyzing...' : 'Deep Analyze'}
+            </Button>
+            <Button onClick={handlePipeline}>
+              {pipelineEntry ? `In Pipeline (${pipelineEntry.stage})` : '+ Add to Pipeline'}
+            </Button>
           </div>
         </div>
 
@@ -47,7 +84,12 @@ export default function DealCardPage() {
             </p>
           </>
         ) : (
-          <p className="text-muted-foreground">No analysis yet. Click "Deep Analyze" from the Scout page.</p>
+          <div className="text-center py-12">
+            <p className="text-muted-foreground mb-4">No analysis yet.</p>
+            <Button onClick={handleDeepAnalyze} disabled={analyzing || agentLoading}>
+              {analyzing ? 'Running Deep Analysis...' : 'Run Deep Analysis'}
+            </Button>
+          </div>
         )}
       </div>
     </PageLayout>

@@ -6,6 +6,7 @@ import { DealCardMini } from '@/components/property/deal-card-mini'
 import { useProperties } from '@/hooks/use-properties'
 import { usePipeline } from '@/hooks/use-pipeline'
 import { useAgent } from '@/hooks/use-agent'
+import { useToast } from '@/components/ui/toast'
 import { supabase } from '@/lib/supabase'
 import type { Property } from '@/hooks/use-properties'
 
@@ -32,9 +33,11 @@ interface ScoutResult {
 export default function ScoutPage() {
   const [market, setMarket] = useState('')
   const [scoutResults, setScoutResults] = useState<Property[]>([])
+  const [analyzingId, setAnalyzingId] = useState<string | null>(null)
   const { properties: savedProperties } = useProperties({ source: 'agent_scout' })
-  const { addToPipeline } = usePipeline()
+  const { addToPipeline, getPipelineEntry } = usePipeline()
   const { invokeAgent, loading, error } = useAgent()
+  const { toast } = useToast()
 
   async function handleScout() {
     if (!market.trim()) return
@@ -71,11 +74,19 @@ export default function ScoutPage() {
     }
 
     setScoutResults(saved)
+    toast(`Found ${saved.length} properties`, 'success')
   }
 
   async function handleDeepAnalyze(propertyId: string) {
-    await invokeAgent('analyst', { property_id: propertyId })
-    window.location.reload()
+    setAnalyzingId(propertyId)
+    const result = await invokeAgent('analyst', { property_id: propertyId })
+    setAnalyzingId(null)
+    if (result) {
+      toast('Analysis complete', 'success')
+      window.location.reload()
+    } else {
+      toast('Analysis failed — check Edge Function deployment', 'error')
+    }
   }
 
   // Show scout results if we just ran a scout, otherwise show saved properties
@@ -101,13 +112,15 @@ export default function ScoutPage() {
 
         {error && <p className="text-destructive text-sm">{error}</p>}
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayProperties.map((p) => (
             <DealCardMini
               key={p.id}
               property={p}
+              pipelineEntry={getPipelineEntry(p.id)}
               onAddToPipeline={(id) => addToPipeline(id)}
               onDeepAnalyze={handleDeepAnalyze}
+              analyzing={analyzingId === p.id}
             />
           ))}
         </div>

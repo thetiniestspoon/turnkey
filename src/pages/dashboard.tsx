@@ -54,7 +54,7 @@ export default function DashboardPage() {
           aiSpend: aiStats.spend,
           aiRuns: aiStats.runs,
         }} />
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="col-span-2">
             <TopDealsList properties={properties.slice(0, 5)} />
           </div>

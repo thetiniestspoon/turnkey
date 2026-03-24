@@ -11,7 +11,7 @@ interface KPIData {
 
 export function KPICards({ data }: { data: KPIData }) {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <Card>
         <CardContent className="pt-6 text-center">
           <p className="text-sm text-muted-foreground">New Deals Today</p>
@@ -30,7 +30,7 @@ export function KPICards({ data }: { data: KPIData }) {
         <CardContent className="pt-6 text-center">
           <p className="text-sm text-muted-foreground">Prediction Accuracy</p>
           <p className="text-3xl font-bold text-green-500">
-            {data.predictionAccuracy !== null ? `${data.predictionAccuracy}%` : '—'}
+            {data.predictionAccuracy !== null ? `${data.predictionAccuracy}%` : 'N/A'}
           </p>
           <p className="text-xs text-muted-foreground">across tracked properties</p>
         </CardContent>

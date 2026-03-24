@@ -13,10 +13,10 @@ export function PipelineFeed({ entries }: { entries: PipelineEntry[] }) {
           <p className="text-sm text-muted-foreground">No pipeline activity yet.</p>
         )}
         {recent.map((entry) => (
-          <div key={entry.id} className="flex items-center gap-2 text-sm">
-            <span style={{ color: STAGE_COLORS[entry.stage] }}>●</span>
-            <span>{entry.properties?.address}</span>
-            <span className="text-muted-foreground">→ {entry.stage}</span>
+          <div key={entry.id} className="flex items-center gap-2 text-sm min-w-0">
+            <span className="shrink-0" style={{ color: STAGE_COLORS[entry.stage] }}>●</span>
+            <span className="truncate">{entry.properties?.address}</span>
+            <span className="text-muted-foreground shrink-0">→ {entry.stage}</span>
           </div>
         ))}
       </CardContent>

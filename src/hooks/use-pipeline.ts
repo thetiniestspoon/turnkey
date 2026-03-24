@@ -35,12 +35,19 @@ export function usePipeline() {
   useEffect(() => { fetchPipeline() }, [fetchPipeline])
 
   async function addToPipeline(propertyId: string) {
-    if (!user) return
+    if (!user) return new Error('Not authenticated')
+    // Prevent duplicates
+    const existing = entries.find((e) => e.property_id === propertyId)
+    if (existing) return new Error(`Already in pipeline (${existing.stage})`)
     const { error } = await supabase.from('pipeline').insert({
       property_id: propertyId, user_id: user.id, stage: 'watching',
     })
     if (!error) await fetchPipeline()
     return error
+  }
+
+  function getPipelineEntry(propertyId: string) {
+    return entries.find((e) => e.property_id === propertyId) || null
   }
 
   async function moveStage(pipelineId: string, currentStage: PipelineStage, newStage: PipelineStage) {
@@ -54,5 +61,5 @@ export function usePipeline() {
     return error
   }
 
-  return { entries, loading, addToPipeline, moveStage, refetch: fetchPipeline }
+  return { entries, loading, addToPipeline, moveStage, getPipelineEntry, refetch: fetchPipeline }
 }
