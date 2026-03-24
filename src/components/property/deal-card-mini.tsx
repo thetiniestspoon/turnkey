@@ -47,6 +47,22 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
           <div className="flex items-center gap-1.5">
             {score && <Badge variant="default" className="bg-green-600">★ {score}</Badge>}
             {isNew && <Badge variant="default" className="bg-emerald-500">New</Badge>}
+            {p.market_status && p.market_status !== 'active' && (
+              <>
+                {p.market_status === 'off_market' && (
+                  <Badge variant="default" className="bg-red-600 text-white text-xs">Off Market</Badge>
+                )}
+                {p.market_status === 'pending' && (
+                  <Badge variant="default" className="bg-yellow-500 text-white text-xs">Pending</Badge>
+                )}
+                {p.market_status === 'sold' && (
+                  <Badge variant="secondary" className="text-xs">Sold</Badge>
+                )}
+                {p.market_status !== 'off_market' && p.market_status !== 'pending' && p.market_status !== 'sold' && (
+                  <Badge variant="secondary" className="text-xs capitalize">{p.market_status}</Badge>
+                )}
+              </>
+            )}
           </div>
           {strategy && <span className="text-xs text-muted-foreground capitalize">{strategy}</span>}
         </div>
@@ -76,6 +92,9 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
           {p.bedrooms}bd/{p.bathrooms}ba · {p.sqft} sqft
         </p>
         <p className="text-lg font-bold text-yellow-500">{formatCurrency(p.list_price || 0)}</p>
+        {p.stale_at && (
+          <p className="text-xs text-muted-foreground italic">Stale</p>
+        )}
         {analysis && (
           <div className="flex gap-2">
             <Badge variant="outline" className="text-xs">Flip: {formatPercent(analysis.flip_roi || 0)} ROI</Badge>

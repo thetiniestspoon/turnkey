@@ -3,15 +3,18 @@ import { PageLayout } from '@/components/layout/page-layout'
 import { KPICards } from '@/components/dashboard/kpi-cards'
 import { TopDealsList } from '@/components/dashboard/top-deals-list'
 import { PipelineFeed } from '@/components/dashboard/pipeline-feed'
+import { RecommendedDeals } from '@/components/dashboard/recommended-deals'
 import { useProperties } from '@/hooks/use-properties'
 import { usePipeline } from '@/hooks/use-pipeline'
 import { usePredictions } from '@/hooks/use-predictions'
+import { useRecommended } from '@/hooks/use-recommended'
 import { supabase } from '@/lib/supabase'
 
 export default function DashboardPage() {
   const { properties } = useProperties({ source: 'agent_scout' })
   const { entries } = usePipeline()
   const { accuracy } = usePredictions()
+  const { recommended, dismiss, watchProperty, loading: recommendedLoading } = useRecommended()
   const [aiStats, setAiStats] = useState({ spend: 0, runs: 0 })
 
   useEffect(() => {
@@ -46,6 +49,12 @@ export default function DashboardPage() {
     <PageLayout>
       <div className="space-y-6">
         <h1 className="text-2xl font-bold">Dashboard</h1>
+        <RecommendedDeals
+          recommended={recommended}
+          onWatch={watchProperty}
+          onDismiss={dismiss}
+          loading={recommendedLoading}
+        />
         <KPICards data={{
           newDeals: todayDeals.length,
           activePipeline: activeEntries.length,
