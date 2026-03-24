@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatCurrency, formatPercent } from '@/lib/utils'
 import type { Property } from '@/hooks/use-properties'
+
+const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
 interface Props {
   property: Property
@@ -17,7 +20,8 @@ export function DealCardMini({ property: p, onAddToPipeline, onDeepAnalyze }: Pr
   const rationale = p.raw_data?.rationale
   const analysis = p.property_analyses?.[0]
   const scoutedAt = p.raw_data?.scouted_at
-  const isNew = scoutedAt && (Date.now() - new Date(scoutedAt).getTime()) < 24 * 60 * 60 * 1000
+  const [now] = useState(() => Date.now())
+  const isNew = scoutedAt && (now - new Date(scoutedAt).getTime()) < ONE_DAY_MS
 
   return (
     <Card>

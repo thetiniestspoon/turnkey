@@ -9,6 +9,26 @@ import { useAgent } from '@/hooks/use-agent'
 import { supabase } from '@/lib/supabase'
 import type { Property } from '@/hooks/use-properties'
 
+interface ScoutResult {
+  properties?: Array<{
+    address: string
+    city: string
+    state: string
+    zip: string
+    property_type?: string
+    bedrooms?: number
+    bathrooms?: number
+    sqft?: number
+    year_built?: number
+    list_price?: number
+    score?: number
+    rationale?: string
+    recommended_strategy?: string
+    estimated_flip_roi?: number
+    estimated_cap_rate?: number
+  }>
+}
+
 export default function ScoutPage() {
   const [market, setMarket] = useState('')
   const [scoutResults, setScoutResults] = useState<Property[]>([])
@@ -18,7 +38,7 @@ export default function ScoutPage() {
 
   async function handleScout() {
     if (!market.trim()) return
-    const result = await invokeAgent<any>('scout', { market: market.trim(), filters: {} })
+    const result = await invokeAgent<ScoutResult>('scout', { market: market.trim(), filters: {} })
     if (!result?.properties) return
 
     // Save properties to DB from the frontend (authenticated user)

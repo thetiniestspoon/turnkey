@@ -12,6 +12,7 @@ export async function callOpenRouter(
     max_tokens = 4096,
   } = options
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const body: any = {
     model,
     messages: [

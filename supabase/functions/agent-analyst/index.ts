@@ -82,6 +82,7 @@ serve(async (req) => {
     const marketData = await marketResp.json()
 
     // Fetch property-level data (flood zone, walkability) if lat/lng available
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let propertyData: any = { results: {} }
     if (property.lat && property.lng) {
       const propResp = await fetch(

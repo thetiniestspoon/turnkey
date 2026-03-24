@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/auth-context'
 
@@ -17,7 +17,7 @@ export function useCriteria() {
   const [criteria, setCriteria] = useState<InvestmentCriteria | null>(null)
   const [loading, setLoading] = useState(true)
 
-  async function fetchCriteria() {
+  const fetchCriteria = useCallback(async () => {
     if (!user) return
     const { data } = await supabase
       .from('investment_criteria')
@@ -26,11 +26,12 @@ export function useCriteria() {
       .single()
     setCriteria(data as InvestmentCriteria | null)
     setLoading(false)
-  }
+  }, [user])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchCriteria()
-  }, [user])
+  }, [fetchCriteria])
 
   async function saveCriteria(values: {
     max_price?: number | null

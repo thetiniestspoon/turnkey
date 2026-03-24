@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/auth-context'
 
@@ -17,15 +17,16 @@ export function useContacts() {
   const [contacts, setContacts] = useState<Contact[]>([])
   const [loading, setLoading] = useState(true)
 
-  async function fetchContacts() {
+  const fetchContacts = useCallback(async () => {
     if (!user) return
     const { data } = await supabase.from('contacts')
       .select('*').eq('user_id', user.id).order('name')
     setContacts(data || [])
     setLoading(false)
-  }
+  }, [user])
 
-  useEffect(() => { fetchContacts() }, [user])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { fetchContacts() }, [fetchContacts])
 
   async function addContact(contact: Omit<Contact, 'id'>) {
     if (!user) return

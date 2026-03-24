@@ -15,8 +15,10 @@ export interface Property {
   lat: number | null
   lng: number | null
   source: string | null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   raw_data: any
   created_at: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   property_analyses?: any[]
 }
 

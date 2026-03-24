@@ -83,6 +83,7 @@ function passesFilter(prop: ScoutProperty, criteria: CriteriaFields): boolean {
   return true
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 serve(async (_req) => {
   const supabase = createAdminClient()
   const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
@@ -206,14 +207,15 @@ serve(async (_req) => {
         .eq('id', run?.id)
 
       results.push({ watchlist_id: wl.id, name: wl.name, saved: passing.length })
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Log error but continue to next watchlist
+      const errMsg = error instanceof Error ? error.message : String(error)
       await supabase
         .from('agent_runs')
         .update({
           status: 'error',
           completed_at: new Date().toISOString(),
-          output_summary: error.message,
+          output_summary: errMsg,
         })
         .eq('id', run?.id)
 
@@ -221,7 +223,7 @@ serve(async (_req) => {
         watchlist_id: wl.id,
         name: wl.name,
         saved: 0,
-        error: error.message,
+        error: errMsg,
       })
     }
   }

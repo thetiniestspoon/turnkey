@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/auth-context'
 import { isValidTransition } from '@/data/pipeline-stages'
@@ -12,6 +12,7 @@ export interface PipelineEntry {
   purchase_price: number | null
   sale_price: number | null
   outcome: string | null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   properties?: any
 }
 
@@ -20,7 +21,7 @@ export function usePipeline() {
   const [entries, setEntries] = useState<PipelineEntry[]>([])
   const [loading, setLoading] = useState(true)
 
-  async function fetchPipeline() {
+  const fetchPipeline = useCallback(async () => {
     if (!user) return
     const { data } = await supabase.from('pipeline')
       .select('*, properties(address, city, state, zip, list_price, raw_data, property_analyses(*))')
@@ -28,9 +29,10 @@ export function usePipeline() {
       .order('entered_stage_at', { ascending: false })
     setEntries(data || [])
     setLoading(false)
-  }
+  }, [user])
 
-  useEffect(() => { fetchPipeline() }, [user])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { fetchPipeline() }, [fetchPipeline])
 
   async function addToPipeline(propertyId: string) {
     if (!user) return

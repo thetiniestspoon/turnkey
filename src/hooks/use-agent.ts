@@ -7,7 +7,7 @@ export function useAgent() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  async function invokeAgent<T = any>(agent: AgentType, payload: Record<string, any>): Promise<T | null> {
+  async function invokeAgent<T = unknown>(agent: AgentType, payload: Record<string, unknown>): Promise<T | null> {
     setLoading(true)
     setError(null)
     try {
@@ -16,8 +16,9 @@ export function useAgent() {
       })
       if (fnError) throw fnError
       return data as T
-    } catch (e: any) {
-      setError(e.message || 'Agent invocation failed')
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : 'Agent invocation failed'
+      setError(message)
       return null
     } finally {
       setLoading(false)

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/auth-context'
 import { useAgent } from '@/hooks/use-agent'
@@ -9,7 +9,7 @@ export interface Watchlist {
   zip: string
   city: string | null
   state: string | null
-  criteria_overrides: Record<string, any> | null
+  criteria_overrides: Record<string, unknown> | null
   active: boolean | null
   last_scouted_at: string | null
   created_at: string | null
@@ -22,7 +22,7 @@ export function useWatchlists() {
   const [watchlists, setWatchlists] = useState<Watchlist[]>([])
   const [loading, setLoading] = useState(true)
 
-  async function fetchWatchlists() {
+  const fetchWatchlists = useCallback(async () => {
     if (!user) return
     const { data } = await supabase
       .from('watchlists')
@@ -31,18 +31,19 @@ export function useWatchlists() {
       .order('created_at', { ascending: false })
     setWatchlists((data as Watchlist[]) || [])
     setLoading(false)
-  }
+  }, [user])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchWatchlists()
-  }, [user])
+  }, [fetchWatchlists])
 
   async function addWatchlist(data: {
     name: string
     zip: string
     city?: string
     state?: string
-    criteria_overrides?: Record<string, any>
+    criteria_overrides?: Record<string, unknown>
   }) {
     if (!user) return
     const { error } = await supabase.from('watchlists').insert({

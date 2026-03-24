@@ -20,6 +20,7 @@ serve(async (req) => {
   try {
     const { region, region_type, data_types, lat, lng } = await req.json()
     const supabase = createAdminClient()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const results: Record<string, any> = {}
 
     for (const dataType of data_types) {
@@ -39,6 +40,7 @@ serve(async (req) => {
       }
 
       // Fetch fresh data
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let freshData: any = null
       try {
         if (dataType === 'census_acs') {
@@ -121,6 +123,7 @@ async function fetchFredData() {
     { id: 'UNRATE', name: 'national_unemployment' },
   ]
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {}
   for (const s of series) {
     try {
@@ -275,7 +278,6 @@ async function fetchWalkability(lat: number, lng: number) {
 
 // Helper: rough ZIP prefix to state FIPS mapping (first 3 digits)
 function zipToStateFips(zip: string): string {
-  const prefix = parseInt(zip.substring(0, 3))
   // Major mappings (not exhaustive but covers most)
   const map: Record<string, string> = {
     // NJ

@@ -26,6 +26,7 @@ describe('analystOutputSchema', () => {
   })
 
   it('rejects missing flip section', () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { flip, ...noFlip } = validAnalysis
     expect(() => analystOutputSchema.parse(noFlip)).toThrow()
   })

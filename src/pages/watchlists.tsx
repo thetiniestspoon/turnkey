@@ -249,21 +249,21 @@ export default function WatchlistsPage() {
 
   function openEditCriteria(wl: Watchlist) {
     setEditingWl(wl)
-    const ov = (wl.criteria_overrides || {}) as Record<string, any>
+    const ov = (wl.criteria_overrides || {}) as Record<string, unknown>
     setOverrideForm({
-      max_price: ov.max_price?.toString() || '',
-      min_cap_rate: ov.min_cap_rate?.toString() || '',
-      min_flip_roi: ov.min_flip_roi?.toString() || '',
-      min_score: ov.min_score?.toString() || '',
-      property_types: ov.property_types || [...PROPERTY_TYPES],
-      strategies: ov.strategies || [...STRATEGIES],
+      max_price: ov.max_price != null ? String(ov.max_price) : '',
+      min_cap_rate: ov.min_cap_rate != null ? String(ov.min_cap_rate) : '',
+      min_flip_roi: ov.min_flip_roi != null ? String(ov.min_flip_roi) : '',
+      min_score: ov.min_score != null ? String(ov.min_score) : '',
+      property_types: (ov.property_types as string[] | undefined) || [...PROPERTY_TYPES],
+      strategies: (ov.strategies as string[] | undefined) || [...STRATEGIES],
     })
     setEditDialogOpen(true)
   }
 
   async function handleSaveOverrides() {
     if (!editingWl) return
-    const overrides: Record<string, any> = {}
+    const overrides: Record<string, unknown> = {}
     if (overrideForm.max_price)
       overrides.max_price = Number(overrideForm.max_price)
     if (overrideForm.min_cap_rate)

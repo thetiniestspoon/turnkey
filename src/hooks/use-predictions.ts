@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export interface Prediction {
@@ -18,22 +18,23 @@ export function usePredictions() {
   const [loading, setLoading] = useState(true)
   const [accuracy, setAccuracy] = useState<number | null>(null)
 
-  async function fetchPredictions() {
+  const fetchPredictions = useCallback(async () => {
     const { data } = await supabase.from('property_predictions')
       .select('*, properties(address, city, state)')
       .order('predicted_at', { ascending: false })
     setPredictions(data || [])
 
     // Compute system-wide accuracy
-    const resolved = (data || []).filter((p: any) => p.accuracy_score !== null)
+    const resolved = (data || []).filter((p: Prediction) => p.accuracy_score !== null)
     if (resolved.length > 0) {
-      const avg = resolved.reduce((sum: number, p: any) => sum + p.accuracy_score, 0) / resolved.length
+      const avg = resolved.reduce((sum: number, p: Prediction) => sum + (p.accuracy_score ?? 0), 0) / resolved.length
       setAccuracy(Math.round(avg * 10) / 10)
     }
     setLoading(false)
-  }
+  }, [])
 
-  useEffect(() => { fetchPredictions() }, [])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { fetchPredictions() }, [fetchPredictions])
 
   async function updateActual(predictionId: string, actualValue: number) {
     const { error } = await supabase.from('property_predictions')

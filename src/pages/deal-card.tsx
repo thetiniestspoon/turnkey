@@ -25,7 +25,7 @@ export default function DealCardPage() {
           <div>
             <h1 className="text-2xl font-bold">{property.address}, {property.city} {property.state} {property.zip}</h1>
             <p className="text-muted-foreground">
-              {property.bedrooms}bd/{property.bathrooms}ba · {property.sqft} sqft · Built {(property as any).year_built} · {property.property_type}
+              {property.bedrooms}bd/{property.bathrooms}ba · {property.sqft} sqft · Built {(property as unknown as { year_built?: number }).year_built} · {property.property_type}
             </p>
           </div>
           <div className="flex gap-2">

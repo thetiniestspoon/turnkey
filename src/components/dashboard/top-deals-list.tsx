@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { formatCurrency } from '@/lib/utils'
 import type { Property } from '@/hooks/use-properties'
 
+const ONE_DAY_MS = 24 * 60 * 60 * 1000
+
 export function TopDealsList({ properties }: { properties: Property[] }) {
+  const [now] = useState(() => Date.now())
   return (
     <Card>
       <CardHeader><CardTitle className="text-base">🔍 Top Deals from Last Scout</CardTitle></CardHeader>
@@ -21,7 +25,7 @@ export function TopDealsList({ properties }: { properties: Property[] }) {
               </p>
             </div>
             <div className="flex items-center gap-1.5">
-              {p.raw_data?.scouted_at && (Date.now() - new Date(p.raw_data.scouted_at).getTime()) < 24 * 60 * 60 * 1000 && (
+              {p.raw_data?.scouted_at && (now - new Date(p.raw_data.scouted_at).getTime()) < ONE_DAY_MS && (
                 <Badge variant="default" className="bg-emerald-500">New</Badge>
               )}
               {p.raw_data?.score && (
