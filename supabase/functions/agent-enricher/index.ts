@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 const CENSUS_API_BASE = 'https://api.census.gov/data'
 const FRED_API_BASE = 'https://api.stlouisfed.org/fred/series/observations'
@@ -17,6 +18,10 @@ const CACHE_TTLS: Record<string, number> = {
 }
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   try {
     const { region, region_type, data_types, lat, lng } = await req.json()
     const supabase = createAdminClient()
@@ -73,7 +78,7 @@ serve(async (req) => {
     }
 
     return new Response(JSON.stringify({ results, fetched_at: new Date().toISOString() }), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {

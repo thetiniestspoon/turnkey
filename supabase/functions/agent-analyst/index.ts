@@ -1,6 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
 import { callOpenRouter } from '../_shared/openrouter.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 const ANALYST_SYSTEM_PROMPT = `You are a real estate investment analyst. Given a property and comprehensive market data (demographics, rates, rents, flood risk, walkability, unemployment), produce a detailed financial analysis with two scenarios: Flip and Rental.
 
@@ -50,6 +51,10 @@ Return JSON matching this exact structure:
 Be conservative. Lower confidence when data is limited. Always explain your reasoning. Flag any risk factors prominently.`
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const supabase = createAdminClient()
   const startedAt = new Date().toISOString()
   const { data: run } = await supabase.from('agent_runs').insert({
@@ -162,7 +167,7 @@ Produce flip and rental scenarios with honest confidence scores. Factor in flood
     }).eq('id', run.id)
 
     return new Response(JSON.stringify(content), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
     await supabase.from('agent_runs').update({

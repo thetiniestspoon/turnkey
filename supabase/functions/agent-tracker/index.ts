@@ -1,6 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
 import { callOpenRouter } from '../_shared/openrouter.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 const TRACKER_SYSTEM_PROMPT = `You are a real estate prediction tracker. Compare predicted values against actual outcomes and assess accuracy.
 
@@ -16,6 +17,10 @@ Return JSON:
 }`
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const supabase = createAdminClient()
   const startedAt = new Date().toISOString()
   const { data: run } = await supabase.from('agent_runs').insert({
@@ -39,7 +44,7 @@ serve(async (req) => {
         status: 'success', completed_at: new Date().toISOString(),
         output_summary: 'No resolved predictions found', tokens_used: 0,
       }).eq('id', run.id)
-      return new Response(JSON.stringify(result), { headers: { 'Content-Type': 'application/json' } })
+      return new Response(JSON.stringify(result), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
     }
 
     const { data: property } = await supabase.from('properties')
@@ -71,13 +76,13 @@ property_id: "${property_id}"`
       tokens_used: tokens, model, cost_est: tokens * 0.000003,
     }).eq('id', run.id)
 
-    return new Response(JSON.stringify(content), { headers: { 'Content-Type': 'application/json' } })
+    return new Response(JSON.stringify(content), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
   } catch (error) {
     await supabase.from('agent_runs').update({
       status: 'error', completed_at: new Date().toISOString(), output_summary: error.message,
     }).eq('id', run?.id)
     return new Response(JSON.stringify({ error: error.message }), {
-      status: 500, headers: { 'Content-Type': 'application/json' },
+      status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
 })

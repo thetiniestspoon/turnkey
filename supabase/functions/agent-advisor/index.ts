@@ -1,6 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
 import { callOpenRouter } from '../_shared/openrouter.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 const ADVISOR_SYSTEM_PROMPT = `You are Turnkey's AI real estate advisor. You help Ted evaluate deals, understand markets, and make investment decisions.
 
@@ -9,6 +10,10 @@ You have access to Ted's full portfolio: his pipeline, analyses, predictions, an
 Always respond in plain text (not JSON). Be concise but thorough. If you're unsure about something, say so.`
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const supabase = createAdminClient()
   const startedAt = new Date().toISOString()
   const { data: run } = await supabase.from('agent_runs').insert({
@@ -55,7 +60,7 @@ serve(async (req) => {
     }).eq('id', run.id)
 
     return new Response(JSON.stringify({ response: responseText }), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
     await supabase.from('agent_runs').update({

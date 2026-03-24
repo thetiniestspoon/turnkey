@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 interface CriteriaFields {
   max_price?: number | null
@@ -85,6 +86,10 @@ function passesFilter(prop: ScoutProperty, criteria: CriteriaFields): boolean {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 serve(async (_req) => {
+  if (_req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const supabase = createAdminClient()
   const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
   const SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
@@ -98,7 +103,7 @@ serve(async (_req) => {
   if (wlError) {
     return new Response(JSON.stringify({ error: wlError.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
 

@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createAdminClient } from '../_shared/supabase-admin.ts'
+import { corsHeaders } from '../_shared/cors.ts'
 
 const GATEWAY_URL = Deno.env.get('LLM_GATEWAY_URL')?.replace('/chat/completions', '/messages')
   || 'https://ai-gateway.vercel.sh/v1/messages'
@@ -22,6 +23,10 @@ CRITICAL RULES:
 - Be conservative with scores — only 80+ for genuinely compelling deals`
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   const supabase = createAdminClient()
   const startedAt = new Date().toISOString()
 
@@ -182,7 +187,7 @@ After searching, return your analysis as JSON (no markdown fences) matching this
     }).eq('id', run.id)
 
     return new Response(JSON.stringify(content), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
     await supabase.from('agent_runs').update({
