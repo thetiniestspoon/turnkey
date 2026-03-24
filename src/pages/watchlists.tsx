@@ -180,6 +180,7 @@ export default function WatchlistsPage() {
     min_cap_rate: '',
     min_flip_roi: '',
     min_score: '',
+    auto_analyze_min_score: '',
     property_types: [...PROPERTY_TYPES],
     strategies: [...STRATEGIES],
   })
@@ -194,6 +195,7 @@ export default function WatchlistsPage() {
       min_cap_rate: criteria.min_cap_rate?.toString() || '',
       min_flip_roi: criteria.min_flip_roi?.toString() || '',
       min_score: criteria.min_score?.toString() || '',
+      auto_analyze_min_score: criteria.auto_analyze_min_score?.toString() || '',
       property_types: criteria.property_types || [...PROPERTY_TYPES],
       strategies: criteria.strategies || [...STRATEGIES],
     })
@@ -232,6 +234,9 @@ export default function WatchlistsPage() {
         ? Number(globalForm.min_flip_roi)
         : null,
       min_score: globalForm.min_score ? Number(globalForm.min_score) : null,
+      auto_analyze_min_score: globalForm.auto_analyze_min_score
+        ? Number(globalForm.auto_analyze_min_score)
+        : null,
       property_types: globalForm.property_types,
       strategies: globalForm.strategies,
     })
@@ -376,6 +381,24 @@ export default function WatchlistsPage() {
                     values={globalForm}
                     onChange={setGlobalForm}
                   />
+                  <div>
+                    <label className="text-xs font-medium text-muted-foreground">
+                      Auto-Analyze Cutoff (0-100)
+                    </label>
+                    <Input
+                      type="number"
+                      min={0}
+                      max={100}
+                      placeholder="60"
+                      value={globalForm.auto_analyze_min_score}
+                      onChange={(e) =>
+                        setGlobalForm({ ...globalForm, auto_analyze_min_score: e.target.value })
+                      }
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Properties scored above this are auto-analyzed by agents
+                    </p>
+                  </div>
                   <Button
                     onClick={handleSaveGlobal}
                     disabled={globalSaving}

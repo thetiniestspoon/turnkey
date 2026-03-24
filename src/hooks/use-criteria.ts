@@ -8,6 +8,7 @@ export interface InvestmentCriteria {
   min_cap_rate: number | null
   min_flip_roi: number | null
   min_score: number | null
+  auto_analyze_min_score: number | null
   property_types: string[] | null
   strategies: string[] | null
 }
@@ -38,6 +39,7 @@ export function useCriteria() {
     min_cap_rate?: number | null
     min_flip_roi?: number | null
     min_score?: number | null
+    auto_analyze_min_score?: number | null
     property_types?: string[]
     strategies?: string[]
   }) {
