@@ -23,6 +23,8 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
   const score = p.raw_data?.score
   const strategy = p.raw_data?.recommended_strategy
   const rationale = p.raw_data?.rationale
+  const listingUrl = p.raw_data?.listing_url
+  const imageUrl = p.raw_data?.image_url
   const analysis = p.property_analyses?.[0]
   const scoutedAt = p.raw_data?.scouted_at
   const [now] = useState(() => Date.now())
@@ -48,12 +50,28 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
           </div>
           {strategy && <span className="text-xs text-muted-foreground capitalize">{strategy}</span>}
         </div>
-        <div className="bg-muted rounded h-24 flex items-center justify-center text-xs text-muted-foreground">
-          Street View
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={p.address}
+            className="rounded h-24 w-full object-cover bg-muted"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+        ) : (
+          <div className="bg-muted rounded h-24 flex items-center justify-center text-xs text-muted-foreground">
+            No photo available
+          </div>
+        )}
+        <div className="flex items-center gap-2">
+          <Link to={`/property/${p.id}`} className="flex-1 min-w-0">
+            <p className="font-semibold text-sm hover:underline truncate">{p.address}, {p.city} {p.state}</p>
+          </Link>
+          {listingUrl && (
+            <a href={listingUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500 hover:underline shrink-0">
+              Listing
+            </a>
+          )}
         </div>
-        <Link to={`/property/${p.id}`}>
-          <p className="font-semibold text-sm hover:underline">{p.address}, {p.city} {p.state}</p>
-        </Link>
         <p className="text-xs text-muted-foreground">
           {p.bedrooms}bd/{p.bathrooms}ba · {p.sqft} sqft
         </p>

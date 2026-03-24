@@ -13,12 +13,14 @@ You have access to a web search tool. USE IT to find actual property listings on
 WORKFLOW:
 1. Search for properties currently for sale in the target ZIP/market
 2. Find 3-8 real listings with actual addresses and prices
-3. Analyze each property's investment potential using the market data provided
-4. Return structured results
+3. For each property, capture the listing page URL and any property photo/thumbnail URL you find
+4. Analyze each property's investment potential using the market data provided
+5. Return structured results
 
 CRITICAL RULES:
 - Every property MUST have a real street address from an actual listing
-- Include the listing source URL in the rationale
+- ALWAYS include listing_url — the direct URL to the property's listing page on Zillow, Redfin, Realtor.com, etc.
+- Include image_url if you can find a photo/thumbnail URL for the property from search results or listing pages. Look for og:image URLs, thumbnail URLs, or photo URLs in search snippets. If you cannot find one, set image_url to null.
 - If search returns no results for an area, return empty properties array — never fabricate
 - Be conservative with scores — only 80+ for genuinely compelling deals`
 
@@ -108,10 +110,12 @@ After searching, return your analysis as JSON (no markdown fences) matching this
       "year_built": number,
       "list_price": number,
       "score": 0-100,
-      "rationale": "Why this is a good deal. Include listing URL.",
+      "rationale": "Why this is a good deal.",
       "recommended_strategy": "flip|rental|either",
       "estimated_flip_roi": number,
-      "estimated_cap_rate": number
+      "estimated_cap_rate": number,
+      "listing_url": "https://www.zillow.com/homedetails/...",
+      "image_url": "https://photos.zillowstatic.com/..." or null
     }
   ],
   "market_summary": "Overview of current conditions",
@@ -170,6 +174,8 @@ After searching, return your analysis as JSON (no markdown fences) matching this
           recommended_strategy: prop.recommended_strategy,
           estimated_flip_roi: prop.estimated_flip_roi,
           estimated_cap_rate: prop.estimated_cap_rate,
+          listing_url: prop.listing_url || null,
+          image_url: prop.image_url || null,
           scouted_at: new Date().toISOString(),
         },
       }, { onConflict: 'address,city,state' })

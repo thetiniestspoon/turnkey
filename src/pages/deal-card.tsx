@@ -24,6 +24,8 @@ export default function DealCardPage() {
 
   const analysis = property.property_analyses?.[0]
   const pipelineEntry = getPipelineEntry(property.id)
+  const imageUrl = property.raw_data?.image_url
+  const listingUrl = property.raw_data?.listing_url
 
   async function handlePipeline() {
     if (pipelineEntry) {
@@ -55,7 +57,14 @@ export default function DealCardPage() {
       <div className="space-y-6">
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-2xl font-bold">{property.address}, {property.city} {property.state} {property.zip}</h1>
+            <div className="flex items-center gap-3">
+              <h1 className="text-2xl font-bold">{property.address}, {property.city} {property.state} {property.zip}</h1>
+              {listingUrl && (
+                <a href={listingUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 hover:underline shrink-0">
+                  View listing
+                </a>
+              )}
+            </div>
             <p className="text-muted-foreground">
               {property.bedrooms}bd/{property.bathrooms}ba · {property.sqft} sqft · Built {(property as unknown as { year_built?: number }).year_built} · {property.property_type}
             </p>
@@ -70,6 +79,15 @@ export default function DealCardPage() {
             </Button>
           </div>
         </div>
+
+        {imageUrl && (
+          <img
+            src={imageUrl}
+            alt={property.address}
+            className="rounded-lg w-full max-h-64 object-cover bg-muted"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+        )}
 
         {property.list_price && (
           <p className="text-3xl font-bold text-yellow-500">{formatCurrency(property.list_price)}</p>

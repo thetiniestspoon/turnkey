@@ -27,6 +27,8 @@ interface ScoutResult {
     recommended_strategy?: string
     estimated_flip_roi?: number
     estimated_cap_rate?: number
+    listing_url?: string
+    image_url?: string
   }>
 }
 
@@ -66,6 +68,8 @@ export default function ScoutPage() {
           recommended_strategy: prop.recommended_strategy,
           estimated_flip_roi: prop.estimated_flip_roi,
           estimated_cap_rate: prop.estimated_cap_rate,
+          listing_url: prop.listing_url || null,
+          image_url: prop.image_url || null,
           scouted_at: new Date().toISOString(),
         },
       }, { onConflict: 'address,city,state' }).select().single()
