@@ -27,6 +27,8 @@ interface ScoutProperty {
   recommended_strategy?: string
   estimated_flip_roi?: number
   estimated_cap_rate?: number
+  listing_url?: string
+  image_url?: string
 }
 
 function mergeCriteria(
@@ -94,11 +96,12 @@ serve(async (_req) => {
   const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
   const SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 
-  // Fetch all active watchlists
+  // Fetch active watchlists scheduled for today's day-of-week
   const { data: watchlists, error: wlError } = await supabase
     .from('watchlists')
     .select('*')
     .eq('active', true)
+    .eq('scout_day', new Date().getDay())
 
   if (wlError) {
     return new Response(JSON.stringify({ error: wlError.message }), {
@@ -108,6 +111,9 @@ serve(async (_req) => {
   }
 
   const results: { watchlist_id: string; name: string; saved: number; error?: string }[] = []
+
+  // Track saved property IDs per user across all processed watchlists
+  const savedByUser = new Map<string, string[]>()
 
   for (const wl of watchlists || []) {
     const runStartedAt = new Date().toISOString()
@@ -166,33 +172,49 @@ serve(async (_req) => {
       // Filter properties against merged criteria
       const passing = properties.filter((p) => passesFilter(p, merged))
 
-      // Save passing properties
+      // Save passing properties and collect their IDs
+      const savedIds: string[] = []
       for (const prop of passing) {
-        await supabase.from('properties').upsert(
-          {
-            address: prop.address,
-            city: prop.city,
-            state: prop.state,
-            zip: prop.zip,
-            property_type: prop.property_type,
-            bedrooms: prop.bedrooms,
-            bathrooms: prop.bathrooms,
-            sqft: prop.sqft,
-            year_built: prop.year_built,
-            list_price: prop.list_price,
-            estimated_value: prop.list_price,
-            source: 'autoscout',
-            raw_data: {
-              score: prop.score,
-              rationale: prop.rationale,
-              recommended_strategy: prop.recommended_strategy,
-              estimated_flip_roi: prop.estimated_flip_roi,
-              estimated_cap_rate: prop.estimated_cap_rate,
-              scouted_at: new Date().toISOString(),
+        const { data: upserted } = await supabase
+          .from('properties')
+          .upsert(
+            {
+              address: prop.address,
+              city: prop.city,
+              state: prop.state,
+              zip: prop.zip,
+              property_type: prop.property_type,
+              bedrooms: prop.bedrooms,
+              bathrooms: prop.bathrooms,
+              sqft: prop.sqft,
+              year_built: prop.year_built,
+              list_price: prop.list_price,
+              estimated_value: prop.list_price,
+              source: 'autoscout',
+              raw_data: {
+                score: prop.score,
+                rationale: prop.rationale,
+                recommended_strategy: prop.recommended_strategy,
+                estimated_flip_roi: prop.estimated_flip_roi,
+                estimated_cap_rate: prop.estimated_cap_rate,
+                listing_url: prop.listing_url,
+                image_url: prop.image_url,
+                scouted_at: new Date().toISOString(),
+              },
             },
-          },
-          { onConflict: 'address,city,state' }
-        )
+            { onConflict: 'address,city,state' }
+          )
+          .select('id')
+          .single()
+        if (upserted?.id) {
+          savedIds.push(upserted.id)
+        }
+      }
+
+      // Accumulate saved property IDs for this user
+      if (savedIds.length > 0) {
+        const existing = savedByUser.get(wl.user_id) || []
+        savedByUser.set(wl.user_id, [...existing, ...savedIds])
       }
 
       // Update watchlist last_scouted_at
@@ -233,7 +255,27 @@ serve(async (_req) => {
     }
   }
 
-  return new Response(JSON.stringify({ results }), {
+  // Trigger orchestrator for each user that had properties saved
+  const orchestratorResults: { user_id: string; property_ids: string[]; ok: boolean }[] = []
+  for (const [user_id, property_ids] of savedByUser.entries()) {
+    try {
+      const orchResp = await fetch(`${SUPABASE_URL}/functions/v1/agent-orchestrator`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+        },
+        body: JSON.stringify({ property_ids, user_id }),
+      })
+      orchestratorResults.push({ user_id, property_ids, ok: orchResp.ok })
+    } catch (err) {
+      const errMsg = err instanceof Error ? err.message : String(err)
+      orchestratorResults.push({ user_id, property_ids, ok: false })
+      console.error(`Failed to trigger orchestrator for user ${user_id}: ${errMsg}`)
+    }
+  }
+
+  return new Response(JSON.stringify({ results, orchestratorResults }), {
     headers: { 'Content-Type': 'application/json' },
   })
 })
