@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/auth-context'
+import { EmojiPinSettings } from '@/components/auth/emoji-pin-settings'
 
 const NAV_ITEMS = [
   { path: '/', label: 'Dashboard' },
@@ -58,6 +59,7 @@ export function NavBar({ onToggleAdvisor }: { onToggleAdvisor: () => void }) {
           <Button variant="outline" size="sm" onClick={onToggleAdvisor} className="hidden sm:inline-flex">
             Ask Advisor
           </Button>
+          <EmojiPinSettings />
           <span className="text-sm text-muted-foreground max-w-[120px] truncate" title={user?.email || ''}>
             {user?.email}
           </span>
