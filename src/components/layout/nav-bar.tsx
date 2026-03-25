@@ -22,7 +22,7 @@ export function NavBar({ onToggleAdvisor }: { onToggleAdvisor: () => void }) {
     <header className="border-b bg-card">
       <div className="flex items-center justify-between px-4 md:px-6 h-14">
         <div className="flex items-center gap-4 md:gap-6">
-          <Link to="/" className="text-lg font-bold text-primary whitespace-nowrap">Turnkey</Link>
+          <Link to="/" className="text-lg font-bold text-primary whitespace-nowrap">🦝 Turnkey</Link>
           {/* Mobile hamburger */}
           <button
             className="md:hidden p-1 text-muted-foreground"
