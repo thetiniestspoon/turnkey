@@ -36,16 +36,17 @@ function CriteriaForm({
   onChange,
   placeholders,
 }: {
-  values: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  values: Record<string, any> & {
     max_price: string
     min_cap_rate: string
     min_flip_roi: string
     min_score: string
     property_types: string[]
     strategies: string[]
-    [key: string]: unknown
   }
-  onChange: (v: typeof values) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onChange: (v: any) => void
   placeholders?: {
     max_price?: string
     min_cap_rate?: string
