@@ -43,6 +43,7 @@ function CriteriaForm({
     min_score: string
     property_types: string[]
     strategies: string[]
+    [key: string]: unknown
   }
   onChange: (v: typeof values) => void
   placeholders?: {
