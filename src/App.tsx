@@ -47,7 +47,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/turnkey">
+    <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
           <AppRoutes />
