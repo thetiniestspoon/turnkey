@@ -5,7 +5,7 @@
  *   npx tsx scripts/seed-emoji-pins.ts
  *
  * Default PINs:
- *   Shawn (shawnjordanetal@gmail.com):  🦝🔑🏠💎
+ *   Shawn (runx31021@gmail.com):  🦝🔑🏠💎
  *   Ted   (theodorelawson@gmail.com):   🦊🎯🚀⭐
  *
  * Requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY env vars.
@@ -32,7 +32,7 @@ async function hashPin(pin: string): Promise<string> {
 }
 
 const DEFAULT_PINS: { email: string; pin: string }[] = [
-  { email: 'shawnjordanetal@gmail.com', pin: '🦝🔑🏠💎' },
+  { email: 'runx31021@gmail.com', pin: '🦝🔑🏠💎' },
   { email: 'theodorelawson@gmail.com', pin: '🦊🎯🚀⭐' },
 ]
 

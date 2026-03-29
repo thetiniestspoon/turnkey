@@ -8,7 +8,7 @@ import { EmojiPinPad } from '@/components/auth/emoji-pin-pad'
 import { supabase } from '@/lib/supabase'
 
 const ALLOWED_EMAILS = [
-  'shawnjordanetal@gmail.com',
+  'runx31021@gmail.com',
   'theodorelawson@gmail.com',
 ]
 

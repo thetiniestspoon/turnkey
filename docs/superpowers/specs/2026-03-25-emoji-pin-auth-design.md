@@ -18,7 +18,7 @@ With 25^4 = 390,625 possible combinations and rate limiting at 3 attempts per 5 
 
 ### Emoji Palette (25)
 ```
-🦝 🦊 🐻 🦉 🐙 🦎 🐋 🦩 🦚 🐝
+🦝 🦊 🐨 🦉 🐙 🦛 🐋 🦩 🦚 🦫
 🌵 🌻 🍄 🌊 🔥 ⭐ 🌙 🎸 🎲 🔮
 🏠 🔑 💎 🚀 🎯
 ```
@@ -57,7 +57,7 @@ create table emoji_pin_attempts (
 
 ### Seed Data (Default PINs)
 The migration will NOT hardcode PINs (users may not exist yet in auth.users). Instead, the Edge Function `emoji-pin-auth` will handle first-time setup, and default PINs are documented for manual assignment:
-- Shawn (`shawnjordanetal@gmail.com`): 🦝🔑🏠💎
+- Shawn (`runx31021@gmail.com`): 🦝🔑🏠💎
 - Ted (`theodorelawson@gmail.com`): 🦊🎯🚀⭐
 
 A setup script seeds these after users exist.
