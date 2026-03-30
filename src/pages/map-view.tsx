@@ -494,7 +494,7 @@ export default function MapViewPage() {
           </div>
         </div>
 
-        <div className="relative h-[calc(100vh-200px)] rounded-lg border overflow-hidden">
+        <div className="relative h-[calc(100vh-200px)] rounded-lg border overflow-hidden z-0">
           {/* Loading overlay */}
           {loading && <MapLoadingOverlay message="Loading properties..." />}
           {!loading && geocoding && (
