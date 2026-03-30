@@ -260,24 +260,133 @@ async function fetchFemaFloodZone(lat: number, lng: number) {
 }
 
 async function fetchWalkability(lat: number, lng: number) {
-  // Walk Score API (free tier: 5,000 calls/day)
-  const wsKey = Deno.env.get('WALKSCORE_API_KEY') || ''
-  if (!wsKey) {
-    return { walk_score: null, transit_score: null, bike_score: null, note: 'WALKSCORE_API_KEY not set' }
+  // OSM Overpass API — count amenities within ~1km to compute walkability proxy
+  // No API key needed, completely free. Fallback chain of mirrors for reliability.
+  const OVERPASS_MIRRORS = [
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://overpass-api.de/api/interpreter',
+  ]
+  const RADIUS = 1000 // meters
+
+  // Categories that matter for walkability, with Overpass tags
+  const queries: { category: string; filter: string }[] = [
+    { category: 'transit', filter: 'node["public_transport"="stop_position"]' },
+    { category: 'transit', filter: 'node["highway"="bus_stop"]' },
+    { category: 'transit', filter: 'node["railway"="station"]' },
+    { category: 'transit', filter: 'node["railway"="halt"]' },
+    { category: 'grocery', filter: 'node["shop"="supermarket"]' },
+    { category: 'grocery', filter: 'node["shop"="convenience"]' },
+    { category: 'grocery', filter: 'node["shop"="greengrocer"]' },
+    { category: 'restaurant', filter: 'node["amenity"="restaurant"]' },
+    { category: 'restaurant', filter: 'node["amenity"="cafe"]' },
+    { category: 'restaurant', filter: 'node["amenity"="fast_food"]' },
+    { category: 'retail', filter: 'node["shop"="clothes"]' },
+    { category: 'retail', filter: 'node["shop"="department_store"]' },
+    { category: 'retail', filter: 'node["shop"~"hardware|electronics|books|variety_store"]' },
+    { category: 'healthcare', filter: 'node["amenity"="pharmacy"]' },
+    { category: 'healthcare', filter: 'node["amenity"~"clinic|doctors|hospital"]' },
+    { category: 'school', filter: 'node["amenity"~"school|kindergarten"]' },
+    { category: 'park', filter: 'node["leisure"="park"]' },
+    { category: 'park', filter: 'way["leisure"="park"]' },
+  ]
+
+  // Use a bbox instead of around() for better Overpass performance
+  // ~1km ≈ ±0.009 lat, ±0.012 lng at NJ latitude
+  const dlat = 0.009
+  const dlng = 0.012
+  const south = lat - dlat
+  const north = lat + dlat
+  const west = lng - dlng
+  const east = lng + dlng
+
+  const overpassQuery = `[out:json][timeout:25][bbox:${south},${west},${north},${east}];(node["amenity"~"restaurant|cafe|fast_food|pharmacy|clinic|doctors|hospital|school|kindergarten"];node["shop"~"supermarket|convenience|greengrocer|clothes|department_store|hardware|electronics|books"];node["public_transport"="stop_position"];node["highway"="bus_stop"];node["railway"~"station|halt"];nwr["leisure"="park"];);out tags center;`
+
+  let data: { elements: Array<{ type: string; tags?: Record<string, string> }> } | null = null
+  for (const mirror of OVERPASS_MIRRORS) {
+    try {
+      const resp = await fetch(mirror, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'data=' + encodeURIComponent(overpassQuery),
+      })
+      if (resp.ok) {
+        data = await resp.json()
+        break
+      }
+    } catch { /* try next mirror */ }
   }
 
-  const url = `https://api.walkscore.com/score?format=json&lat=${lat}&lon=${lng}&transit=1&bike=1&wsapikey=${wsKey}`
-  const resp = await fetch(url)
-  if (!resp.ok) return null
-  const data = await resp.json()
+  if (!data) {
+    throw new Error('All Overpass mirrors failed')
+  }
+  const elements = data.elements || []
+
+  // Classify each element into a category
+  const counts: Record<string, number> = {
+    transit: 0, grocery: 0, restaurant: 0, retail: 0,
+    healthcare: 0, school: 0, park: 0,
+  }
+
+  for (const el of elements) {
+    const tags = el.tags || {}
+    if (tags.public_transport || tags.highway === 'bus_stop' || tags.railway === 'station' || tags.railway === 'halt') {
+      counts.transit++
+    } else if (tags.shop === 'supermarket' || tags.shop === 'convenience' || tags.shop === 'greengrocer') {
+      counts.grocery++
+    } else if (tags.amenity === 'restaurant' || tags.amenity === 'cafe' || tags.amenity === 'fast_food') {
+      counts.restaurant++
+    } else if (tags.shop && !['supermarket', 'convenience', 'greengrocer'].includes(tags.shop)) {
+      counts.retail++
+    } else if (tags.amenity === 'pharmacy' || tags.amenity === 'clinic' || tags.amenity === 'doctors' || tags.amenity === 'hospital') {
+      counts.healthcare++
+    } else if (tags.amenity === 'school' || tags.amenity === 'kindergarten') {
+      counts.school++
+    } else if (tags.leisure === 'park') {
+      counts.park++
+    }
+  }
+
+  // Scoring: each category contributes a weighted sub-score
+  // Thresholds are "how many within 1km = full marks for that category"
+  const weights: Record<string, { weight: number; threshold: number }> = {
+    transit:    { weight: 25, threshold: 5 },  // 5+ transit stops = full transit score
+    grocery:    { weight: 20, threshold: 3 },  // 3+ grocery options
+    restaurant: { weight: 15, threshold: 8 },  // 8+ restaurants/cafes
+    retail:     { weight: 15, threshold: 5 },  // 5+ shops
+    healthcare: { weight: 10, threshold: 2 },  // 2+ pharmacies/clinics
+    school:     { weight: 10, threshold: 2 },  // 2+ schools
+    park:       { weight: 5,  threshold: 1 },  // 1+ park
+  }
+
+  let totalScore = 0
+  const breakdown: Record<string, { count: number; sub_score: number }> = {}
+  for (const [cat, cfg] of Object.entries(weights)) {
+    const count = counts[cat] || 0
+    const sub = Math.min(count / cfg.threshold, 1) * cfg.weight
+    totalScore += sub
+    breakdown[cat] = { count, sub_score: Math.round(sub * 10) / 10 }
+  }
+
+  const walkScore = Math.round(totalScore)
+
+  // Description based on score
+  let description: string
+  if (walkScore >= 90) description = "Walker's Paradise — daily errands do not require a car"
+  else if (walkScore >= 70) description = "Very Walkable — most errands can be accomplished on foot"
+  else if (walkScore >= 50) description = "Somewhat Walkable — some errands can be accomplished on foot"
+  else if (walkScore >= 25) description = "Car-Dependent — most errands require a car"
+  else description = "Almost All Errands Require a Car"
 
   return {
-    walk_score: data.walkscore || null,
-    walk_description: data.description || null,
-    transit_score: data.transit?.score || null,
-    transit_description: data.transit?.description || null,
-    bike_score: data.bike?.score || null,
-    bike_description: data.bike?.description || null,
+    walk_score: walkScore,
+    walk_description: description,
+    transit_count: counts.transit,
+    grocery_count: counts.grocery,
+    restaurant_count: counts.restaurant,
+    amenity_total: elements.length,
+    breakdown,
+    source: 'osm_overpass',
+    radius_meters: RADIUS,
   }
 }
 
