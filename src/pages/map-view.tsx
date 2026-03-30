@@ -20,7 +20,6 @@ import {
   SatelliteIcon,
   MoonIcon,
   LoaderIcon,
-  XIcon,
   ExternalLinkIcon,
   TrendingUpIcon,
   HomeIcon,
@@ -347,19 +346,19 @@ function PropertyDetailPanel({
 
           {/* Actions */}
           <div className="flex gap-2 pb-4">
-            <Button asChild variant="outline" className="flex-1">
-              <Link to={`/property/${p.id}`}>
+            <Link to={`/property/${p.id}`} className="flex-1">
+              <Button variant="outline" className="w-full">
                 <DollarSignIcon className="h-4 w-4 mr-1.5" />
                 Full Deal Card
-              </Link>
-            </Button>
+              </Button>
+            </Link>
             {listingUrl && (
-              <Button asChild variant="outline" className="flex-1">
-                <a href={listingUrl} target="_blank" rel="noopener noreferrer">
+              <a href={listingUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                <Button variant="outline" className="w-full">
                   <ExternalLinkIcon className="h-4 w-4 mr-1.5" />
                   Listing
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
           </div>
         </div>
