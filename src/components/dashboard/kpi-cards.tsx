@@ -19,7 +19,7 @@ function Sparkline({ data }: { data: number[] }) {
     .map((v, i) => `${(i / (data.length - 1)) * 80},${24 - ((v - min) / range) * 20}`)
     .join(' ')
   return (
-    <svg width={80} height={24} className="mx-auto mt-1 opacity-60">
+    <svg width={80} height={24} className="mx-auto mt-1 opacity-60" role="img" aria-label="Trend sparkline">
       <polyline
         points={points}
         fill="none"

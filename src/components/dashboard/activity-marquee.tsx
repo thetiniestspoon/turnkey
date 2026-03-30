@@ -30,7 +30,11 @@ export function ActivityMarquee() {
     .join('  \u2022  ')
 
   return (
-    <div className="overflow-hidden rounded-lg border bg-card py-2">
+    <div
+      className="overflow-hidden rounded-lg border bg-card py-2"
+      role="region"
+      aria-label="Recent agent activity"
+    >
       <div className="marquee-track flex whitespace-nowrap">
         <span className="marquee-content text-xs text-muted-foreground px-4">
           {text}
@@ -39,18 +43,6 @@ export function ActivityMarquee() {
           {text}
         </span>
       </div>
-      <style>{`
-        .marquee-track {
-          animation: marquee-scroll 30s linear infinite;
-        }
-        .marquee-content {
-          flex-shrink: 0;
-        }
-        @keyframes marquee-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   )
 }

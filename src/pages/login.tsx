@@ -149,6 +149,7 @@ export default function LoginPage() {
                   <form onSubmit={handleEmailSubmit} className="space-y-4">
                     <Input
                       type="email"
+                      aria-label="Email address"
                       placeholder="your@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}

@@ -9,7 +9,7 @@ export function PageLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <NavBar />
+      <NavBar onToggleAdvisor={() => setAdvisorOpen(!advisorOpen)} />
       <main className="p-4 md:p-6 max-w-full">{children}</main>
       <AdvisorPanel open={advisorOpen} onClose={() => setAdvisorOpen(false)} />
       <AdvisorOrb onClick={() => setAdvisorOpen(!advisorOpen)} />

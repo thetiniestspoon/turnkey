@@ -171,6 +171,18 @@
   to { transform: scale(2); opacity: 0; }
 }
 
+/* Activity marquee scroll */
+.marquee-track {
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee-content {
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Stale kanban card pulsing amber border */
 @keyframes pulse-border {
   0%, 100% { border-left-color: #f59e0b; }

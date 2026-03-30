@@ -94,7 +94,7 @@ export function RecommendedDeals({ recommended, onWatch, onDismiss, loading }: P
                   {imageUrl ? (
                     <img
                       src={imageUrl}
-                      alt={p.address}
+                      alt={`Property at ${p.address}, ${p.city} ${p.state}`}
                       className="rounded h-24 w-full object-cover bg-muted"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                     />
@@ -141,6 +141,7 @@ export function RecommendedDeals({ recommended, onWatch, onDismiss, loading }: P
                       variant="default"
                       className="flex-1 text-xs h-7"
                       onClick={() => onWatch(p.id)}
+                      aria-label={`Watch ${p.address}`}
                     >
                       <Eye className="w-3 h-3 mr-1" />
                       Watch
@@ -151,6 +152,7 @@ export function RecommendedDeals({ recommended, onWatch, onDismiss, loading }: P
                       className="h-7 w-7 p-0 shrink-0"
                       onClick={() => onDismiss(p.id)}
                       title="Dismiss"
+                      aria-label={`Dismiss ${p.address}`}
                     >
                       <X className="w-3 h-3" />
                     </Button>

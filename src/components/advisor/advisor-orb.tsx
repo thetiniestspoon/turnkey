@@ -8,6 +8,7 @@ export function AdvisorOrb({ onClick, hasInsight }: { onClick: () => void; hasIn
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       title="Ask Advisor"
+      aria-label="Open advisor panel"
     >
       <div className="relative w-14 h-14">
         {/* Ambient glow */}

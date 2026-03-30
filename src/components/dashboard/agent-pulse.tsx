@@ -52,7 +52,7 @@ export function AgentPulse() {
           transition={{ delay: i * 0.08, duration: 0.3 }}
           className="flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs"
         >
-          <span className={`inline-block w-2 h-2 rounded-full ${statusColor(run.status)}`} />
+          <span className={`inline-block w-2 h-2 rounded-full ${statusColor(run.status)}`} aria-label={`${run.agent_type} ${run.status}`} />
           <span className="font-medium">{run.agent_type}</span>
           <span className="text-muted-foreground">{relativeTime(run.started_at)}</span>
         </motion.div>
