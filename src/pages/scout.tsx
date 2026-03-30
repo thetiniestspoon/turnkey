@@ -139,17 +139,28 @@ export default function ScoutPage() {
 
         {error && <p className="text-destructive text-sm">{error}</p>}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayProperties.map((p) => (
-            <DealCardMini
-              key={p.id}
-              property={p}
-              pipelineEntry={getPipelineEntry(p.id)}
-              onAddToPipeline={(id) => addToPipeline(id)}
-              onDeepAnalyze={handleDeepAnalyze}
-              analyzing={analyzingId === p.id}
-            />
-          ))}
+        <div className="relative">
+          {loading && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg overflow-hidden">
+              <div className="hyperdrive-stars absolute inset-0" />
+              <p className="relative z-20 text-lg font-semibold text-white drop-shadow-lg">
+                Scouting...
+              </p>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayProperties.map((p) => (
+              <DealCardMini
+                key={p.id}
+                property={p}
+                pipelineEntry={getPipelineEntry(p.id)}
+                onAddToPipeline={(id) => addToPipeline(id)}
+                onDeepAnalyze={handleDeepAnalyze}
+                analyzing={analyzingId === p.id}
+              />
+            ))}
+          </div>
         </div>
 
         {displayProperties.length === 0 && !loading && (

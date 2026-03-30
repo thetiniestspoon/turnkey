@@ -1,14 +1,24 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { PageLayout } from '@/components/layout/page-layout'
 import { KPICards } from '@/components/dashboard/kpi-cards'
 import { TopDealsList } from '@/components/dashboard/top-deals-list'
 import { PipelineFeed } from '@/components/dashboard/pipeline-feed'
 import { RecommendedDeals } from '@/components/dashboard/recommended-deals'
+import { AgentPulse } from '@/components/dashboard/agent-pulse'
+import { ActivityMarquee } from '@/components/dashboard/activity-marquee'
 import { useProperties } from '@/hooks/use-properties'
 import { usePipeline } from '@/hooks/use-pipeline'
 import { usePredictions } from '@/hooks/use-predictions'
 import { useRecommended } from '@/hooks/use-recommended'
 import { supabase } from '@/lib/supabase'
+
+function getGreeting() {
+  const h = new Date().getHours()
+  if (h < 12) return 'Good morning'
+  if (h < 17) return 'Good afternoon'
+  return 'Good evening'
+}
 
 export default function DashboardPage() {
   const { properties } = useProperties({ source: 'agent_scout' })
@@ -48,7 +58,16 @@ export default function DashboardPage() {
   return (
     <PageLayout>
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <h1 className="text-2xl font-bold">{getGreeting()}, Shawn</h1>
+          <p className="text-sm text-muted-foreground">
+            {activeEntries.length} properties in your pipeline
+          </p>
+        </motion.div>
         <RecommendedDeals
           recommended={recommended}
           onWatch={watchProperty}
@@ -63,12 +82,14 @@ export default function DashboardPage() {
           aiSpend: aiStats.spend,
           aiRuns: aiStats.runs,
         }} />
+        <AgentPulse />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="col-span-2">
             <TopDealsList properties={properties.slice(0, 5)} />
           </div>
           <PipelineFeed entries={entries} />
         </div>
+        <ActivityMarquee />
       </div>
     </PageLayout>
   )

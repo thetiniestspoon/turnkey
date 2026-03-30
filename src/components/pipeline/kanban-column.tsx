@@ -6,10 +6,13 @@ import type { PipelineEntry } from '@/hooks/use-pipeline'
 interface Props {
   stage: PipelineStage
   entries: PipelineEntry[]
+  totalEntries: number
   onDrop: (pipelineId: string, fromStage: PipelineStage, toStage: PipelineStage) => void
 }
 
-export function KanbanColumn({ stage, entries, onDrop }: Props) {
+export function KanbanColumn({ stage, entries, totalEntries, onDrop }: Props) {
+  const pct = totalEntries > 0 ? (entries.length / totalEntries) * 100 : 0
+
   return (
     <div
       className="flex-1 min-w-[180px]"
@@ -23,10 +26,20 @@ export function KanbanColumn({ stage, entries, onDrop }: Props) {
         }
       }}
     >
-      <div className="text-center mb-3">
+      <div className="text-center mb-2">
         <span className="text-xs font-bold" style={{ color: STAGE_COLORS[stage] }}>
           {STAGE_LABELS[stage]} ({entries.length})
         </span>
+        {/* Stage progress bar */}
+        <div className="mt-1 h-1 rounded-full bg-muted overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all duration-500"
+            style={{
+              width: `${pct}%`,
+              backgroundColor: STAGE_COLORS[stage],
+            }}
+          />
+        </div>
       </div>
       <div className="space-y-2">
         {entries.map((entry) => (

@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import 'leaflet.markercluster'
+import 'leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import { PageLayout } from '@/components/layout/page-layout'
 import { useProperties, type Property } from '@/hooks/use-properties'
 import { formatCurrency, formatPercent } from '@/lib/utils'
@@ -159,7 +163,12 @@ function PropertyDetailPanel({
 
   return (
     <Sheet open={open} onOpenChange={(val) => !val && onClose()}>
-      <SheetContent side="right" className="w-full sm:max-w-md overflow-y-auto">
+      <SheetContent side="right" className="w-full sm:max-w-md overflow-y-auto backdrop-blur-md bg-background/80">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        >
         <SheetHeader>
           <div className="flex items-center gap-2">
             {score != null && (
@@ -362,6 +371,7 @@ function PropertyDetailPanel({
             )}
           </div>
         </div>
+        </motion.div>
       </SheetContent>
     </Sheet>
   )
@@ -374,16 +384,18 @@ export default function MapViewPage() {
   const tileLayerRef = useRef<L.TileLayer | null>(null)
   const { properties, loading } = useProperties()
   const [geocoding, setGeocoding] = useState(false)
-  const [activeLayer, setActiveLayer] = useState<MapLayer>('street')
+  const [activeLayer, setActiveLayer] = useState<MapLayer>('dark')
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null)
   const [panelOpen, setPanelOpen] = useState(false)
   const geocodedRef = useRef<Map<string, { lat: number; lng: number }>>(new Map())
+  const clusterGroupRef = useRef<L.MarkerClusterGroup | null>(null)
+  const zipRectanglesRef = useRef<L.Rectangle[]>([])
 
   // Initialize map
   useEffect(() => {
     if (!mapRef.current || mapInstance.current) return
     mapInstance.current = L.map(mapRef.current).setView([39.8283, -98.5795], 4)
-    const layer = TILE_LAYERS.street
+    const layer = TILE_LAYERS.dark
     tileLayerRef.current = L.tileLayer(layer.url, {
       attribution: layer.attribution,
     }).addTo(mapInstance.current)
@@ -412,10 +424,14 @@ export default function MapViewPage() {
 
     async function renderMarkers() {
       const map = mapInstance.current!
-      // Clear existing markers
-      map.eachLayer((layer) => {
-        if (layer instanceof L.CircleMarker) map.removeLayer(layer)
-      })
+
+      // Clear existing cluster group and ZIP rectangles
+      if (clusterGroupRef.current) {
+        map.removeLayer(clusterGroupRef.current)
+        clusterGroupRef.current = null
+      }
+      zipRectanglesRef.current.forEach((rect) => map.removeLayer(rect))
+      zipRectanglesRef.current = []
 
       // Geocode missing coordinates
       const needsGeocoding = properties.filter(
@@ -431,8 +447,14 @@ export default function MapViewPage() {
         setGeocoding(false)
       }
 
+      // Create cluster group
+      const clusterGroup = L.markerClusterGroup()
+      clusterGroupRef.current = clusterGroup
+
       // Render all properties with coordinates
       const bounds: L.LatLngExpression[] = []
+      const zipGroups: Record<string, { coords: { lat: number; lng: number }[]; scores: number[] }> = {}
+
       properties.forEach((p) => {
         const coords =
           p.lat && p.lng
@@ -441,7 +463,8 @@ export default function MapViewPage() {
         if (!coords) return
         const score = p.raw_data?.score || 50
         bounds.push([coords.lat, coords.lng])
-        L.circleMarker([coords.lat, coords.lng], {
+
+        const marker = L.circleMarker([coords.lat, coords.lng], {
           radius: 8,
           fillColor: scoreColor(score),
           color: '#fff',
@@ -449,12 +472,45 @@ export default function MapViewPage() {
           opacity: 1,
           fillOpacity: 0.8,
         })
-          .addTo(map)
           .on('click', () => handleMarkerClick(p))
           .bindTooltip(
             `<strong>${p.address}</strong><br/>${formatCurrency(p.list_price || 0)}`,
             { direction: 'top', offset: [0, -8] },
           )
+
+        clusterGroup.addLayer(marker)
+
+        // Group by ZIP for boundaries
+        if (p.zip) {
+          if (!zipGroups[p.zip]) zipGroups[p.zip] = { coords: [], scores: [] }
+          zipGroups[p.zip].coords.push(coords)
+          zipGroups[p.zip].scores.push(score)
+        }
+      })
+
+      map.addLayer(clusterGroup)
+
+      // ZIP boundaries for ZIPs with 3+ properties
+      const PAD = 0.005
+      Object.entries(zipGroups).forEach(([, group]) => {
+        if (group.coords.length < 3) return
+        const lats = group.coords.map((c) => c.lat)
+        const lngs = group.coords.map((c) => c.lng)
+        const avgScore = group.scores.reduce((a, b) => a + b, 0) / group.scores.length
+        const rect = L.rectangle(
+          [
+            [Math.min(...lats) - PAD, Math.min(...lngs) - PAD],
+            [Math.max(...lats) + PAD, Math.max(...lngs) + PAD],
+          ],
+          {
+            color: scoreColor(avgScore),
+            weight: 1,
+            fillColor: scoreColor(avgScore),
+            fillOpacity: 0.1,
+            dashArray: '4 4',
+          },
+        ).addTo(map)
+        zipRectanglesRef.current.push(rect)
       })
 
       if (bounds.length > 0) {

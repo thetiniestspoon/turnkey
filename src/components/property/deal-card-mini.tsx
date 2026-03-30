@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -7,6 +8,13 @@ import { formatCurrency, formatPercent } from '@/lib/utils'
 import { useToast } from '@/components/ui/toast'
 import type { Property } from '@/hooks/use-properties'
 import type { PipelineEntry } from '@/hooks/use-pipeline'
+
+function scoreGradient(score: number | undefined): string {
+  const s = score ?? 0
+  if (s >= 70) return 'linear-gradient(135deg, #059669, #10b981)'
+  if (s >= 50) return 'linear-gradient(135deg, #d97706, #fbbf24)'
+  return 'linear-gradient(135deg, #dc2626, #f87171)'
+}
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
 
@@ -45,7 +53,15 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
       <CardContent className="pt-4 space-y-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-1.5">
-            {score && <Badge variant="default" className="bg-green-600">★ {score}</Badge>}
+            {score && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+              >
+                <Badge variant="default" className="bg-green-600">★ {score}</Badge>
+              </motion.div>
+            )}
             {isNew && <Badge variant="default" className="bg-emerald-500">New</Badge>}
             {p.market_status && p.market_status !== 'active' && (
               <>
@@ -74,8 +90,11 @@ export function DealCardMini({ property: p, pipelineEntry, onAddToPipeline, onDe
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
         ) : (
-          <div className="bg-muted rounded h-24 flex items-center justify-center text-xs text-muted-foreground">
-            No photo available
+          <div
+            className="rounded h-24 flex items-center justify-center text-xs font-medium text-white px-2 text-center"
+            style={{ background: scoreGradient(score) }}
+          >
+            {p.address}
           </div>
         )}
         <div className="flex items-center gap-2">

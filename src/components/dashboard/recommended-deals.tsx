@@ -1,3 +1,4 @@
+import { useRef, type MouseEvent } from 'react'
 import { X, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -5,6 +6,36 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatCurrency } from '@/lib/utils'
 import type { Property } from '@/hooks/use-properties'
+
+function TiltCard({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  function handleMove(e: MouseEvent<HTMLDivElement>) {
+    const el = ref.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    el.style.transform = `perspective(600px) rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.02)`
+  }
+
+  function handleLeave() {
+    const el = ref.current
+    if (!el) return
+    el.style.transform = 'perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)'
+  }
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      style={{ transition: 'transform 0.2s ease-out', willChange: 'transform' }}
+    >
+      {children}
+    </div>
+  )
+}
 
 interface Props {
   recommended: Property[]
@@ -55,8 +86,8 @@ export function RecommendedDeals({ recommended, onWatch, onDismiss, loading }: P
               const imageUrl = p.raw_data?.image_url
 
               return (
+                <TiltCard key={p.id}>
                 <div
-                  key={p.id}
                   className="shrink-0 w-52 border rounded-lg p-3 space-y-2 bg-card"
                 >
                   {/* Image */}
@@ -125,6 +156,7 @@ export function RecommendedDeals({ recommended, onWatch, onDismiss, loading }: P
                     </Button>
                   </div>
                 </div>
+                </TiltCard>
               )
             })}
           </div>
