@@ -203,7 +203,7 @@ After searching, return your analysis as JSON (no markdown fences) matching this
     }).eq('id', run?.id)
 
     return new Response(JSON.stringify({ error: error.message }), {
-      status: 500, headers: { 'Content-Type': 'application/json' },
+      status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
 })

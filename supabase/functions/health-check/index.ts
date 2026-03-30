@@ -9,7 +9,7 @@ serve(async (req) => {
   const results: Record<string, unknown> = {}
 
   // 1. Check env vars
-  const gatewayUrl = Deno.env.get('LLM_GATEWAY_URL') || '(not set)'
+  const gatewayUrl = Deno.env.get('LLM_GATEWAY_URL') || 'https://ai-gateway.vercel.sh/v1/chat/completions'
   const gatewayKey = Deno.env.get('LLM_GATEWAY_API_KEY') || '(not set)'
   results.gateway_url = gatewayUrl
   results.gateway_key_set = gatewayKey !== '(not set)'
