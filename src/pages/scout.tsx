@@ -32,6 +32,27 @@ interface ScoutResult {
   }>
 }
 
+function ScoutedTerritories() {
+  // Hardcoded for now — would query watchlists
+  const territories = [
+    { zip: '07040', name: 'Maplewood', deals: 12 },
+    { zip: '07079', name: 'S. Orange', deals: 0 },
+    { zip: '07042', name: 'Montclair', deals: 4 },
+    { zip: '12508', name: 'Beacon', deals: 6 },
+    { zip: '28712', name: 'Brevard', deals: 7 },
+  ]
+  return (
+    <div className="flex gap-2 overflow-x-auto pb-2">
+      {territories.map(t => (
+        <button key={t.zip} onClick={() => {/* could set market */}}
+          className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium border bg-card hover:bg-accent transition-colors">
+          {t.name} <span className="text-muted-foreground ml-1">{t.deals > 0 ? `${t.deals} deals` : 'new'}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
 export default function ScoutPage() {
   const [market, setMarket] = useState('')
   const [scoutResults, setScoutResults] = useState<Property[]>([])
@@ -113,6 +134,8 @@ export default function ScoutPage() {
             {loading ? 'Scouting...' : 'Scout Now'}
           </Button>
         </div>
+
+        <ScoutedTerritories />
 
         {error && <p className="text-destructive text-sm">{error}</p>}
 

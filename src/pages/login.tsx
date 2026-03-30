@@ -13,6 +13,16 @@ const ALLOWED_EMAILS = [
   'theodorelawson@gmail.com',
 ]
 
+function CelestialBackground() {
+  return (
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-gray-950">
+      <div className="celestial-blob celestial-blob-1" />
+      <div className="celestial-blob celestial-blob-2" />
+      <div className="celestial-blob celestial-blob-3" />
+    </div>
+  )
+}
+
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
@@ -85,73 +95,76 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="text-5xl mb-2">🦝</div>
-          <CardTitle className="text-2xl">Turnkey</CardTitle>
-          <p className="text-muted-foreground text-sm">
-            Your raccoon-powered deal scout
-          </p>
-        </CardHeader>
-        <CardContent>
-          {sent ? (
-            <div className="text-center space-y-3">
-              <div className="text-3xl">📬🦝</div>
-              <p className="text-muted-foreground">
-                Magic link sent! Check your inbox.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Our raccoon hand-delivered it. Should arrive momentarily.
-              </p>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setSent(false)}
-                className="text-xs"
-              >
-                Back to login
-              </Button>
-            </div>
-          ) : (
-            <Tabs defaultValue="pin">
-              <TabsList className="w-full">
-                <TabsTrigger value="pin" className="flex-1">Emoji PIN</TabsTrigger>
-                <TabsTrigger value="email" className="flex-1">Email</TabsTrigger>
-              </TabsList>
+    <>
+      <CelestialBackground />
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <Card className="w-full max-w-md bg-card/80 backdrop-blur-xl">
+          <CardHeader className="text-center">
+            <div className="text-5xl mb-2">🦝</div>
+            <CardTitle className="text-2xl">Turnkey</CardTitle>
+            <p className="text-muted-foreground text-sm">
+              Your raccoon-powered deal scout
+            </p>
+          </CardHeader>
+          <CardContent>
+            {sent ? (
+              <div className="text-center space-y-3">
+                <div className="text-3xl">📬🦝</div>
+                <p className="text-muted-foreground">
+                  Magic link sent! Check your inbox.
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Our raccoon hand-delivered it. Should arrive momentarily.
+                </p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSent(false)}
+                  className="text-xs"
+                >
+                  Back to login
+                </Button>
+              </div>
+            ) : (
+              <Tabs defaultValue="pin">
+                <TabsList className="w-full">
+                  <TabsTrigger value="pin" className="flex-1">Emoji PIN</TabsTrigger>
+                  <TabsTrigger value="email" className="flex-1">Email</TabsTrigger>
+                </TabsList>
 
-              <TabsContent value="pin" className="pt-4">
-                <div className="space-y-3">
-                  <p className="text-xs text-muted-foreground text-center">
-                    Tap your secret emoji sequence to sign in
-                  </p>
-                  <EmojiPinPad
-                    onSubmit={handlePinSubmit}
-                    loading={pinLoading}
-                    error={pinError}
-                  />
-                </div>
-              </TabsContent>
+                <TabsContent value="pin" className="pt-4">
+                  <div className="space-y-3">
+                    <p className="text-xs text-muted-foreground text-center">
+                      Tap your secret emoji sequence to sign in
+                    </p>
+                    <EmojiPinPad
+                      onSubmit={handlePinSubmit}
+                      loading={pinLoading}
+                      error={pinError}
+                    />
+                  </div>
+                </TabsContent>
 
-              <TabsContent value="email" className="pt-4">
-                <form onSubmit={handleEmailSubmit} className="space-y-4">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  {error && <p className="text-destructive text-sm">{error}</p>}
-                  <Button type="submit" className="w-full">
-                    Let Me In 🦝
-                  </Button>
-                </form>
-              </TabsContent>
-            </Tabs>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+                <TabsContent value="email" className="pt-4">
+                  <form onSubmit={handleEmailSubmit} className="space-y-4">
+                    <Input
+                      type="email"
+                      placeholder="your@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                    {error && <p className="text-destructive text-sm">{error}</p>}
+                    <Button type="submit" className="w-full">
+                      Let Me In 🦝
+                    </Button>
+                  </form>
+                </TabsContent>
+              </Tabs>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </>
   )
 }

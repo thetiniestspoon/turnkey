@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/auth-context'
+import { useTheme } from '@/contexts/theme-context'
 import { EmojiPinSettings } from '@/components/auth/emoji-pin-settings'
 
 const NAV_ITEMS = [
@@ -17,13 +19,17 @@ const NAV_ITEMS = [
 export function NavBar({ onToggleAdvisor }: { onToggleAdvisor: () => void }) {
   const location = useLocation()
   const { user, signOut } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <header className="border-b bg-card">
       <div className="flex items-center justify-between px-4 md:px-6 h-14">
         <div className="flex items-center gap-4 md:gap-6">
-          <Link to="/" className="text-lg font-bold text-primary whitespace-nowrap">🦝 Turnkey</Link>
+          <Link to="/" className="flex items-center gap-2 whitespace-nowrap">
+            <div className="logo-gem" />
+            <span className="text-lg font-bold text-primary">Turnkey</span>
+          </Link>
           {/* Mobile hamburger */}
           <button
             className="md:hidden p-1 text-muted-foreground"
@@ -54,6 +60,13 @@ export function NavBar({ onToggleAdvisor }: { onToggleAdvisor: () => void }) {
               </Link>
             ))}
           </nav>
+          <button
+            onClick={toggleTheme}
+            className="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
         </div>
         <div className="flex items-center gap-2 md:gap-3">
           <Button variant="outline" size="sm" onClick={onToggleAdvisor} className="hidden sm:inline-flex">
