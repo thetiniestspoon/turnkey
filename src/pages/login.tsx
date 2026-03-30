@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -18,7 +19,9 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const [pinError, setPinError] = useState<string | null>(null)
   const [pinLoading, setPinLoading] = useState(false)
-  const { signInWithMagicLink } = useAuth()
+  const { user, signInWithMagicLink } = useAuth()
+
+  if (user) return <Navigate to="/" replace />
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
