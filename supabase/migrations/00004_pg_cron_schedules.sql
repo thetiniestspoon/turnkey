@@ -1,3 +1,12 @@
+-- ⚠️  IMPORTANT: This migration contains placeholder values.
+-- Before applying, replace SERVICE_ROLE_KEY_HERE with your actual
+-- Supabase service role key. Find it at:
+--   Supabase Dashboard → Settings → API → service_role key
+--
+-- In production (xebulbfhwyezjrqobzow), the cron jobs were configured
+-- manually via SQL Editor with the real key. This migration file is
+-- kept as documentation of the schedule configuration.
+
 -- Enable required extensions (must be enabled in Supabase Dashboard first)
 -- Dashboard → Database → Extensions → enable pg_cron and pg_net
 
