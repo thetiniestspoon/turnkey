@@ -27,3 +27,4 @@ dist-ssr
 
 .vercel
 API-KEY-SETUP.md
+.worktrees/
