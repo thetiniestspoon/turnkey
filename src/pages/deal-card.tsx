@@ -95,7 +95,6 @@ export default function DealCardPage() {
     transit_score: property.raw_data?.transit_score,
     bike_score: property.raw_data?.bike_score,
   }
-  const hasWalkData = walkData.walk_score != null
 
   async function handlePipeline() {
     if (pipelineEntry) {
@@ -198,12 +197,10 @@ export default function DealCardPage() {
 
             {/* Walkability + Neighborhood side by side */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {hasWalkData && (
-                <div className="md:col-span-1 flex justify-center">
-                  <WalkabilityGauge data={walkData} />
-                </div>
-              )}
-              <div className={hasWalkData ? 'md:col-span-2' : 'md:col-span-3'}>
+              <div className="md:col-span-1 flex justify-center">
+                <WalkabilityGauge data={walkData} />
+              </div>
+              <div className="md:col-span-2">
                 <NeighborhoodPanel data={analysis.neighborhood_data || {}} zip={property.zip} />
               </div>
             </div>

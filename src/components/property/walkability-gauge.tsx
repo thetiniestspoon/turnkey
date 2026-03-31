@@ -18,8 +18,18 @@ function scoreLabel(score: number): string {
   return 'Almost All Driving'
 }
 
-export function WalkabilityGauge({ data }: { data: WalkabilityData }) {
-  const score = data.walk_score ?? 0
+export function WalkabilityGauge({ data }: { data?: WalkabilityData | null }) {
+  // Graceful fallback when Walk Score data is unavailable
+  if (!data?.walk_score) {
+    return (
+      <div className="flex flex-col items-center gap-3 p-4 rounded-lg border border-border bg-muted/30 w-full max-w-[200px]">
+        <p className="text-sm font-medium text-muted-foreground">Walk Score unavailable</p>
+        <p className="text-xs text-muted-foreground text-center">Run analysis to fetch walkability data</p>
+      </div>
+    )
+  }
+
+  const score = data.walk_score
   const color = scoreColor(score)
   const radius = 40
   const stroke = 6
