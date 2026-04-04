@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turnkey — Site Tour & Setup Guide</title>
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --bg2: #111827;
+      --bg3: #1a2234;
+      --border: #1f2d45;
+      --gold: #d4a853;
+      --gold2: #f0c87a;
+      --blue: #3b82f6;
+      --blue2: #60a5fa;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #eab308;
+      --purple: #a855f7;
+      --cyan: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --faint: #4b5c73;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    .hero {
+      background: linear-gradient(135deg, #0a0f1a 0%, #0d1b2e 40%, #0f1e35 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 40px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(212,168,83,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-key { font-size: 3rem; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold2);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 24px;
+    }
+    .hero-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .pill:hover { border-color: var(--gold); color: var(--gold2); }
+    .pill.active { border-color: var(--gold); color: var(--gold2); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 56px 0 0; }
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0 0;
+    }
+
+    /* ── NAV STRIP ── */
+    .nav-strip {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,15,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+    }
+    .nav-strip-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-strip-inner::-webkit-scrollbar { display: none; }
+    .nav-link {
+      white-space: nowrap;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-link:hover { background: var(--bg3); color: var(--text); }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card p { color: var(--muted); font-size: 0.875rem; }
+    .card .icon { font-size: 1.5rem; margin-bottom: 10px; }
+
+    /* ── FLOW STEPS ── */
+    .flow { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 38px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .flow-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 12px;
+    }
+    .flow-body { padding: 12px 0 24px; flex: 1; }
+    .flow-body h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .flow-body p { font-size: 0.875rem; color: var(--muted); }
+    .flow-body code {
+      font-size: 0.8rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--cyan);
+      font-family: 'Consolas', 'Fira Code', monospace;
+    }
+
+    /* ── BADGES ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-gold { background: rgba(212,168,83,0.15); color: var(--gold2); border: 1px solid rgba(212,168,83,0.3); }
+    .badge-blue { background: rgba(59,130,246,0.15); color: var(--blue2); border: 1px solid rgba(59,130,246,0.3); }
+    .badge-green { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .badge-purple { background: rgba(168,85,247,0.15); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+    .badge-red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+    .badge-yellow { background: rgba(234,179,8,0.15); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
+
+    /* ── STAGE PIPELINE ── */
+    .pipeline-stages {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .stage {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+    }
+    .stage .stage-name { font-weight: 600; color: var(--text); }
+    .stage .stage-desc { color: var(--muted); font-size: 0.75rem; margin-top: 2px; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th { text-align: left; padding: 8px 12px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--faint); background: var(--bg3); }
+    td { padding: 10px 12px; border-top: 1px solid var(--border); font-size: 0.875rem; color: var(--text); }
+    td.muted { color: var(--muted); }
+    td code {
+      font-size: 0.8rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--cyan);
+      font-family: 'Consolas', 'Fira Code', monospace;
+    }
+    tr:hover td { background: rgba(255,255,255,0.015); }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--cyan);
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    .code-block .comment { color: var(--faint); }
+    .code-block .key { color: var(--gold2); }
+    .code-block .val { color: var(--green); }
+
+    /* ── UX WISHLIST ── */
+    .wishlist { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .wish {
+      display: flex;
+      gap: 14px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      align-items: flex-start;
+    }
+    .wish-num {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--faint);
+      padding-top: 2px;
+      width: 20px;
+      text-align: right;
+    }
+    .wish-body h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .wish-body p { font-size: 0.85rem; color: var(--muted); }
+    .wish-priority { margin-left: auto; flex-shrink: 0; }
+
+    /* ── EMOJI PIN VIZ ── */
+    .emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      max-width: 240px;
+    }
+    .emoji-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .pin-display {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .pin-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--bg3);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .pin-dot.filled { border-color: var(--gold); background: rgba(212,168,83,0.1); }
+
+    /* ── AGENT PILLS ── */
+    .agent-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .agent-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+    .agent-pill .name { font-weight: 600; color: var(--text); }
+    .agent-pill .trigger { color: var(--muted); font-size: 0.75rem; }
+
+    /* ── SETUP STEPS ── */
+    .setup-step {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .setup-step h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .setup-num {
+      background: var(--gold);
+      color: #0a0f1a;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .setup-step p { font-size: 0.875rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--faint);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 40px 20px 36px; }
+      .hero h1 { font-size: 1.8rem; }
+      .container { padding: 0 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV STRIP -->
+<nav class="nav-strip">
+  <div class="nav-strip-inner">
+    <a href="#auth" class="nav-link">Auth</a>
+    <a href="#dashboard" class="nav-link">Dashboard</a>
+    <a href="#scout" class="nav-link">Scout</a>
+    <a href="#property" class="nav-link">Property</a>
+    <a href="#pipeline" class="nav-link">Pipeline</a>
+    <a href="#map" class="nav-link">Map</a>
+    <a href="#contacts" class="nav-link">Contacts</a>
+    <a href="#predictions" class="nav-link">Predictions</a>
+    <a href="#watchlists" class="nav-link">Watchlists</a>
+    <a href="#agents" class="nav-link">AI Agents</a>
+    <a href="#setup" class="nav-link">Setup</a>
+    <a href="#wishlist" class="nav-link">UX Wishlist</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-key">🔑</div>
+  <h1>Turnkey</h1>
+  <p>AI-powered real estate investment scout and pipeline manager. This is the end-to-end tour — what it does, how it works, how to run it, and what to build next.</p>
+  <div class="hero-links">
+    <a href="https://turnkey-rosy.vercel.app" class="pill active" target="_blank">Live Site</a>
+    <a href="https://github.com/thetiniestspoon/turnkey" class="pill" target="_blank">GitHub</a>
+    <a class="pill">React + Supabase + Claude</a>
+    <a class="pill">Shawn + Ted</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- ── AUTH ── -->
+  <div class="section" id="auth">
+    <div class="section-label">01 · Authentication</div>
+    <div class="section-title">Two ways to get in</div>
+    <p class="section-desc">Turnkey has a private allowlist — only Shawn and Ted can log in. Two auth methods are available, and both establish a real Supabase session.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">✉️</div>
+        <h3>Magic Email Link</h3>
+        <p>Enter your email, receive a one-click link, land on the dashboard. Standard Supabase OTP flow. Best for first login or session recovery.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Emoji PIN</h3>
+        <p>Tap 4 emojis from a 25-emoji grid. Your unique sequence unlocks your account instantly — no email, no wait. Best for repeat use.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;">
+      <h3 style="font-size:0.9rem;font-weight:600;color:var(--muted);margin-bottom:12px;">HOW EMOJI PIN WORKS</h3>
+      <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+        <div>
+          <div class="pin-display">
+            <div class="pin-dot filled">🦝</div>
+            <div class="pin-dot filled">🔑</div>
+            <div class="pin-dot filled">🏠</div>
+            <div class="pin-dot filled">💎</div>
+          </div>
+          <div class="emoji-grid">
+            <div class="emoji-cell">🦝</div><div class="emoji-cell">🦊</div><div class="emoji-cell">🐨</div><div class="emoji-cell">🦉</div><div class="emoji-cell">🐙</div>
+            <div class="emoji-cell">🦛</div><div class="emoji-cell">🐋</div><div class="emoji-cell">🦩</div><div class="emoji-cell">🦚</div><div class="emoji-cell">🦫</div>
+            <div class="emoji-cell">🌵</div><div class="emoji-cell">🌻</div><div class="emoji-cell">🍄</div><div class="emoji-cell">🌊</div><div class="emoji-cell">🔥</div>
+            <div class="emoji-cell">⭐</div><div class="emoji-cell">🌙</div><div class="emoji-cell">🎸</div><div class="emoji-cell">🎲</div><div class="emoji-cell">🔮</div>
+            <div class="emoji-cell">🏠</div><div class="emoji-cell">🔑</div><div class="emoji-cell">💎</div><div class="emoji-cell">🚀</div><div class="emoji-cell">🎯</div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">1</div>
+              <div class="flow-body">
+                <h4>Tap 4 emojis</h4>
+                <p>Frontend collects the sequence. 390,625 possible combinations.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">2</div>
+              <div class="flow-body">
+                <h4>SHA-256 hash sent to Edge Function</h4>
+                <p>PIN is hashed client-side before leaving the browser. <code>emoji-pin-auth</code> function receives the hash.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">3</div>
+              <div class="flow-body">
+                <h4>Rate limit checked</h4>
+                <p>3 failed attempts per IP = 5-min lockout. Prevents brute force.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">4</div>
+              <div class="flow-body">
+                <h4>User resolved, magic token generated</h4>
+                <p>Hash matched against <code>user_profiles.emoji_pin_hash</code>. OTP token minted internally.</p>
+              </div>
+            </div>
+            <div class="flow-step" style="--is-last:1;">
+              <div class="flow-num">5</div>
+              <div class="flow-body">
+                <h4>Session established</h4>
+                <p>Client calls <code>verifyOtp()</code> — full Supabase session. Redirect to dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:14px 18px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.2);border-radius:10px;font-size:0.85rem;color:var(--muted);">
+      <strong style="color:var(--gold2);">Default PINs</strong> — Shawn: 🦝🔑🏠💎 &nbsp;|&nbsp; Ted: 🦊🎯🚀⭐ &nbsp;&nbsp;
+      Both should change their PIN via Settings (gear icon) after first login.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── DASHBOARD ── -->
+  <div class="section" id="dashboard">
+    <div class="section-label">02 · Dashboard</div>
+    <div class="section-title">Command center for your portfolio</div>
+    <p class="section-desc">The landing page after login. Surfaces the most important numbers and recent activity at a glance.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>KPI Cards</h3>
+        <p>Four live metrics: <strong>New Deals Today</strong>, <strong>Active Pipeline</strong> (with stage breakdown), <strong>Prediction Accuracy</strong> (%), and <strong>AI Spend</strong> (MTD + agent run count).</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎠</div>
+        <h3>Recommended Deals</h3>
+        <p>Carousel of properties the autoscout surfaced that match your investment criteria. Each card is watchable or dismissible.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>Top Deals List</h3>
+        <p>Table of the 5 most recent scouted properties — address, price, score, strategy tag. Click to open the full deal card.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📡</div>
+        <h3>Pipeline Feed</h3>
+        <p>Recent stage changes across your deals — who moved what and when. Live activity stream.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Activity Marquee</h3>
+        <p>Scrolling ticker of recent events — agents completing runs, properties found, status changes. Always-on ambient awareness.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Agent Pulse</h3>
+        <p>Visual indicator of AI agent activity — shows which agents are running, recently completed, or errored.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── SCOUT ── -->
+  <div class="section" id="scout">
+    <div class="section-label">03 · Scout</div>
+    <div class="section-title">AI searches real listings for you</div>
+    <p class="section-desc">Enter a ZIP code, trigger the scout agent, and Claude searches Zillow, Redfin, and Realtor.com to find real properties that match your investment criteria.</p>
+
+    <div class="flow" style="margin-top:16px;">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-body">
+          <h4>Enter a ZIP code (or pick a saved territory)</h4>
+          <p>Quick-select buttons show your watched markets. Type any ZIP to explore a new one.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-body">
+          <h4>agent-scout runs</h4>
+          <p>Claude Sonnet 4.6 via LLM Gateway performs a web search against allowed real estate domains. Returns 3–8 real properties.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-body">
+          <h4>Results displayed as deal cards</h4>
+          <p>Each card shows: address, price, beds/baths, score (0–100), recommended strategy (flip/rental), estimated ROI or cap rate, and listing URL.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-body">
+          <h4>Take action on a property</h4>
+          <p>"Analyze with AI" → runs full financial analysis. "Add to Pipeline" → moves to Watching stage. "Watch" → saves to watchlist.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── PROPERTY ── -->
+  <div class="section" id="property">
+    <div class="section-label">04 · Property Detail</div>
+    <div class="section-title">The full deal — analysis, data, history</div>
+    <p class="section-desc">Every property has a deep-dive view showing financial projections, neighborhood context, market data, and the AI analysis history.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">💰</div>
+        <h3>Financial Analysis</h3>
+        <p><strong>Flip scenario:</strong> ARV, reno cost, carrying costs, profit, ROI, timeline.<br><strong>Rental scenario:</strong> monthly cash flow, annual NOI, cap rate, cash-on-cash return. Both with confidence scores.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚠️</div>
+        <h3>Risk Badges</h3>
+        <p>Visual flags for: flood zone status, market status (active/pending/sold), walk score tier. Know the risks before you analyze.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏘️</div>
+        <h3>Neighborhood Panel</h3>
+        <p>Census demographics, median household income, unemployment rate (BLS), fair market rent (HUD), and comparable market context.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚶</div>
+        <h3>Walkability Gauge</h3>
+        <p>Visual score from Walk Score API. High walkability = lower tenant vacancy for rentals.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🕐</div>
+        <h3>Agent Timeline</h3>
+        <p>Full history of every AI analysis run on this property — model used, tokens, cost, status, and output summary.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Strategy Recommendation</h3>
+        <p>AI recommends: flip, rental, or either. Color-coded badge. Recommendation stored with the analysis for future accuracy tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── PIPELINE ── -->
+  <div class="section" id="pipeline">
+    <div class="section-label">05 · Pipeline</div>
+    <div class="section-title">Your deals as a kanban board</div>
+    <p class="section-desc">Drag-and-drop kanban with 7 stages. Every deal in your pipeline lives here — move it forward as the deal progresses.</p>
+
+    <div class="pipeline-stages">
+      <div class="stage">
+        <div class="stage-name">👀 Watching</div>
+        <div class="stage-desc">On radar. Not yet acting.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">🔬 Analyzing</div>
+        <div class="stage-desc">AI analysis in progress.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">📨 Offer</div>
+        <div class="stage-desc">Offer submitted.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">🤝 Negotiating</div>
+        <div class="stage-desc">Under negotiation.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">🏠 Acquired</div>
+        <div class="stage-desc">You own it.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">📡 Tracking</div>
+        <div class="stage-desc">Monitoring returns.</div>
+      </div>
+      <div class="stage">
+        <div class="stage-name">✅ Closed</div>
+        <div class="stage-desc">Deal complete.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;font-size:0.875rem;color:var(--muted);">
+      Moving a deal to <strong style="color:var(--text);">Tracking</strong> or <strong style="color:var(--text);">Closed</strong> optionally triggers <code style="font-size:0.8rem;background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--cyan);font-family:monospace;">agent-tracker</code> to log actual purchase price, renovation cost, and sale outcome against earlier predictions.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── MAP ── -->
+  <div class="section" id="map">
+    <div class="section-label">06 · Map</div>
+    <div class="section-title">See your deals geographically</div>
+    <p class="section-desc">Leaflet-powered map with marker clustering. Visualize where all your scouted and pipeline properties sit. Three tile layers: street, satellite, dark.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📍</div>
+        <h3>Marker Clustering</h3>
+        <p>Nearby properties group together at lower zoom levels. Click a cluster to expand it. Prevents visual noise in dense markets.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🪟</div>
+        <h3>Sidebar on Click</h3>
+        <p>Click any marker → sidebar slides in with the property's mini deal card, key metrics, and a link to the full detail view.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌍</div>
+        <h3>Layer Toggle</h3>
+        <p>Switch between street, satellite, and dark basemaps. Satellite useful for assessing lot size and neighboring properties.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── CONTACTS ── -->
+  <div class="section" id="contacts">
+    <div class="section-label">07 · Contacts</div>
+    <div class="section-title">Your real estate network</div>
+    <p class="section-desc">Store and search the people you work with on deals — agents, contractors, lenders, attorneys, and partners.</p>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+      <span class="badge badge-blue">🏠 Agent</span>
+      <span class="badge badge-yellow">🔨 Contractor</span>
+      <span class="badge badge-green">💵 Lender</span>
+      <span class="badge badge-purple">⚖️ Attorney</span>
+      <span class="badge badge-gold">🤝 Partner</span>
+    </div>
+    <p style="margin-top:14px;font-size:0.875rem;color:var(--muted);">Search by name, company, or role. Each contact stores: name, role, email, phone, company, and notes. Per-user — your contacts aren't shared with Ted.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── PREDICTIONS ── -->
+  <div class="section" id="predictions">
+    <div class="section-label">08 · Predictions</div>
+    <div class="section-title">Does the AI actually get it right?</div>
+    <p class="section-desc">Every AI analysis generates predictions (projected ARV, cap rate, ROI). This page tracks them against what actually happened — and shows the system's running accuracy.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Accuracy Score</h3>
+        <p>Per-metric accuracy as a %. Color-coded: green (&gt;80%), yellow (60–80%), red (&lt;60%). The system gets smarter as you log actuals.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✏️</div>
+        <h3>Inline Editing</h3>
+        <p>Click any "actual" cell to enter the real outcome. Saving triggers <code>agent-tracker</code> to recalculate accuracy and update the pipeline record.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── WATCHLISTS ── -->
+  <div class="section" id="watchlists">
+    <div class="section-label">09 · Watchlists</div>
+    <div class="section-title">Set it and let it scout for you</div>
+    <p class="section-desc">Create watched markets with investment criteria. Every night at 5 AM ET, agent-autoscout runs for each active watchlist and surfaces matching deals in your dashboard.</p>
+
+    <div class="flow" style="margin-top:16px;">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-body">
+          <h4>Create a watchlist</h4>
+          <p>Pick a ZIP code, give it a name. Optionally override global criteria for this specific market.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-body">
+          <h4>Set global investment criteria</h4>
+          <p>Max price, min cap rate (rental), min flip ROI, property types (SFR, MFR, condo, townhouse), minimum score (0–100), and strategies (flip / rental / either).</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-body">
+          <h4>pg_cron runs at 5 AM ET nightly</h4>
+          <p>Each watchlist's criteria merges global defaults + per-watchlist overrides. Staggered by day of week to avoid thundering herd on the API.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-body">
+          <h4>Matching deals land on your dashboard</h4>
+          <p>New properties appear in "Recommended Deals" with a "New" badge (scouted within 24h). You watch, dismiss, or analyze.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── AGENTS ── -->
+  <div class="section" id="agents">
+    <div class="section-label">10 · AI Agents</div>
+    <div class="section-title">The engine under the hood</div>
+    <p class="section-desc">Nine Supabase Edge Functions run Claude via LLM Gateway. Each agent has one job. The orchestrator chains them. All runs are logged with model, cost, tokens, and status.</p>
+
+    <div class="agent-list">
+      <div class="agent-pill">
+        <div class="name">🔍 agent-scout</div>
+        <div class="trigger">manual / cron — finds real listings by ZIP</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">📊 agent-analyst</div>
+        <div class="trigger">manual — flip + rental financial projections</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">📡 agent-tracker</div>
+        <div class="trigger">on actuals update — logs outcome vs prediction</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">🌎 agent-enricher</div>
+        <div class="trigger">before analysis — Census, FRED, HUD, BLS, Walk Score</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">💬 agent-advisor</div>
+        <div class="trigger">on demand — chat Q&A about deals and pipeline</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">🌙 agent-autoscout</div>
+        <div class="trigger">5 AM ET nightly — proactive watchlist scouting</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">🔄 agent-orchestrator</div>
+        <div class="trigger">coordinates agent dependency chains</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">📰 agent-market-check</div>
+        <div class="trigger">periodic — flags stale listings (pending/sold)</div>
+      </div>
+      <div class="agent-pill">
+        <div class="name">📬 agent-digest</div>
+        <div class="trigger">nightly — daily summary of new deals + changes</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:14px 18px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;font-size:0.85rem;color:var(--muted);">
+      <strong style="color:var(--blue2);">Model used throughout:</strong> Claude Sonnet 4.6 via <code style="font-size:0.8rem;background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--cyan);font-family:monospace;">ai-gateway.vercel.sh</code> — confirmed live via health-check.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── SETUP ── -->
+  <div class="section" id="setup">
+    <div class="section-label">11 · Setup Guide</div>
+    <div class="section-title">Getting Turnkey running from scratch</div>
+    <p class="section-desc">Everything you need to go from a fresh clone to a running system.</p>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">1</span> Clone and install</h4>
+      <div class="code-block">
+        <span class="comment"># Clone and install frontend deps</span><br>
+        git clone https://github.com/thetiniestspoon/turnkey<br>
+        cd turnkey<br>
+        npm install
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">2</span> Create .env file</h4>
+      <div class="code-block">
+        <span class="key">VITE_SUPABASE_URL</span>=<span class="val">https://xebulbfhwyezjrqobzow.supabase.co</span><br>
+        <span class="key">VITE_SUPABASE_ANON_KEY</span>=<span class="val">[get from Supabase dashboard → Project Settings → API]</span>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">3</span> Set Supabase secrets (for Edge Functions)</h4>
+      <p>Via Supabase Dashboard → Project → Edge Functions → Secrets, or via CLI:</p>
+      <div class="code-block">
+        supabase secrets set BLS_API_KEY=...<br>
+        supabase secrets set CENSUS_API_KEY=...<br>
+        supabase secrets set FRED_API_KEY=...<br>
+        supabase secrets set HUD_API_TOKEN=...<br>
+        supabase secrets set WALKSCORE_API_KEY=... <span class="comment"># optional</span><br>
+        supabase secrets set LLM_GATEWAY_URL=https://ai-gateway.vercel.sh/v1/chat/completions<br>
+        supabase secrets set LLM_GATEWAY_API_KEY=...
+      </div>
+      <p style="margin-top:8px;">See <code>API-KEY-SETUP.md</code> in the repo for where to get each key (most are free tier).</p>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">4</span> Run database migrations</h4>
+      <div class="code-block">
+        supabase db push <span class="comment"># runs all migrations in /supabase/migrations/</span>
+      </div>
+      <p style="margin-top:8px;">Five migrations: initial schema, watchlists/criteria, autonomous pipeline, pg_cron schedules, emoji PIN.</p>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">5</span> Deploy Edge Functions</h4>
+      <div class="code-block">
+        supabase functions deploy <span class="comment"># deploys all functions</span>
+      </div>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">6</span> Seed user profiles (emoji PINs)</h4>
+      <p>After Shawn and Ted each complete their first magic link login, seed their emoji PIN hashes into <code>user_profiles</code>. Or let them set their own PIN via Settings immediately after first login.</p>
+    </div>
+
+    <div class="setup-step">
+      <h4><span class="setup-num">7</span> Run locally or deploy</h4>
+      <div class="code-block">
+        npm run dev &nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"># local dev at localhost:5173</span><br>
+        npm run build &nbsp;&nbsp; <span class="comment"># production build to /dist</span><br>
+        <span class="comment"># Vercel deployment is already wired — push to main to deploy</span>
+      </div>
+    </div>
+
+    <h3 style="font-size:0.85rem;font-weight:600;color:var(--muted);margin:28px 0 12px;text-transform:uppercase;letter-spacing:1px;">API Key Sources</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Where to get it</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>CENSUS_API_KEY</code></td><td class="muted">api.census.gov/data/key_signup.html</td><td class="muted">Free</td></tr>
+        <tr><td><code>FRED_API_KEY</code></td><td class="muted">fred.stlouisfed.org/docs/api/api_key.html</td><td class="muted">Free</td></tr>
+        <tr><td><code>HUD_API_TOKEN</code></td><td class="muted">huduser.gov/portal/dataset/api-registration.html</td><td class="muted">Free</td></tr>
+        <tr><td><code>BLS_API_KEY</code></td><td class="muted">data.bls.gov/registrationEngine/</td><td class="muted">Free</td></tr>
+        <tr><td><code>WALKSCORE_API_KEY</code></td><td class="muted">walkscore.com/professional/api.php</td><td class="muted">Freemium</td></tr>
+        <tr><td><code>LLM_GATEWAY_API_KEY</code></td><td class="muted">Vercel AI Gateway dashboard</td><td class="muted">Usage-based</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── UX WISHLIST ── -->
+  <div class="section" id="wishlist">
+    <div class="section-label">12 · UX Wishlist</div>
+    <div class="section-title">What would make this noticeably better</div>
+    <p class="section-desc">Surfaced during the end-to-end review. Prioritized by user impact.</p>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="badge badge-red">High</span>
+      <span class="badge badge-yellow">Medium</span>
+      <span class="badge badge-blue">Low / Nice to have</span>
+    </div>
+
+    <div class="wishlist">
+
+      <div class="wish">
+        <div class="wish-num">01</div>
+        <div class="wish-body">
+          <h4>Onboarding flow for new users</h4>
+          <p>First login drops you directly on the dashboard with no context. A simple 3-step onboarding (set emoji PIN → set investment criteria → add first watchlist) would orient new users and immediately make the system useful. Ted needs this.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-red">High</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">02</div>
+        <div class="wish-body">
+          <h4>Prompt to change default PIN on first login</h4>
+          <p>Default PINs (🦝🔑🏠💎, 🦊🎯🚀⭐) are hardcoded and known. No prompt exists to change them. First-login should show a "Set your PIN" interstitial before reaching the dashboard.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-red">High</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">03</div>
+        <div class="wish-body">
+          <h4>Agent run completion toasts / notifications</h4>
+          <p>You trigger a scout or analysis and... nothing. No feedback that it's running, no toast when it completes. The Agent Pulse widget exists but it's not prominent enough. A lightweight notification system (or a pulsing indicator in the NavBar while agents run) would dramatically reduce uncertainty.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-red">High</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">04</div>
+        <div class="wish-body">
+          <h4>Contact linking to properties</h4>
+          <p>Contacts and properties are separate data stores with no connection. You can't say "Mark Chen is the agent for this deal." Add a <code>contact_id</code> reference to the pipeline table, and show the linked contact on the property detail page.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">05</div>
+        <div class="wish-body">
+          <h4>Pipeline age indicator on kanban cards</h4>
+          <p>No way to see how long a deal has been sitting in a stage. A subtle "14d" badge on kanban cards would show which deals are stalling and need attention.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">06</div>
+        <div class="wish-body">
+          <h4>Property comparison tool</h4>
+          <p>No way to put two or three properties side by side. An "Add to compare" action that opens a comparison table (price, ARV, cap rate, ROI, risk flags) would help decide between competing deals.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">07</div>
+        <div class="wish-body">
+          <h4>Score explanation tooltip</h4>
+          <p>Properties show a 0–100 score but the UI never explains what factors drive it. A tooltip or expandable section on the score badge (location: 25, market: 20, financials: 35, risk: 20) would build trust in the AI output.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">08</div>
+        <div class="wish-body">
+          <h4>Bulk actions on Recommendations</h4>
+          <p>When autoscout surfaces 10+ deals, dismissing them one-by-one is tedious. A "Dismiss all" or checkbox multi-select + bulk action would keep the recommendations list from becoming noise.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">09</div>
+        <div class="wish-body">
+          <h4>Mobile kanban board</h4>
+          <p>Drag-and-drop kanban boards are notoriously hard on touch screens. On mobile, the board needs a tap-to-move UI (tap card → show stage picker) as a fallback to drag-and-drop.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">10</div>
+        <div class="wish-body">
+          <h4>Walk Score unavailable — graceful fallback needed</h4>
+          <p>The health-check shows <code>walkscore: false</code> — the API key isn't configured. The UI should gracefully hide or placeholder the walkability gauge when data is unavailable, rather than showing a broken state.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-yellow">Medium</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">11</div>
+        <div class="wish-body">
+          <h4>Advisor panel discoverability</h4>
+          <p>The floating "Ask Advisor" orb is easy to miss. Consider surfacing it more prominently on the property detail page where a user most needs to ask questions ("What's a good offer price for this?").</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-blue">Low</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">12</div>
+        <div class="wish-body">
+          <h4>Market data staleness indicator</h4>
+          <p>Market data is cached with an expiration. If a property's Census data is 6 months old, the analysis could be misleading. Show a "data freshness" indicator on the neighborhood panel and allow one-click re-fetch.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-blue">Low</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">13</div>
+        <div class="wish-body">
+          <h4>Email or push notification for high-scoring autoscout finds</h4>
+          <p>The autoscout runs at 5 AM but there's no way to know it found something good until you log in. A simple email (or even the existing <code>agent-digest</code>) should fire when a deal scores above your threshold.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-blue">Low</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">14</div>
+        <div class="wish-body">
+          <h4>Dark/light mode persistence</h4>
+          <p>If theme preference is stored only in memory (not localStorage or a user preference), it resets on every page load. Persist it to localStorage on toggle.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-blue">Low</span></div>
+      </div>
+
+      <div class="wish">
+        <div class="wish-num">15</div>
+        <div class="wish-body">
+          <h4>Anon key embedded in assist-snapshot</h4>
+          <p>The health-check curl command in <code>assist-snapshot.json</code> contains a Supabase anon JWT. Low-risk (anon keys have limited permissions) but worth rotating and replacing with a Supabase dashboard reference link instead of an embedded token.</p>
+        </div>
+        <div class="wish-priority"><span class="badge badge-blue">Low</span></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  🔑 Turnkey Tour &nbsp;·&nbsp; Generated 2026-03-31 &nbsp;·&nbsp; Stream A &nbsp;·&nbsp;
+  <a href="https://turnkey-rosy.vercel.app" style="color:var(--gold);text-decoration:none;" target="_blank">turnkey-rosy.vercel.app</a>
+</footer>
+
+</body>
+</html>
