@@ -96,3 +96,15 @@ export async function dismissRecommendations(db: Db, propertyId: string): Promis
     .update({ recommended: false, dismissed_at: new Date().toISOString() }).eq('property_id', propertyId)
   if (error) console.error(`dismissRecommendations failed: ${error.message}`)
 }
+
+export async function resolvedPredictions(db: Db, propertyId: string): Promise<Array<{ metric: string; predicted_value: number; actual_value: number }>> {
+  const { data } = await db.from('property_predictions')
+    .select('metric, predicted_value, actual_value').eq('property_id', propertyId).not('actual_value', 'is', null)
+  return (data ?? []) as Array<{ metric: string; predicted_value: number; actual_value: number }>
+}
+export async function updatePredictionAccuracy(db: Db, propertyId: string, metric: string, accuracy: number): Promise<void> {
+  const { error } = await db.from('property_predictions')
+    .update({ accuracy_score: accuracy, resolved_at: new Date().toISOString() })
+    .eq('property_id', propertyId).eq('metric', metric)
+  if (error) console.error(`updatePredictionAccuracy failed: ${error.message}`)
+}
