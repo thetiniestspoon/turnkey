@@ -26,6 +26,15 @@ export function selectActiveWatchlists<T extends { active: boolean }>(rows: T[],
   return rows.filter((r) => r.active).slice(0, cap)
 }
 
+// Dedup key scoped per-user: the same physical property may be independently
+// recommended to multiple users (per agent-autoscout/index.ts), so two
+// watchlists targeting the same zip — whether different users or the same
+// user's second watchlist — must each get a shot at evaluating a property.
+// Only skip a property that THIS user has already picked up this run.
+export function candidateKey(userId: string, propertyId: string): string {
+  return `${userId}:${propertyId}`
+}
+
 export async function main(): Promise<number> {
   loadEnv()
   const args = parseArgs(process.argv.slice(2))
@@ -112,10 +121,11 @@ export async function main(): Promise<number> {
         .eq('source', 'autoscout')
         .gte('updated_at', stamp)
       for (const p of (scoutedRows ?? []) as CandidateProperty[]) {
-        if (seen.has(p.id) || !passesFilter(p, merged)) continue
+        const key = candidateKey(wl.user_id, p.id)
+        if (seen.has(key) || !passesFilter(p, merged)) continue
         const score = (p.raw_data as { score?: number } | null)?.score ?? 0
         if (score < minAnalyzeScore) continue
-        seen.add(p.id)
+        seen.add(key)
         candidates.push({ userId: wl.user_id, property: p })
       }
     }
