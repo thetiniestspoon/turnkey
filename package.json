@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "agents:nightly": "tsx scripts/agents/run-nightly.ts",
+    "agents:typecheck": "tsc --noEmit -p scripts/agents/tsconfig.json",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

@@ -54,8 +54,8 @@ export function callClaude(opts: {
   } catch (e) {
     return { ok: false, text: '', error: String((e as Error).message ?? e), rateLimited: false }
   }
-  const stdout = res.stdout ?? ''
-  const stderr = res.stderr ?? ''
+  const stdout = String(res.stdout ?? '')
+  const stderr = String(res.stderr ?? '')
   const combined = `${stdout}\n${stderr}`
   const rateLimited = isRateLimited(combined)
   const err = res.error ? String((res.error as Error).message ?? res.error) : null
