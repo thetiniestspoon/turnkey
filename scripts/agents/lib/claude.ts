@@ -15,18 +15,34 @@ export function extractJson(text: string): unknown | null {
 // Best-effort match of Claude Code subscription rate/usage-limit output. Tune the
 // list if real output differs; keep it conservative (false negative = a wasted
 // retry next night, false positive = an unnecessary quiet-night skip).
-const RATE_SIGNATURES = [
+//
+// EXPLICIT_SIGNATURES alone are unambiguous enough to trigger a positive on
+// their own — real Claude-CLI rate-limit output always includes one of these
+// phrases. AMBIGUOUS_SIGNATURES (a bare 429, "resets at") can appear inside
+// ordinary LLM JSON output (e.g. a numeric field or a market-notes string), so
+// they only count when an EXPLICIT_SIGNATURES phrase also appears in the text
+// — otherwise a false positive silently skips a whole night's run.
+const EXPLICIT_SIGNATURES = [
   /usage limit/i,
   /rate limit/i,
-  /\b\d+-hour limit reached/i,
-  /\b429\b/,
+  /\b\d+-hour limit/i,
   /too many requests/i,
-  /resets? at/i,
+  /quota/i,
 ]
+
+// Note: AMBIGUOUS_SIGNATURES only ever contribute a positive when an
+// EXPLICIT_SIGNATURES phrase is also present — and in that case the explicit
+// phrase alone already makes isRateLimited true. So in practice a bare 429 or
+// "resets at" with no limit/quota language never flips the result, which is
+// exactly the fix: those ambiguous tokens can no longer cause a false
+// positive on ordinary LLM JSON output.
+const AMBIGUOUS_SIGNATURES = [/\b429\b/, /resets? at/i]
 
 export function isRateLimited(text: string): boolean {
   const s = String(text ?? '')
-  return RATE_SIGNATURES.some((re) => re.test(s))
+  const hasExplicit = EXPLICIT_SIGNATURES.some((re) => re.test(s))
+  const hasAmbiguous = AMBIGUOUS_SIGNATURES.some((re) => re.test(s))
+  return hasExplicit || (hasAmbiguous && hasExplicit)
 }
 
 export type ClaudeResult = { ok: boolean; text: string; error: string | null; rateLimited: boolean }

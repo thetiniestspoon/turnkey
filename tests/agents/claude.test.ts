@@ -27,4 +27,10 @@ describe('isRateLimited', () => {
   it('does not flag normal output', () => {
     expect(isRateLimited('{"properties":[]}')).toBe(false)
   })
+  it('does not flag LLM JSON containing a bare 429-shaped number', () => {
+    expect(isRateLimited('{"monthly_cash_flow":429,"cap_rate":7}')).toBe(false)
+  })
+  it('does not flag LLM JSON containing "resets at" with no limit phrase', () => {
+    expect(isRateLimited('{"notes":"open house resets at noon","status":"active"}')).toBe(false)
+  })
 })
