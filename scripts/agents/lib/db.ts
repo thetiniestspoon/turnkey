@@ -80,3 +80,19 @@ export async function hasAnalysis(db: Db, propertyId: string): Promise<boolean> 
   const { data } = await db.from('property_analyses').select('id').eq('property_id', propertyId).limit(1).maybeSingle()
   return !!data
 }
+
+export async function updatePropertyMarketStatus(db: Db, propertyId: string, status: string): Promise<void> {
+  const { error } = await db.from('properties')
+    .update({ market_status: status, market_status_checked_at: new Date().toISOString() }).eq('id', propertyId)
+  if (error) throw new Error(`updatePropertyMarketStatus failed: ${error.message}`)
+}
+export async function insertStatusHistory(db: Db, propertyId: string, status: string): Promise<void> {
+  const { error } = await db.from('property_status_history')
+    .insert({ property_id: propertyId, status, source: 'agent_market_check' })
+  if (error) console.error(`insertStatusHistory failed: ${error.message}`)
+}
+export async function dismissRecommendations(db: Db, propertyId: string): Promise<void> {
+  const { error } = await db.from('user_recommendations')
+    .update({ recommended: false, dismissed_at: new Date().toISOString() }).eq('property_id', propertyId)
+  if (error) console.error(`dismissRecommendations failed: ${error.message}`)
+}
