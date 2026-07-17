@@ -51,3 +51,32 @@ export async function updateAgentRun(
   const { error } = await db.from('agent_runs').update(patch).eq('id', id)
   if (error) console.error(`updateAgentRun ${id} failed: ${error.message}`)
 }
+
+export type AnalysisRow = {
+  property_id: string
+  flip_arv: number; flip_renovation_est: number; flip_carrying_costs: number
+  flip_total_investment: number; flip_profit_margin: number; flip_roi: number; flip_timeline: string
+  rental_monthly_est: number; rental_monthly_expenses: number; rental_monthly_cash_flow: number
+  rental_annual_noi: number; rental_cap_rate: number; rental_cash_on_cash: number
+  recommended_strategy: string; confidence_score: number; analysis_summary: string
+  neighborhood_data: Record<string, unknown>; agent_model: string
+}
+export type PredictionRow = { property_id: string; metric: string; predicted_value: number }
+
+export async function insertAnalysis(db: Db, row: AnalysisRow): Promise<void> {
+  const { error } = await db.from('property_analyses').insert(row)
+  if (error) throw new Error(`insertAnalysis failed: ${error.message}`)
+}
+export async function insertPredictions(db: Db, rows: PredictionRow[]): Promise<void> {
+  const { error } = await db.from('property_predictions').insert(rows)
+  if (error) throw new Error(`insertPredictions failed: ${error.message}`)
+}
+export async function latestAnalysisConfidence(db: Db, propertyId: string): Promise<number | null> {
+  const { data } = await db.from('property_analyses').select('confidence_score')
+    .eq('property_id', propertyId).order('analyzed_at', { ascending: false }).limit(1).maybeSingle()
+  return (data as { confidence_score: number } | null)?.confidence_score ?? null
+}
+export async function hasAnalysis(db: Db, propertyId: string): Promise<boolean> {
+  const { data } = await db.from('property_analyses').select('id').eq('property_id', propertyId).limit(1).maybeSingle()
+  return !!data
+}
