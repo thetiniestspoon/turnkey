@@ -1,4 +1,5 @@
 import { loadEnv, assertServiceRoleKey } from './lib/env'
+import { billingVarsPresent } from './lib/claude'
 import { createAdminClient, hasAnalysis, latestAnalysisConfidence, resolvedPredictions } from './lib/db'
 import { runScout } from './lib/scout'
 import { runAnalyst } from './lib/analyst'
@@ -44,6 +45,15 @@ export async function main(): Promise<number> {
   if (isAutonomyOff(process.env)) {
     console.log('   TURNKEY_AUTONOMY_OFF set — skipping all stages. Exit 0.')
     return 0
+  }
+
+  // Billing guard (June audit): callClaude scrubs these from the child env, so
+  // a set ANTHROPIC_API_KEY can never flip a night to per-token billing — but
+  // say so out loud, because a var like that in the scheduler's env is a
+  // misconfiguration someone should fix at the source.
+  const billing = billingVarsPresent(process.env)
+  if (billing.length) {
+    console.log(`   ⚠ ${billing.join(', ')} present in the environment — scrubbed for every claude spawn (subscription-only).`)
   }
 
   const { url, key } = assertServiceRoleKey(process.env)

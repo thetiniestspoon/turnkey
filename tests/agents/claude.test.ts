@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { extractJson, isRateLimited } from '../../scripts/agents/lib/claude'
+import { extractJson, isRateLimited, billingVarsPresent } from '../../scripts/agents/lib/claude'
 
 describe('extractJson', () => {
   it('parses a bare object', () => {
@@ -32,5 +32,19 @@ describe('isRateLimited', () => {
   })
   it('does not flag LLM JSON containing "resets at" with no limit phrase', () => {
     expect(isRateLimited('{"notes":"open house resets at noon","status":"active"}')).toBe(false)
+  })
+})
+
+describe('billingVarsPresent (the subscription-only guard)', () => {
+  it('names every billing var set in the env', () => {
+    expect(billingVarsPresent({ ANTHROPIC_API_KEY: 'x', CLAUDE_CODE_USE_BEDROCK: '1' })).toEqual([
+      'ANTHROPIC_API_KEY',
+      'CLAUDE_CODE_USE_BEDROCK',
+    ])
+  })
+  it('ignores unset and empty vars', () => {
+    expect(billingVarsPresent({})).toEqual([])
+    expect(billingVarsPresent({ ANTHROPIC_API_KEY: '' })).toEqual([])
+    expect(billingVarsPresent({ PATH: 'C:/bin' })).toEqual([])
   })
 })

@@ -47,6 +47,23 @@ export function isRateLimited(text: string): boolean {
 
 export type ClaudeResult = { ok: boolean; text: string; error: string | null; rateLimited: boolean }
 
+// The whole point of this harness is the $0 subscription gateway. If
+// ANTHROPIC_API_KEY (or a Bedrock/Vertex switch) is present in the parent env,
+// an inherited spawn silently flips every nightly run to per-token billing —
+// the exact failure the June audit told us to guard. These never reach the
+// child. (Same env-scrub idiom as command-center's house-doctor.mjs.)
+export const BILLING_ENV_VARS = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'CLAUDE_CODE_USE_BEDROCK', 'CLAUDE_CODE_USE_VERTEX']
+
+export function billingVarsPresent(env: NodeJS.ProcessEnv = process.env): string[] {
+  return BILLING_ENV_VARS.filter((k) => env[k] != null && env[k] !== '')
+}
+
+function subscriptionOnlyEnv(): NodeJS.ProcessEnv {
+  const env = { ...process.env }
+  for (const k of BILLING_ENV_VARS) delete env[k]
+  return env
+}
+
 export function callClaude(opts: {
   prompt: string
   allowedTools?: string[]
@@ -59,13 +76,15 @@ export function callClaude(opts: {
   let res: ReturnType<typeof spawnSync>
   try {
     // stdin prompt (avoids arg-escaping multi-line JSON); shell:true so Windows
-    // resolves the `claude` .cmd shim. Cred-free: no secret in prompt or argv.
+    // resolves the `claude` .cmd shim. Cred-free: no secret in prompt or argv,
+    // and billing env vars are scrubbed so the run can only be subscription-auth.
     res = spawnSync('claude', argv, {
       input: opts.prompt,
       encoding: 'utf8',
       timeout: opts.timeoutMs ?? 180000,
       shell: true,
       maxBuffer: 4 * 1024 * 1024,
+      env: subscriptionOnlyEnv(),
     })
   } catch (e) {
     return { ok: false, text: '', error: String((e as Error).message ?? e), rateLimited: false }
