@@ -1,0 +1,16 @@
+{
+  "id": "synthetic-trenton-20260721",
+  "synthetic": true,
+  "generated_by": "scripts/sim/generate-corpus.ts",
+  "seed": 20260721,
+  "as_of": "2026-04-01",
+  "horizon_days": 90,
+  "description": "SYNTHETIC corpus. Latent truth drawn from a seeded PRNG, then observed by a simulated analyst with two deliberate biases. Not real listings; not evidence about the real Turnkey analyst.",
+  "counts": {
+    "properties": 60
+  },
+  "planted_biases": [
+    "renovation_cost underestimated by 10-40%",
+    "confidence inflated by +9 above a raw score of 72"
+  ]
+}

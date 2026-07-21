@@ -1,0 +1,1982 @@
+[
+  {
+    "property_id": "9fe50d9a-4955-4672-81e8-727e77ff97ba",
+    "flip": {
+      "arv": 569900,
+      "renovation_est": 35100,
+      "carrying_costs": 14700,
+      "total_investment": 417000,
+      "profit_margin": 152900,
+      "roi": 36.67,
+      "timeline": "8 months",
+      "confidence": 97,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3201,
+      "monthly_expenses": 1293,
+      "monthly_cash_flow": 1908,
+      "annual_noi": 22896,
+      "cap_rate": 6.24,
+      "cash_on_cash": 24.94,
+      "confidence": 93,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "06e77e15-21d7-4553-995d-bc37c6ac854f",
+    "flip": {
+      "arv": 505800,
+      "renovation_est": 48300,
+      "carrying_costs": 13600,
+      "total_investment": 401600,
+      "profit_margin": 104200,
+      "roi": 25.95,
+      "timeline": "4 months",
+      "confidence": 81,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2173,
+      "monthly_expenses": 944,
+      "monthly_cash_flow": 1229,
+      "annual_noi": 14748,
+      "cap_rate": 4.34,
+      "cash_on_cash": 17.37,
+      "confidence": 82,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 84,
+    "summary": "Synthetic flip candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "c4965d4c-4d5e-4652-80d2-8d4f2cb1196f",
+    "flip": {
+      "arv": 466500,
+      "renovation_est": 62500,
+      "carrying_costs": 13400,
+      "total_investment": 410300,
+      "profit_margin": 56200,
+      "roi": 13.7,
+      "timeline": "9 months",
+      "confidence": 68,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3268,
+      "monthly_expenses": 1195,
+      "monthly_cash_flow": 2073,
+      "annual_noi": 24876,
+      "cap_rate": 7.44,
+      "cash_on_cash": 29.76,
+      "confidence": 60,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 64,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "96275112-6558-4ee7-8001-06dc31bf6f20",
+    "flip": {
+      "arv": 220600,
+      "renovation_est": 17600,
+      "carrying_costs": 6700,
+      "total_investment": 191700,
+      "profit_margin": 28900,
+      "roi": 15.08,
+      "timeline": "4 months",
+      "confidence": 56,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1906,
+      "monthly_expenses": 758,
+      "monthly_cash_flow": 1148,
+      "annual_noi": 13776,
+      "cap_rate": 8.23,
+      "cash_on_cash": 32.92,
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 60,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "1cf1e449-289d-4068-9390-080a6bdd9272",
+    "flip": {
+      "arv": 299300,
+      "renovation_est": 19400,
+      "carrying_costs": 9800,
+      "total_investment": 273400,
+      "profit_margin": 25900,
+      "roi": 9.47,
+      "timeline": "7 months",
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1857,
+      "monthly_expenses": 718,
+      "monthly_cash_flow": 1139,
+      "annual_noi": 13668,
+      "cap_rate": 5.6,
+      "cash_on_cash": 22.39,
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 55,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "85fe6c34-1e9e-48ad-8297-039c90a0bf07",
+    "flip": {
+      "arv": 456500,
+      "renovation_est": 68500,
+      "carrying_costs": 14000,
+      "total_investment": 432100,
+      "profit_margin": 24400,
+      "roi": 5.65,
+      "timeline": "6 months",
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3820,
+      "monthly_expenses": 1533,
+      "monthly_cash_flow": 2287,
+      "annual_noi": 27444,
+      "cap_rate": 7.85,
+      "cash_on_cash": 31.4,
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 63,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "37d673d0-012c-46a7-8adc-dfe0ffd7a9ad",
+    "flip": {
+      "arv": 282400,
+      "renovation_est": 48600,
+      "carrying_costs": 8700,
+      "total_investment": 273900,
+      "profit_margin": 8500,
+      "roi": 3.1,
+      "timeline": "5 months",
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1608,
+      "monthly_expenses": 640,
+      "monthly_cash_flow": 968,
+      "annual_noi": 11616,
+      "cap_rate": 5.36,
+      "cash_on_cash": 21.45,
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 54,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "deedff58-5e9f-4d7f-afbc-21ebbed522ed",
+    "flip": {
+      "arv": 243300,
+      "renovation_est": 39300,
+      "carrying_costs": 8500,
+      "total_investment": 259300,
+      "profit_margin": -16000,
+      "roi": -6.17,
+      "timeline": "7 months",
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1400,
+      "monthly_expenses": 629,
+      "monthly_cash_flow": 771,
+      "annual_noi": 9252,
+      "cap_rate": 4.37,
+      "cash_on_cash": 17.5,
+      "confidence": 45,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 49,
+    "summary": "Synthetic rental candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "8033dff0-cde3-4475-a02d-f72d1676e5c4",
+    "flip": {
+      "arv": 287100,
+      "renovation_est": 27000,
+      "carrying_costs": 8600,
+      "total_investment": 251600,
+      "profit_margin": 35500,
+      "roi": 14.11,
+      "timeline": "9 months",
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1634,
+      "monthly_expenses": 733,
+      "monthly_cash_flow": 901,
+      "annual_noi": 10812,
+      "cap_rate": 5.01,
+      "cash_on_cash": 20.02,
+      "confidence": 48,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 52,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "63d5c1ce-2aaa-41a5-a1a3-819fb9473cfa",
+    "flip": {
+      "arv": 368900,
+      "renovation_est": 22200,
+      "carrying_costs": 11300,
+      "total_investment": 316200,
+      "profit_margin": 52700,
+      "roi": 16.67,
+      "timeline": "8 months",
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2527,
+      "monthly_expenses": 1104,
+      "monthly_cash_flow": 1423,
+      "annual_noi": 17076,
+      "cap_rate": 6.04,
+      "cash_on_cash": 24.16,
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 66,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "8fd14dfa-6990-4b33-8e57-f5d92d91cac0",
+    "flip": {
+      "arv": 405700,
+      "renovation_est": 38900,
+      "carrying_costs": 14400,
+      "total_investment": 414500,
+      "profit_margin": -8800,
+      "roi": -2.12,
+      "timeline": "6 months",
+      "confidence": 68,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3847,
+      "monthly_expenses": 1601,
+      "monthly_cash_flow": 2246,
+      "annual_noi": 26952,
+      "cap_rate": 7.46,
+      "cash_on_cash": 29.85,
+      "confidence": 66,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 66,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "6dbe58b0-5ff9-4fb6-b7c5-064a37fe3fba",
+    "flip": {
+      "arv": 184100,
+      "renovation_est": 35600,
+      "carrying_costs": 5300,
+      "total_investment": 173000,
+      "profit_margin": 11100,
+      "roi": 6.42,
+      "timeline": "7 months",
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1305,
+      "monthly_expenses": 525,
+      "monthly_cash_flow": 780,
+      "annual_noi": 9360,
+      "cap_rate": 7.09,
+      "cash_on_cash": 28.34,
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 59,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "62c0005d-c490-4dee-b1ab-accbc969267c",
+    "flip": {
+      "arv": 300600,
+      "renovation_est": 39100,
+      "carrying_costs": 8000,
+      "total_investment": 246300,
+      "profit_margin": 54300,
+      "roi": 22.05,
+      "timeline": "9 months",
+      "confidence": 76,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1854,
+      "monthly_expenses": 731,
+      "monthly_cash_flow": 1123,
+      "annual_noi": 13476,
+      "cap_rate": 6.77,
+      "cash_on_cash": 27.06,
+      "confidence": 80,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 79,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "ea3e0dc2-ebc2-42f6-949f-4c7e1f4259cb",
+    "flip": {
+      "arv": 422700,
+      "renovation_est": 33500,
+      "carrying_costs": 12500,
+      "total_investment": 358400,
+      "profit_margin": 64300,
+      "roi": 17.94,
+      "timeline": "9 months",
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1918,
+      "monthly_expenses": 827,
+      "monthly_cash_flow": 1091,
+      "annual_noi": 13092,
+      "cap_rate": 4.19,
+      "cash_on_cash": 16.76,
+      "confidence": 64,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 64,
+    "summary": "Synthetic flip candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "4296ca34-0c45-409e-b9d4-b2b163699c29",
+    "flip": {
+      "arv": 181200,
+      "renovation_est": 50400,
+      "carrying_costs": 6000,
+      "total_investment": 207400,
+      "profit_margin": -26200,
+      "roi": -12.63,
+      "timeline": "7 months",
+      "confidence": 50,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 985,
+      "monthly_expenses": 384,
+      "monthly_cash_flow": 601,
+      "annual_noi": 7212,
+      "cap_rate": 4.78,
+      "cash_on_cash": 19.1,
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 49,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "11d86543-68e1-4d69-a892-efb30afd7e43",
+    "flip": {
+      "arv": 379500,
+      "renovation_est": 54400,
+      "carrying_costs": 9300,
+      "total_investment": 296300,
+      "profit_margin": 83200,
+      "roi": 28.08,
+      "timeline": "5 months",
+      "confidence": 89,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1962,
+      "monthly_expenses": 743,
+      "monthly_cash_flow": 1219,
+      "annual_noi": 14628,
+      "cap_rate": 6.29,
+      "cash_on_cash": 25.16,
+      "confidence": 87,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 91,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "f8f59236-f0b2-440d-9a97-9feca62f1ec8",
+    "flip": {
+      "arv": 266100,
+      "renovation_est": 48200,
+      "carrying_costs": 7200,
+      "total_investment": 234200,
+      "profit_margin": 31900,
+      "roi": 13.62,
+      "timeline": "5 months",
+      "confidence": 61,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1727,
+      "monthly_expenses": 728,
+      "monthly_cash_flow": 999,
+      "annual_noi": 11988,
+      "cap_rate": 6.7,
+      "cash_on_cash": 26.82,
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 57,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "4fc62d2f-6085-46fa-b5a4-b5a3eac81c06",
+    "flip": {
+      "arv": 209600,
+      "renovation_est": 49800,
+      "carrying_costs": 5400,
+      "total_investment": 189700,
+      "profit_margin": 19900,
+      "roi": 10.49,
+      "timeline": "8 months",
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 905,
+      "monthly_expenses": 376,
+      "monthly_cash_flow": 529,
+      "annual_noi": 6348,
+      "cap_rate": 4.72,
+      "cash_on_cash": 18.88,
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 54,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "99ef3269-d5bb-4833-befa-655b0b39f129",
+    "flip": {
+      "arv": 551400,
+      "renovation_est": 51200,
+      "carrying_costs": 14600,
+      "total_investment": 430000,
+      "profit_margin": 121400,
+      "roi": 28.23,
+      "timeline": "7 months",
+      "confidence": 93,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3102,
+      "monthly_expenses": 1376,
+      "monthly_cash_flow": 1726,
+      "annual_noi": 20712,
+      "cap_rate": 5.69,
+      "cash_on_cash": 22.75,
+      "confidence": 99,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "49f91d33-b441-485b-b10a-8255bdb5e090",
+    "flip": {
+      "arv": 255800,
+      "renovation_est": 45200,
+      "carrying_costs": 6600,
+      "total_investment": 216300,
+      "profit_margin": 39500,
+      "roi": 18.26,
+      "timeline": "7 months",
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1016,
+      "monthly_expenses": 426,
+      "monthly_cash_flow": 590,
+      "annual_noi": 7080,
+      "cap_rate": 4.3,
+      "cash_on_cash": 17.22,
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 61,
+    "summary": "Synthetic flip candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "6bbc74ff-53d3-412c-8418-aee69bf5d890",
+    "flip": {
+      "arv": 425300,
+      "renovation_est": 15500,
+      "carrying_costs": 12400,
+      "total_investment": 337600,
+      "profit_margin": 87700,
+      "roi": 25.98,
+      "timeline": "6 months",
+      "confidence": 90,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2376,
+      "monthly_expenses": 1002,
+      "monthly_cash_flow": 1374,
+      "annual_noi": 16488,
+      "cap_rate": 5.32,
+      "cash_on_cash": 21.3,
+      "confidence": 90,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 87,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "467ea21c-c8e1-4724-91ee-1c474ff3f52d",
+    "flip": {
+      "arv": 331300,
+      "renovation_est": 38200,
+      "carrying_costs": 11300,
+      "total_investment": 332300,
+      "profit_margin": -1000,
+      "roi": -0.3,
+      "timeline": "8 months",
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2956,
+      "monthly_expenses": 1321,
+      "monthly_cash_flow": 1635,
+      "annual_noi": 19620,
+      "cap_rate": 6.94,
+      "cash_on_cash": 27.75,
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 55,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "a7db6eec-a7a5-46c6-8244-dda4f4b67712",
+    "flip": {
+      "arv": 411800,
+      "renovation_est": 52500,
+      "carrying_costs": 11900,
+      "total_investment": 362300,
+      "profit_margin": 49500,
+      "roi": 13.66,
+      "timeline": "5 months",
+      "confidence": 48,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2372,
+      "monthly_expenses": 1031,
+      "monthly_cash_flow": 1341,
+      "annual_noi": 16092,
+      "cap_rate": 5.4,
+      "cash_on_cash": 21.61,
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 53,
+    "summary": "Synthetic either candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "6a1c6a51-12c9-4838-97f6-45e44aae3cfc",
+    "flip": {
+      "arv": 325800,
+      "renovation_est": 53400,
+      "carrying_costs": 9300,
+      "total_investment": 295400,
+      "profit_margin": 30400,
+      "roi": 10.29,
+      "timeline": "8 months",
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2102,
+      "monthly_expenses": 829,
+      "monthly_cash_flow": 1273,
+      "annual_noi": 15276,
+      "cap_rate": 6.56,
+      "cash_on_cash": 26.26,
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 57,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "5a7ee449-444b-43e5-9b17-05be11bf637f",
+    "flip": {
+      "arv": 252100,
+      "renovation_est": 70200,
+      "carrying_costs": 6700,
+      "total_investment": 244300,
+      "profit_margin": 7800,
+      "roi": 3.19,
+      "timeline": "9 months",
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1002,
+      "monthly_expenses": 378,
+      "monthly_cash_flow": 624,
+      "annual_noi": 7488,
+      "cap_rate": 4.47,
+      "cash_on_cash": 17.89,
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 53,
+    "summary": "Synthetic either candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "4c697828-c56d-4e75-adb3-27cd728deb85",
+    "flip": {
+      "arv": 314800,
+      "renovation_est": 41000,
+      "carrying_costs": 10500,
+      "total_investment": 314900,
+      "profit_margin": -100,
+      "roi": -0.03,
+      "timeline": "9 months",
+      "confidence": 52,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2408,
+      "monthly_expenses": 1065,
+      "monthly_cash_flow": 1343,
+      "annual_noi": 16116,
+      "cap_rate": 6.12,
+      "cash_on_cash": 24.47,
+      "confidence": 56,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 53,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "54f14dcc-befb-4dfa-b5c3-f2269e3d3453",
+    "flip": {
+      "arv": 199300,
+      "renovation_est": 48300,
+      "carrying_costs": 6000,
+      "total_investment": 203500,
+      "profit_margin": -4200,
+      "roi": -2.06,
+      "timeline": "9 months",
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1056,
+      "monthly_expenses": 396,
+      "monthly_cash_flow": 660,
+      "annual_noi": 7920,
+      "cap_rate": 5.31,
+      "cash_on_cash": 21.23,
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 52,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "0d827ae2-a363-4da9-91df-e11375aae1fa",
+    "flip": {
+      "arv": 362500,
+      "renovation_est": 22100,
+      "carrying_costs": 10600,
+      "total_investment": 296900,
+      "profit_margin": 65600,
+      "roi": 22.09,
+      "timeline": "5 months",
+      "confidence": 77,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1675,
+      "monthly_expenses": 623,
+      "monthly_cash_flow": 1052,
+      "annual_noi": 12624,
+      "cap_rate": 4.78,
+      "cash_on_cash": 19.11,
+      "confidence": 82,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 81,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "7c9fa42c-fafc-4560-82ad-671eb33a002c",
+    "flip": {
+      "arv": 278200,
+      "renovation_est": 19500,
+      "carrying_costs": 7300,
+      "total_investment": 210300,
+      "profit_margin": 67900,
+      "roi": 32.29,
+      "timeline": "6 months",
+      "confidence": 99,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1615,
+      "monthly_expenses": 673,
+      "monthly_cash_flow": 942,
+      "annual_noi": 11304,
+      "cap_rate": 6.16,
+      "cash_on_cash": 24.64,
+      "confidence": 97,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "a943fd8d-f538-437b-958a-8a22a8d9fe55",
+    "flip": {
+      "arv": 459900,
+      "renovation_est": 42500,
+      "carrying_costs": 12200,
+      "total_investment": 360600,
+      "profit_margin": 99300,
+      "roi": 27.54,
+      "timeline": "6 months",
+      "confidence": 94,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2905,
+      "monthly_expenses": 1261,
+      "monthly_cash_flow": 1644,
+      "annual_noi": 19728,
+      "cap_rate": 6.45,
+      "cash_on_cash": 25.8,
+      "confidence": 94,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 94,
+    "summary": "Synthetic flip candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "2c644c24-e5ca-4c1f-ab58-10602cbad7ab",
+    "flip": {
+      "arv": 553700,
+      "renovation_est": 29300,
+      "carrying_costs": 14600,
+      "total_investment": 409700,
+      "profit_margin": 144000,
+      "roi": 35.15,
+      "timeline": "7 months",
+      "confidence": 97,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3316,
+      "monthly_expenses": 1408,
+      "monthly_cash_flow": 1908,
+      "annual_noi": 22896,
+      "cap_rate": 6.26,
+      "cash_on_cash": 25.04,
+      "confidence": 98,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "114923a1-2608-4364-8a39-dcd759b5c295",
+    "flip": {
+      "arv": 489200,
+      "renovation_est": 15100,
+      "carrying_costs": 15100,
+      "total_investment": 407100,
+      "profit_margin": 82100,
+      "roi": 20.17,
+      "timeline": "4 months",
+      "confidence": 81,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3938,
+      "monthly_expenses": 1515,
+      "monthly_cash_flow": 2423,
+      "annual_noi": 29076,
+      "cap_rate": 7.71,
+      "cash_on_cash": 30.86,
+      "confidence": 81,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 78,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "9c1b7fa9-9b92-4158-ba68-0317beecdff5",
+    "flip": {
+      "arv": 191200,
+      "renovation_est": 27500,
+      "carrying_costs": 5200,
+      "total_investment": 161700,
+      "profit_margin": 29500,
+      "roi": 18.24,
+      "timeline": "7 months",
+      "confidence": 65,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 963,
+      "monthly_expenses": 387,
+      "monthly_cash_flow": 576,
+      "annual_noi": 6912,
+      "cap_rate": 5.36,
+      "cash_on_cash": 21.43,
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 60,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "7ffc177e-c945-4747-acbb-f80f92553586",
+    "flip": {
+      "arv": 236400,
+      "renovation_est": 56600,
+      "carrying_costs": 7500,
+      "total_investment": 252700,
+      "profit_margin": -16300,
+      "roi": -6.45,
+      "timeline": "6 months",
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1365,
+      "monthly_expenses": 501,
+      "monthly_cash_flow": 864,
+      "annual_noi": 10368,
+      "cap_rate": 5.5,
+      "cash_on_cash": 21.99,
+      "confidence": 45,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 50,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "919533d2-6db4-415b-a5f1-a0d43733534f",
+    "flip": {
+      "arv": 320800,
+      "renovation_est": 39200,
+      "carrying_costs": 11100,
+      "total_investment": 328800,
+      "profit_margin": -8000,
+      "roi": -2.43,
+      "timeline": "8 months",
+      "confidence": 60,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2209,
+      "monthly_expenses": 907,
+      "monthly_cash_flow": 1302,
+      "annual_noi": 15624,
+      "cap_rate": 5.61,
+      "cash_on_cash": 22.44,
+      "confidence": 59,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 55,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "cc246877-5f52-4f08-8e7d-9fe9593dc985",
+    "flip": {
+      "arv": 436700,
+      "renovation_est": 39100,
+      "carrying_costs": 14200,
+      "total_investment": 407500,
+      "profit_margin": 29200,
+      "roi": 7.17,
+      "timeline": "9 months",
+      "confidence": 52,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2673,
+      "monthly_expenses": 1128,
+      "monthly_cash_flow": 1545,
+      "annual_noi": 18540,
+      "cap_rate": 5.23,
+      "cash_on_cash": 20.94,
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 51,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "c933c6cf-55ee-4f67-bd40-00294a916c02",
+    "flip": {
+      "arv": 286600,
+      "renovation_est": 57700,
+      "carrying_costs": 7900,
+      "total_investment": 262500,
+      "profit_margin": 24100,
+      "roi": 9.18,
+      "timeline": "6 months",
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1637,
+      "monthly_expenses": 678,
+      "monthly_cash_flow": 959,
+      "annual_noi": 11508,
+      "cap_rate": 5.84,
+      "cash_on_cash": 23.38,
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 54,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "53371cab-57e3-49be-8b6d-e14203c4ca8a",
+    "flip": {
+      "arv": 415400,
+      "renovation_est": 47100,
+      "carrying_costs": 14000,
+      "total_investment": 410200,
+      "profit_margin": 5200,
+      "roi": 1.27,
+      "timeline": "6 months",
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3573,
+      "monthly_expenses": 1529,
+      "monthly_cash_flow": 2044,
+      "annual_noi": 24528,
+      "cap_rate": 7.03,
+      "cash_on_cash": 28.1,
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 56,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "078ce72c-9e12-4579-b530-1e287aa09996",
+    "flip": {
+      "arv": 282200,
+      "renovation_est": 34100,
+      "carrying_costs": 8300,
+      "total_investment": 250000,
+      "profit_margin": 32200,
+      "roi": 12.88,
+      "timeline": "4 months",
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2075,
+      "monthly_expenses": 906,
+      "monthly_cash_flow": 1169,
+      "annual_noi": 14028,
+      "cap_rate": 6.76,
+      "cash_on_cash": 27.03,
+      "confidence": 63,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 58,
+    "summary": "Synthetic either candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "f11e1dab-b0a6-4308-a6a7-6a22778a9f18",
+    "flip": {
+      "arv": 435700,
+      "renovation_est": 63100,
+      "carrying_costs": 11600,
+      "total_investment": 365200,
+      "profit_margin": 70500,
+      "roi": 19.3,
+      "timeline": "8 months",
+      "confidence": 65,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3403,
+      "monthly_expenses": 1399,
+      "monthly_cash_flow": 2004,
+      "annual_noi": 24048,
+      "cap_rate": 8.28,
+      "cash_on_cash": 33.11,
+      "confidence": 69,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 65,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "7214e1a5-a25b-40e2-8412-39772d273a1d",
+    "flip": {
+      "arv": 174200,
+      "renovation_est": 26100,
+      "carrying_costs": 5300,
+      "total_investment": 164400,
+      "profit_margin": 9800,
+      "roi": 5.96,
+      "timeline": "7 months",
+      "confidence": 68,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1441,
+      "monthly_expenses": 530,
+      "monthly_cash_flow": 911,
+      "annual_noi": 10932,
+      "cap_rate": 8.22,
+      "cash_on_cash": 32.88,
+      "confidence": 66,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 67,
+    "summary": "Synthetic either candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "05fe2227-b533-4e54-aa73-a278eeb22e18",
+    "flip": {
+      "arv": 477100,
+      "renovation_est": 28000,
+      "carrying_costs": 12700,
+      "total_investment": 357600,
+      "profit_margin": 119500,
+      "roi": 33.42,
+      "timeline": "4 months",
+      "confidence": 94,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3013,
+      "monthly_expenses": 1155,
+      "monthly_cash_flow": 1858,
+      "annual_noi": 22296,
+      "cap_rate": 7.04,
+      "cash_on_cash": 28.14,
+      "confidence": 92,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "ee1861d2-1f82-4ad8-afd4-a4dc0cacd674",
+    "flip": {
+      "arv": 337600,
+      "renovation_est": 17500,
+      "carrying_costs": 11000,
+      "total_investment": 303000,
+      "profit_margin": 34600,
+      "roi": 11.42,
+      "timeline": "9 months",
+      "confidence": 61,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3005,
+      "monthly_expenses": 1226,
+      "monthly_cash_flow": 1779,
+      "annual_noi": 21348,
+      "cap_rate": 7.78,
+      "cash_on_cash": 31.11,
+      "confidence": 61,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 59,
+    "summary": "Synthetic either candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "dd91a21d-b23d-410f-b845-322997c17d9b",
+    "flip": {
+      "arv": 363000,
+      "renovation_est": 54600,
+      "carrying_costs": 12100,
+      "total_investment": 370000,
+      "profit_margin": -7000,
+      "roi": -1.89,
+      "timeline": "9 months",
+      "confidence": 55,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2004,
+      "monthly_expenses": 772,
+      "monthly_cash_flow": 1232,
+      "annual_noi": 14784,
+      "cap_rate": 4.87,
+      "cash_on_cash": 19.5,
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 54,
+    "summary": "Synthetic either candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "bb61ac75-a58d-4441-801a-a478f1054b8a",
+    "flip": {
+      "arv": 324400,
+      "renovation_est": 48700,
+      "carrying_costs": 8600,
+      "total_investment": 273000,
+      "profit_margin": 51400,
+      "roi": 18.83,
+      "timeline": "6 months",
+      "confidence": 66,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1304,
+      "monthly_expenses": 524,
+      "monthly_cash_flow": 780,
+      "annual_noi": 9360,
+      "cap_rate": 4.34,
+      "cash_on_cash": 17.36,
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 65,
+    "summary": "Synthetic flip candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "16b34d78-ba6c-4060-8cae-e723375b1c84",
+    "flip": {
+      "arv": 558600,
+      "renovation_est": 69000,
+      "carrying_costs": 14700,
+      "total_investment": 452300,
+      "profit_margin": 106300,
+      "roi": 23.5,
+      "timeline": "9 months",
+      "confidence": 91,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3013,
+      "monthly_expenses": 1118,
+      "monthly_cash_flow": 1895,
+      "annual_noi": 22740,
+      "cap_rate": 6.17,
+      "cash_on_cash": 24.68,
+      "confidence": 89,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 89,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "d2c0f9c8-de11-4f13-83a5-97a5558b23f3",
+    "flip": {
+      "arv": 252800,
+      "renovation_est": 73100,
+      "carrying_costs": 7500,
+      "total_investment": 267700,
+      "profit_margin": -14900,
+      "roi": -5.57,
+      "timeline": "9 months",
+      "confidence": 42,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1107,
+      "monthly_expenses": 436,
+      "monthly_cash_flow": 671,
+      "annual_noi": 8052,
+      "cap_rate": 4.3,
+      "cash_on_cash": 17.21,
+      "confidence": 44,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 46,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "059a5dfc-1ddb-4ab6-ae9e-cf9602123115",
+    "flip": {
+      "arv": 331600,
+      "renovation_est": 25600,
+      "carrying_costs": 10900,
+      "total_investment": 309000,
+      "profit_margin": 22600,
+      "roi": 7.31,
+      "timeline": "9 months",
+      "confidence": 51,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2072,
+      "monthly_expenses": 904,
+      "monthly_cash_flow": 1168,
+      "annual_noi": 14016,
+      "cap_rate": 5.14,
+      "cash_on_cash": 20.57,
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 53,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "bd229e69-2549-47b1-922c-afed63649961",
+    "flip": {
+      "arv": 319000,
+      "renovation_est": 46600,
+      "carrying_costs": 10300,
+      "total_investment": 315600,
+      "profit_margin": 3400,
+      "roi": 1.08,
+      "timeline": "8 months",
+      "confidence": 48,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1725,
+      "monthly_expenses": 721,
+      "monthly_cash_flow": 1004,
+      "annual_noi": 12048,
+      "cap_rate": 4.66,
+      "cash_on_cash": 18.63,
+      "confidence": 44,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 48,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "2680d890-8ffe-4f4b-a960-6db953282ba0",
+    "flip": {
+      "arv": 367600,
+      "renovation_est": 42700,
+      "carrying_costs": 11900,
+      "total_investment": 350900,
+      "profit_margin": 16700,
+      "roi": 4.76,
+      "timeline": "7 months",
+      "confidence": 56,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2453,
+      "monthly_expenses": 925,
+      "monthly_cash_flow": 1528,
+      "annual_noi": 18336,
+      "cap_rate": 6.19,
+      "cash_on_cash": 24.75,
+      "confidence": 57,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 55,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "8adaaeaa-ee2e-4bac-9e22-0b7ead6049b3",
+    "flip": {
+      "arv": 509300,
+      "renovation_est": 48600,
+      "carrying_costs": 13400,
+      "total_investment": 396200,
+      "profit_margin": 113100,
+      "roi": 28.55,
+      "timeline": "8 months",
+      "confidence": 90,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2754,
+      "monthly_expenses": 1187,
+      "monthly_cash_flow": 1567,
+      "annual_noi": 18804,
+      "cap_rate": 5.63,
+      "cash_on_cash": 22.51,
+      "confidence": 95,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 90,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "fc82565c-4e65-441a-ba39-f7dae1ebd5d4",
+    "flip": {
+      "arv": 183400,
+      "renovation_est": 19000,
+      "carrying_costs": 5900,
+      "total_investment": 171700,
+      "profit_margin": 11700,
+      "roi": 6.81,
+      "timeline": "7 months",
+      "confidence": 57,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1037,
+      "monthly_expenses": 461,
+      "monthly_cash_flow": 576,
+      "annual_noi": 6912,
+      "cap_rate": 4.71,
+      "cash_on_cash": 18.83,
+      "confidence": 56,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "either",
+    "overall_confidence": 56,
+    "summary": "Synthetic either candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "0d9c1e94-5cc4-488b-9a8e-e94734ee5032",
+    "flip": {
+      "arv": 269400,
+      "renovation_est": 47300,
+      "carrying_costs": 7600,
+      "total_investment": 246000,
+      "profit_margin": 23400,
+      "roi": 9.51,
+      "timeline": "5 months",
+      "confidence": 59,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1734,
+      "monthly_expenses": 738,
+      "monthly_cash_flow": 996,
+      "annual_noi": 11952,
+      "cap_rate": 6.25,
+      "cash_on_cash": 25.02,
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 56,
+    "summary": "Synthetic rental candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "4f373c28-04ac-4447-90b5-3c18a09b1032",
+    "flip": {
+      "arv": 314300,
+      "renovation_est": 16200,
+      "carrying_costs": 11400,
+      "total_investment": 312800,
+      "profit_margin": 1500,
+      "roi": 0.48,
+      "timeline": "7 months",
+      "confidence": 60,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2792,
+      "monthly_expenses": 981,
+      "monthly_cash_flow": 1811,
+      "annual_noi": 21732,
+      "cap_rate": 7.62,
+      "cash_on_cash": 30.48,
+      "confidence": 59,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 58,
+    "summary": "Synthetic rental candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "58b12a16-d3b7-4ad3-897b-34b6ac31384f",
+    "flip": {
+      "arv": 352400,
+      "renovation_est": 28100,
+      "carrying_costs": 10700,
+      "total_investment": 306200,
+      "profit_margin": 46200,
+      "roi": 15.09,
+      "timeline": "6 months",
+      "confidence": 60,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2700,
+      "monthly_expenses": 1043,
+      "monthly_cash_flow": 1657,
+      "annual_noi": 19884,
+      "cap_rate": 7.44,
+      "cash_on_cash": 29.74,
+      "confidence": 68,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 63,
+    "summary": "Synthetic rental candidate in Ewing.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "9920ac71-15b6-4650-9ce4-1de32a143bdb",
+    "flip": {
+      "arv": 328000,
+      "renovation_est": 55400,
+      "carrying_costs": 9800,
+      "total_investment": 309800,
+      "profit_margin": 18200,
+      "roi": 5.87,
+      "timeline": "8 months",
+      "confidence": 52,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 2258,
+      "monthly_expenses": 924,
+      "monthly_cash_flow": 1334,
+      "annual_noi": 16008,
+      "cap_rate": 6.54,
+      "cash_on_cash": 26.18,
+      "confidence": 54,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 55,
+    "summary": "Synthetic rental candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "bf9f8f58-0687-4e90-abae-d79984988013",
+    "flip": {
+      "arv": 558200,
+      "renovation_est": 33700,
+      "carrying_costs": 14500,
+      "total_investment": 409600,
+      "profit_margin": 148600,
+      "roi": 36.28,
+      "timeline": "7 months",
+      "confidence": 95,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 3314,
+      "monthly_expenses": 1433,
+      "monthly_cash_flow": 1881,
+      "annual_noi": 22572,
+      "cap_rate": 6.25,
+      "cash_on_cash": 24.98,
+      "confidence": 91,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 96,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "0b7814b7-d5e4-47d5-bd57-ad55da961e55",
+    "flip": {
+      "arv": 253100,
+      "renovation_est": 46800,
+      "carrying_costs": 6200,
+      "total_investment": 208000,
+      "profit_margin": 45100,
+      "roi": 21.68,
+      "timeline": "4 months",
+      "confidence": 81,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1019,
+      "monthly_expenses": 457,
+      "monthly_cash_flow": 562,
+      "annual_noi": 6744,
+      "cap_rate": 4.35,
+      "cash_on_cash": 17.4,
+      "confidence": 78,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "flip",
+    "overall_confidence": 78,
+    "summary": "Synthetic flip candidate in Trenton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "4bb2020a-2c1b-4396-b373-3d6919dc18de",
+    "flip": {
+      "arv": 241400,
+      "renovation_est": 56200,
+      "carrying_costs": 7800,
+      "total_investment": 259300,
+      "profit_margin": -17900,
+      "roi": -6.9,
+      "timeline": "5 months",
+      "confidence": 53,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1570,
+      "monthly_expenses": 642,
+      "monthly_cash_flow": 928,
+      "annual_noi": 11136,
+      "cap_rate": 5.7,
+      "cash_on_cash": 22.81,
+      "confidence": 58,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 58,
+    "summary": "Synthetic rental candidate in Hamilton.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  },
+  {
+    "property_id": "eb634279-475d-4b5d-afc6-ce3c46d96577",
+    "flip": {
+      "arv": 246300,
+      "renovation_est": 35800,
+      "carrying_costs": 7700,
+      "total_investment": 235900,
+      "profit_margin": 10400,
+      "roi": 4.41,
+      "timeline": "9 months",
+      "confidence": 62,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "rental": {
+      "monthly_rent": 1992,
+      "monthly_expenses": 808,
+      "monthly_cash_flow": 1184,
+      "annual_noi": 14208,
+      "cap_rate": 7.38,
+      "cash_on_cash": 29.54,
+      "confidence": 56,
+      "explanation": "Synthetic underwriting generated for backtest replay."
+    },
+    "recommended_strategy": "rental",
+    "overall_confidence": 57,
+    "summary": "Synthetic rental candidate in Lawrenceville.",
+    "data_sources_used": [
+      "synthetic-generator"
+    ],
+    "data_gaps": [
+      "no live comps — this record is synthetic"
+    ]
+  }
+]

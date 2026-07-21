@@ -78,8 +78,14 @@ export type Confusion = {
 export function confusion(rows: readonly ConfusionRow[]): Confusion {
   let hit = 0, falseBuy = 0, miss = 0, correctPass = 0
   for (const r of rows) {
-    if (r.action === 'buy') r.cleared ? hit++ : falseBuy++
-    else r.cleared ? miss++ : correctPass++
+    if (r.action === 'buy') {
+      if (r.cleared) hit++
+      else falseBuy++
+    } else if (r.cleared) {
+      miss++
+    } else {
+      correctPass++
+    }
   }
   const buys = hit + falseBuy
   return { hit, false_buy: falseBuy, miss, correct_pass: correctPass, buy_precision: buys === 0 ? NaN : hit / buys }

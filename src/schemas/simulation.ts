@@ -72,7 +72,12 @@ export const calibrationBucketSchema = z.object({
   hi: z.number().min(0).max(1),
   n: z.number().int().nonnegative(),
   mean_p: z.number().min(0).max(1),
-  // null means "no evidence for this bucket — pass p through unchanged".
+  // The RAW empirical clear rate in this bucket. This is the truth about what
+  // happened, and it is what the report must quote when it says "actually cleared".
+  observed: z.number().min(0).max(1).nullable(),
+  // The Laplace-smoothed estimate that applyCalibration substitutes for p. It is a
+  // deliberately conservative ESTIMATE, not an observation — kept in a separate field
+  // so the two can never be confused in prose again.
   adjusted: z.number().min(0).max(1).nullable(),
 })
 export type CalibrationBucket = z.infer<typeof calibrationBucketSchema>

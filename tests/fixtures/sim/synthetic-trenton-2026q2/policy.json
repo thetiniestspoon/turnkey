@@ -1,0 +1,18 @@
+{
+  "id": "baseline-v1",
+  "name": "Baseline — Trenton starter",
+  "capital_per_deal": 60000,
+  "hurdle": {
+    "flip_roi_min": 15,
+    "rental_cap_rate_min": 6.5
+  },
+  "confidence_floor": 55,
+  "criteria": {
+    "max_price": 400000,
+    "min_score": 60,
+    "property_types": null,
+    "strategies": null,
+    "min_cap_rate": null,
+    "min_flip_roi": null
+  }
+}

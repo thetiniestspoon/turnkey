@@ -9,8 +9,12 @@ import { z } from 'zod'
 export const investmentPolicySchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
+  // Used only to total notional capital in the report. There is deliberately NO
+  // max_concurrent_positions here: enforcing a position cap would require modelling
+  // holding periods and timing, which is the portfolio simulation this design
+  // rejected. An unenforced policy field is worse than an absent one — it reads like
+  // a constraint while constraining nothing.
   capital_per_deal: z.number().positive(),
-  max_concurrent_positions: z.number().int().positive(),
   hurdle: z.object({
     flip_roi_min: z.number(),
     rental_cap_rate_min: z.number(),
@@ -38,7 +42,6 @@ export const DEFAULT_POLICY: InvestmentPolicy = {
   id: 'baseline-v1',
   name: 'Baseline — Trenton starter',
   capital_per_deal: 60000,
-  max_concurrent_positions: 5,
   hurdle: { flip_roi_min: 15, rental_cap_rate_min: 6.5 },
   confidence_floor: 55,
   criteria: {

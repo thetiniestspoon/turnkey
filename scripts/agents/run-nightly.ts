@@ -6,6 +6,7 @@ import { runAnalyst } from './lib/analyst'
 import { runMarketCheck } from './lib/market-check'
 import { runTracker } from './lib/tracker'
 import { mergeCriteria, passesFilter, shouldRecommend, upsertRecommendation, flagStale, type CriteriaFields } from './lib/orchestrate'
+import { isSimulateStage, runSimulateStage } from './lib/simulate-stage'
 
 export const CAPS = { watchlists: 3, analyst: 10, marks: 15 }
 
@@ -54,6 +55,15 @@ export async function main(): Promise<number> {
   const billing = billingVarsPresent(process.env)
   if (billing.length) {
     console.log(`   ⚠ ${billing.join(', ')} present in the environment — scrubbed for every claude spawn (subscription-only).`)
+  }
+
+  // ── Stage: simulate (WS3 Phase 3) ────────────────────────────
+  // Deliberately ABOVE assertServiceRoleKey. The backtest replays a checked-in fixture
+  // corpus: no database, no network, no LLM, no credential. Putting it below the
+  // credential gate would block the one stage that can run today on the exact key that
+  // has been missing since 2026-07-17. Returns without touching the DB stages.
+  if (isSimulateStage(args.stage)) {
+    return runSimulateStage({ env: process.env })
   }
 
   const { url, key } = assertServiceRoleKey(process.env)

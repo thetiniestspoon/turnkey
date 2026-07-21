@@ -1,0 +1,602 @@
+[
+  {
+    "property_id": "9fe50d9a-4955-4672-81e8-727e77ff97ba",
+    "terminal_status": "off_market",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 547600,
+      "rental_income": 3407,
+      "renovation_cost": 43500
+    }
+  },
+  {
+    "property_id": "06e77e15-21d7-4553-995d-bc37c6ac854f",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 526900,
+      "rental_income": 2228,
+      "renovation_cost": 59700
+    }
+  },
+  {
+    "property_id": "c4965d4c-4d5e-4652-80d2-8d4f2cb1196f",
+    "terminal_status": "off_market",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 467600,
+      "rental_income": 3303,
+      "renovation_cost": 74200
+    }
+  },
+  {
+    "property_id": "96275112-6558-4ee7-8001-06dc31bf6f20",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 213200,
+      "rental_income": 1794,
+      "renovation_cost": 21800
+    }
+  },
+  {
+    "property_id": "1cf1e449-289d-4068-9390-080a6bdd9272",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 283700,
+      "rental_income": 1886,
+      "renovation_cost": 31000
+    }
+  },
+  {
+    "property_id": "85fe6c34-1e9e-48ad-8297-039c90a0bf07",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 445500,
+      "rental_income": 3699,
+      "renovation_cost": 80900
+    }
+  },
+  {
+    "property_id": "37d673d0-012c-46a7-8adc-dfe0ffd7a9ad",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 294800,
+      "rental_income": 1557,
+      "renovation_cost": 60100
+    }
+  },
+  {
+    "property_id": "deedff58-5e9f-4d7f-afbc-21ebbed522ed",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 243200,
+      "rental_income": 1402,
+      "renovation_cost": 59300
+    }
+  },
+  {
+    "property_id": "8033dff0-cde3-4475-a02d-f72d1676e5c4",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 292900,
+      "rental_income": 1689,
+      "renovation_cost": 33800
+    }
+  },
+  {
+    "property_id": "63d5c1ce-2aaa-41a5-a1a3-819fb9473cfa",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 363300,
+      "rental_income": 2660,
+      "renovation_cost": 36600
+    }
+  },
+  {
+    "property_id": "8fd14dfa-6990-4b33-8e57-f5d92d91cac0",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 406100,
+      "rental_income": 3700,
+      "renovation_cost": 58800
+    }
+  },
+  {
+    "property_id": "6dbe58b0-5ff9-4fb6-b7c5-064a37fe3fba",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 184800,
+      "rental_income": 1285,
+      "renovation_cost": 43000
+    }
+  },
+  {
+    "property_id": "62c0005d-c490-4dee-b1ab-accbc969267c",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 281700,
+      "rental_income": 1956,
+      "renovation_cost": 55400
+    }
+  },
+  {
+    "property_id": "ea3e0dc2-ebc2-42f6-949f-4c7e1f4259cb",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 428600,
+      "rental_income": 1884,
+      "renovation_cost": 44100
+    }
+  },
+  {
+    "property_id": "4296ca34-0c45-409e-b9d4-b2b163699c29",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 184900,
+      "rental_income": 1012,
+      "renovation_cost": 79400
+    }
+  },
+  {
+    "property_id": "11d86543-68e1-4d69-a892-efb30afd7e43",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 364000,
+      "rental_income": 2022,
+      "renovation_cost": 83200
+    }
+  },
+  {
+    "property_id": "f8f59236-f0b2-440d-9a97-9feca62f1ec8",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 266200,
+      "rental_income": 1693,
+      "renovation_cost": 76300
+    }
+  },
+  {
+    "property_id": "4fc62d2f-6085-46fa-b5a4-b5a3eac81c06",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 208500,
+      "rental_income": 918,
+      "renovation_cost": 66400
+    }
+  },
+  {
+    "property_id": "99ef3269-d5bb-4833-befa-655b0b39f129",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 553000,
+      "rental_income": 2968,
+      "renovation_cost": 65100
+    }
+  },
+  {
+    "property_id": "49f91d33-b441-485b-b10a-8255bdb5e090",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 243100,
+      "rental_income": 1060,
+      "renovation_cost": 67600
+    }
+  },
+  {
+    "property_id": "6bbc74ff-53d3-412c-8418-aee69bf5d890",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 399500,
+      "rental_income": 2221,
+      "renovation_cost": 20700
+    }
+  },
+  {
+    "property_id": "467ea21c-c8e1-4724-91ee-1c474ff3f52d",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 320800,
+      "rental_income": 2957,
+      "renovation_cost": 59700
+    }
+  },
+  {
+    "property_id": "a7db6eec-a7a5-46c6-8244-dda4f4b67712",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 386400,
+      "rental_income": 2316,
+      "renovation_cost": 78800
+    }
+  },
+  {
+    "property_id": "6a1c6a51-12c9-4838-97f6-45e44aae3cfc",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 323600,
+      "rental_income": 2253,
+      "renovation_cost": 64100
+    }
+  },
+  {
+    "property_id": "5a7ee449-444b-43e5-9b17-05be11bf637f",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 248400,
+      "rental_income": 1055,
+      "renovation_cost": 79800
+    }
+  },
+  {
+    "property_id": "4c697828-c56d-4e75-adb3-27cd728deb85",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 317700,
+      "rental_income": 2538,
+      "renovation_cost": 48800
+    }
+  },
+  {
+    "property_id": "54f14dcc-befb-4dfa-b5c3-f2269e3d3453",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 205200,
+      "rental_income": 1071,
+      "renovation_cost": 76200
+    }
+  },
+  {
+    "property_id": "0d827ae2-a363-4da9-91df-e11375aae1fa",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 376600,
+      "rental_income": 1673,
+      "renovation_cost": 35900
+    }
+  },
+  {
+    "property_id": "7c9fa42c-fafc-4560-82ad-671eb33a002c",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 274600,
+      "rental_income": 1610,
+      "renovation_cost": 22600
+    }
+  },
+  {
+    "property_id": "a943fd8d-f538-437b-958a-8a22a8d9fe55",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 456700,
+      "rental_income": 2802,
+      "renovation_cost": 56500
+    }
+  },
+  {
+    "property_id": "2c644c24-e5ca-4c1f-ab58-10602cbad7ab",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 573400,
+      "rental_income": 3226,
+      "renovation_cost": 37800
+    }
+  },
+  {
+    "property_id": "114923a1-2608-4364-8a39-dcd759b5c295",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 513800,
+      "rental_income": 3689,
+      "renovation_cost": 20000
+    }
+  },
+  {
+    "property_id": "9c1b7fa9-9b92-4158-ba68-0317beecdff5",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 196100,
+      "rental_income": 914,
+      "renovation_cost": 40700
+    }
+  },
+  {
+    "property_id": "7ffc177e-c945-4747-acbb-f80f92553586",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 225100,
+      "rental_income": 1362,
+      "renovation_cost": 76000
+    }
+  },
+  {
+    "property_id": "919533d2-6db4-415b-a5f1-a0d43733534f",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 316200,
+      "rental_income": 2103,
+      "renovation_cost": 44300
+    }
+  },
+  {
+    "property_id": "cc246877-5f52-4f08-8e7d-9fe9593dc985",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 439300,
+      "rental_income": 2762,
+      "renovation_cost": 57200
+    }
+  },
+  {
+    "property_id": "c933c6cf-55ee-4f67-bd40-00294a916c02",
+    "terminal_status": "off_market",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 300300,
+      "rental_income": 1537,
+      "renovation_cost": 80500
+    }
+  },
+  {
+    "property_id": "53371cab-57e3-49be-8b6d-e14203c4ca8a",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 404100,
+      "rental_income": 3685,
+      "renovation_cost": 77500
+    }
+  },
+  {
+    "property_id": "078ce72c-9e12-4579-b530-1e287aa09996",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 274200,
+      "rental_income": 2159,
+      "renovation_cost": 39800
+    }
+  },
+  {
+    "property_id": "f11e1dab-b0a6-4308-a6a7-6a22778a9f18",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 418800,
+      "rental_income": 3182,
+      "renovation_cost": 77500
+    }
+  },
+  {
+    "property_id": "7214e1a5-a25b-40e2-8412-39772d273a1d",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 170200,
+      "rental_income": 1415,
+      "renovation_cost": 36600
+    }
+  },
+  {
+    "property_id": "05fe2227-b533-4e54-aa73-a278eeb22e18",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 468600,
+      "rental_income": 3227,
+      "renovation_cost": 39400
+    }
+  },
+  {
+    "property_id": "ee1861d2-1f82-4ad8-afd4-a4dc0cacd674",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 347800,
+      "rental_income": 2914,
+      "renovation_cost": 24100
+    }
+  },
+  {
+    "property_id": "dd91a21d-b23d-410f-b845-322997c17d9b",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 351300,
+      "rental_income": 2105,
+      "renovation_cost": 75500
+    }
+  },
+  {
+    "property_id": "bb61ac75-a58d-4441-801a-a478f1054b8a",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 322400,
+      "rental_income": 1296,
+      "renovation_cost": 79700
+    }
+  },
+  {
+    "property_id": "16b34d78-ba6c-4060-8cae-e723375b1c84",
+    "terminal_status": "pending",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 524200,
+      "rental_income": 3063,
+      "renovation_cost": 84500
+    }
+  },
+  {
+    "property_id": "d2c0f9c8-de11-4f13-83a5-97a5558b23f3",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 261000,
+      "rental_income": 1129,
+      "renovation_cost": 83200
+    }
+  },
+  {
+    "property_id": "059a5dfc-1ddb-4ab6-ae9e-cf9602123115",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 330800,
+      "rental_income": 1954,
+      "renovation_cost": 38800
+    }
+  },
+  {
+    "property_id": "bd229e69-2549-47b1-922c-afed63649961",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 318800,
+      "rental_income": 1650,
+      "renovation_cost": 74400
+    }
+  },
+  {
+    "property_id": "2680d890-8ffe-4f4b-a960-6db953282ba0",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 375100,
+      "rental_income": 2312,
+      "renovation_cost": 70200
+    }
+  },
+  {
+    "property_id": "8adaaeaa-ee2e-4bac-9e22-0b7ead6049b3",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 488900,
+      "rental_income": 2771,
+      "renovation_cost": 68600
+    }
+  },
+  {
+    "property_id": "fc82565c-4e65-441a-ba39-f7dae1ebd5d4",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 191100,
+      "rental_income": 1023,
+      "renovation_cost": 26700
+    }
+  },
+  {
+    "property_id": "0d9c1e94-5cc4-488b-9a8e-e94734ee5032",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 256600,
+      "rental_income": 1760,
+      "renovation_cost": 58600
+    }
+  },
+  {
+    "property_id": "4f373c28-04ac-4447-90b5-3c18a09b1032",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 330500,
+      "rental_income": 2863,
+      "renovation_cost": 19700
+    }
+  },
+  {
+    "property_id": "58b12a16-d3b7-4ad3-897b-34b6ac31384f",
+    "terminal_status": "off_market",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 360400,
+      "rental_income": 2894,
+      "renovation_cost": 38200
+    }
+  },
+  {
+    "property_id": "9920ac71-15b6-4650-9ce4-1de32a143bdb",
+    "terminal_status": "off_market",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 317900,
+      "rental_income": 2263,
+      "renovation_cost": 66900
+    }
+  },
+  {
+    "property_id": "bf9f8f58-0687-4e90-abae-d79984988013",
+    "terminal_status": "active",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 536500,
+      "rental_income": 3537,
+      "renovation_cost": 43500
+    }
+  },
+  {
+    "property_id": "0b7814b7-d5e4-47d5-bd57-ad55da961e55",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 237300,
+      "rental_income": 1032,
+      "renovation_cost": 75000
+    }
+  },
+  {
+    "property_id": "4bb2020a-2c1b-4396-b373-3d6919dc18de",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 228100,
+      "rental_income": 1586,
+      "renovation_cost": 79500
+    }
+  },
+  {
+    "property_id": "eb634279-475d-4b5d-afc6-ce3c46d96577",
+    "terminal_status": "sold",
+    "resolved_at": "2026-06-30",
+    "actuals": {
+      "arv": 236500,
+      "rental_income": 1992,
+      "renovation_cost": 43900
+    }
+  }
+]

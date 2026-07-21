@@ -24,6 +24,7 @@ function emptyBuckets() {
     hi: (i + 1) / BUCKET_COUNT,
     n: 0,
     mean_p: (i + 0.5) / BUCKET_COUNT,
+    observed: null as number | null,
     adjusted: null as number | null,
   }))
 }
@@ -64,18 +65,39 @@ export function fitCalibration(pairs: readonly FitPair[], fittedFrom: string): C
   const buckets = acc.map((b, i) => {
     const lo = i / BUCKET_COUNT
     const hi = (i + 1) / BUCKET_COUNT
-    if (b.n === 0) return { lo, hi, n: 0, mean_p: (i + 0.5) / BUCKET_COUNT, adjusted: null }
+    if (b.n === 0) return { lo, hi, n: 0, mean_p: (i + 0.5) / BUCKET_COUNT, observed: null, adjusted: null }
     const meanP = b.sumP / b.n
+    const observed = b.sumY / b.n
     const adjusted = (b.sumY + LAPLACE_ALPHA * meanP) / (b.n + LAPLACE_ALPHA)
-    return { lo, hi, n: b.n, mean_p: meanP, adjusted: Math.min(1, Math.max(0, adjusted)) }
+    return {
+      lo, hi, n: b.n, mean_p: meanP,
+      observed: Math.min(1, Math.max(0, observed)),
+      adjusted: Math.min(1, Math.max(0, adjusted)),
+    }
   })
   return { version: 1, fitted_from: fittedFrom, buckets }
 }
 
+export type ReliabilityGap = {
+  lo: number; hi: number; n: number; mean_p: number
+  observed: number   // what actually happened — quote this one
+  smoothed: number   // what the map applies — an estimate, not an observation
+  gap: number        // observed − forecast. THE feedback signal.
+}
+
 // The signal itself, exposed for the report: how far each bucket's forecast sat from
 // what actually happened, and in which direction.
-export function reliabilityGaps(map: CalibrationMap): Array<{ lo: number; hi: number; n: number; mean_p: number; observed: number; gap: number }> {
+//
+// `gap` is measured against `observed`, not `smoothed`. The smoothing exists to stop a
+// thin bucket from yanking future decisions around; it must not also soften the
+// description of what went wrong.
+export function reliabilityGaps(map: CalibrationMap): ReliabilityGap[] {
   return map.buckets
-    .filter((b) => b.n > 0 && b.adjusted != null)
-    .map((b) => ({ lo: b.lo, hi: b.hi, n: b.n, mean_p: b.mean_p, observed: b.adjusted as number, gap: (b.adjusted as number) - b.mean_p }))
+    .filter((b) => b.n > 0 && b.observed != null && b.adjusted != null)
+    .map((b) => ({
+      lo: b.lo, hi: b.hi, n: b.n, mean_p: b.mean_p,
+      observed: b.observed as number,
+      smoothed: b.adjusted as number,
+      gap: (b.observed as number) - b.mean_p,
+    }))
 }
