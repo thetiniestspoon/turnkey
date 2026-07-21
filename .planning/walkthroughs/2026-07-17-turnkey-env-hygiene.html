@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turnkey .env Hygiene Walkthrough</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --border: #e5e5e5;
+      --code-bg: #f5f5f5;
+      --code-fg: #1a1a1a;
+      --accent: #0066cc;
+      --accent-hover: #0052a3;
+      --success: #22863a;
+      --success-bg: #f0f9f4;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --fg: #e5e5e5;
+        --border: #333333;
+        --code-bg: #2d2d2d;
+        --code-fg: #e5e5e5;
+        --accent: #6ba3ff;
+        --accent-hover: #85b5ff;
+        --success: #7fe78c;
+        --success-bg: #1a3a22;
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--fg);
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .command-block {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .command-text {
+      color: var(--code-fg);
+      margin: 0;
+      word-break: break-all;
+    }
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+    button {
+      padding: 0.65rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .button-primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .button-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      background: var(--code-bg);
+      border-left: 3px solid var(--border);
+      border-radius: 4px;
+    }
+    .checklist input[type="checkbox"] {
+      margin-top: 0.35rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .checklist li:has(input:checked) {
+      border-left-color: var(--success);
+      background: var(--success-bg);
+    }
+    .checklist label {
+      cursor: pointer;
+      flex: 1;
+    }
+    .note {
+      background: var(--success-bg);
+      border-left: 4px solid var(--success);
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+    .note-title {
+      font-weight: 600;
+      color: var(--success);
+      margin-bottom: 0.25rem;
+    }
+    .deep-link-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .deep-link-button:hover {
+      background: var(--accent-hover);
+    }
+    code {
+      background: var(--code-bg);
+      color: var(--accent);
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9em;
+    }
+    .copy-feedback {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 999;
+    }
+    .copy-feedback.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Turnkey .env Hygiene</h1>
+  <p class="subtitle">Consolidate secrets into a single .env file for the nightly agent harness.</p>
+
+  <div class="section">
+    <div class="section-title">Step 1: Run the consolidation script</div>
+    <p>This script reads any existing API keys from <code>API-KEY-SETUP.md</code>, checks the current <code>.env</code>, and appends missing keys to <code>.env</code>. It prints only status, never actual values.</p>
+    <div class="command-block">
+      <p class="command-text" id="command">node scripts/agents/sync-env-from-setup.mjs</p>
+    </div>
+    <div class="button-group">
+      <button onclick="copyCommand()" class="button-primary">Copy command</button>
+      <a href="https://supabase.com/dashboard/project/xebulbfhwyezjrqobzow/settings/api" target="_blank" class="deep-link-button">Get service-role key</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Checklist</div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="step1">
+        <label for="step1"><strong>Run the script</strong> in your terminal at the repo root (the command is copied above).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="step2">
+        <label for="step2"><strong>Open <code>.env</code></strong> in your editor and check the output. If the script reports <code>SUPABASE_SERVICE_ROLE_KEY: MISSING</code>, continue to the next step.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="step3">
+        <label for="step3"><strong>Paste the service-role key</strong> into <code>.env</code> directly from the Supabase dashboard (click the "Get service-role key" button above). You must set <code>SUPABASE_SERVICE_ROLE_KEY=&lt;your-key-here&gt;</code>.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="step4">
+        <label for="step4"><strong>Re-run the script</strong> with <code>node scripts/agents/sync-env-from-setup.mjs</code> until it prints <code>SUPABASE_SERVICE_ROLE_KEY: present</code>.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="step5">
+        <label for="step5"><strong>Scrub real values</strong> from <code>API-KEY-SETUP.md</code> — replace them with placeholders or delete the file entirely (it is only a signup guide, not a runtime secret store).</label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <div class="note-title">Security reminder</div>
+    <p>Never paste secret values into chat or commit them to git. The <code>.env</code> file is gitignored — keep it local. The script reads and writes files only; no secret ever transits the console output.</p>
+  </div>
+
+  <div class="copy-feedback" id="feedback">Copied to clipboard!</div>
+
+  <script>
+    function copyCommand() {
+      const text = document.getElementById('command').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const feedback = document.getElementById('feedback');
+        feedback.classList.add('show');
+        setTimeout(() => feedback.classList.remove('show'), 2000);
+      });
+    }
+  </script>
+</body>
+</html>

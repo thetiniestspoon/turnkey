@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "9fe50d9a-4955-4672-81e8-727e77ff97ba",
+    "address": "379 Hamilton St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 367200,
+    "raw_data": {
+      "score": 79,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 36.67,
+      "estimated_cap_rate": 6.24,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "06e77e15-21d7-4553-995d-bc37c6ac854f",
+    "address": "810 Parkway St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "single_family",
+    "list_price": 339700,
+    "raw_data": {
+      "score": 82,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 25.95,
+      "estimated_cap_rate": 4.34,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "c4965d4c-4d5e-4652-80d2-8d4f2cb1196f",
+    "address": "127 Greenwood St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "multi_family",
+    "list_price": 334400,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 13.7,
+      "estimated_cap_rate": 7.44,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "96275112-6558-4ee7-8001-06dc31bf6f20",
+    "address": "327 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 167400,
+    "raw_data": {
+      "score": 74,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 15.08,
+      "estimated_cap_rate": 8.23,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "1cf1e449-289d-4068-9390-080a6bdd9272",
+    "address": "205 Bellevue St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 244200,
+    "raw_data": {
+      "score": 71,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 9.47,
+      "estimated_cap_rate": 5.6,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "85fe6c34-1e9e-48ad-8297-039c90a0bf07",
+    "address": "566 Chestnut St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "single_family",
+    "list_price": 349600,
+    "raw_data": {
+      "score": 72,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 5.65,
+      "estimated_cap_rate": 7.85,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "37d673d0-012c-46a7-8adc-dfe0ffd7a9ad",
+    "address": "466 Stuyvesant St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "multi_family",
+    "list_price": 216600,
+    "raw_data": {
+      "score": 71,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 3.1,
+      "estimated_cap_rate": 5.36,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "deedff58-5e9f-4d7f-afbc-21ebbed522ed",
+    "address": "695 Bellevue St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "single_family",
+    "list_price": 211500,
+    "raw_data": {
+      "score": 63,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -6.17,
+      "estimated_cap_rate": 4.37,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "8033dff0-cde3-4475-a02d-f72d1676e5c4",
+    "address": "541 Chestnut St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 216000,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 14.11,
+      "estimated_cap_rate": 5.01,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "63d5c1ce-2aaa-41a5-a1a3-819fb9473cfa",
+    "address": "143 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "townhouse",
+    "list_price": 282700,
+    "raw_data": {
+      "score": 74,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 16.67,
+      "estimated_cap_rate": 6.04,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "8fd14dfa-6990-4b33-8e57-f5d92d91cac0",
+    "address": "739 Bellevue St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 361200,
+    "raw_data": {
+      "score": 58,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -2.12,
+      "estimated_cap_rate": 7.46,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "6dbe58b0-5ff9-4fb6-b7c5-064a37fe3fba",
+    "address": "365 Parkway St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 132100,
+    "raw_data": {
+      "score": 66,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 6.42,
+      "estimated_cap_rate": 7.09,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "62c0005d-c490-4dee-b1ab-accbc969267c",
+    "address": "117 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "townhouse",
+    "list_price": 199200,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 22.05,
+      "estimated_cap_rate": 6.77,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "ea3e0dc2-ebc2-42f6-949f-4c7e1f4259cb",
+    "address": "166 Greenwood St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 312400,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 17.94,
+      "estimated_cap_rate": 4.19,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "4296ca34-0c45-409e-b9d4-b2b163699c29",
+    "address": "721 Stuyvesant St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "condo",
+    "list_price": 151000,
+    "raw_data": {
+      "score": 57,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -12.63,
+      "estimated_cap_rate": 4.78,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "11d86543-68e1-4d69-a892-efb30afd7e43",
+    "address": "463 Stuyvesant St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 232600,
+    "raw_data": {
+      "score": 77,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 28.08,
+      "estimated_cap_rate": 6.29,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "f8f59236-f0b2-440d-9a97-9feca62f1ec8",
+    "address": "974 Chestnut St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "multi_family",
+    "list_price": 178800,
+    "raw_data": {
+      "score": 74,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 13.62,
+      "estimated_cap_rate": 6.7,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "4fc62d2f-6085-46fa-b5a4-b5a3eac81c06",
+    "address": "172 Prospect St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 134500,
+    "raw_data": {
+      "score": 75,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 10.49,
+      "estimated_cap_rate": 4.72,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "99ef3269-d5bb-4833-befa-655b0b39f129",
+    "address": "102 Prospect St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "multi_family",
+    "list_price": 364200,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 28.23,
+      "estimated_cap_rate": 5.69,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "49f91d33-b441-485b-b10a-8255bdb5e090",
+    "address": "437 Chestnut St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "single_family",
+    "list_price": 164500,
+    "raw_data": {
+      "score": 70,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 18.26,
+      "estimated_cap_rate": 4.3,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "6bbc74ff-53d3-412c-8418-aee69bf5d890",
+    "address": "685 Parkway St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "condo",
+    "list_price": 309700,
+    "raw_data": {
+      "score": 78,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 25.98,
+      "estimated_cap_rate": 5.32,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "467ea21c-c8e1-4724-91ee-1c474ff3f52d",
+    "address": "941 Hamilton St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "townhouse",
+    "list_price": 282800,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -0.3,
+      "estimated_cap_rate": 6.94,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "a7db6eec-a7a5-46c6-8244-dda4f4b67712",
+    "address": "502 Stuyvesant St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "townhouse",
+    "list_price": 297900,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 13.66,
+      "estimated_cap_rate": 5.4,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "6a1c6a51-12c9-4838-97f6-45e44aae3cfc",
+    "address": "673 Parkway St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "single_family",
+    "list_price": 232700,
+    "raw_data": {
+      "score": 70,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 10.29,
+      "estimated_cap_rate": 6.56,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "5a7ee449-444b-43e5-9b17-05be11bf637f",
+    "address": "418 Parkway St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 167400,
+    "raw_data": {
+      "score": 66,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 3.19,
+      "estimated_cap_rate": 4.47,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "4c697828-c56d-4e75-adb3-27cd728deb85",
+    "address": "999 Olden St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "townhouse",
+    "list_price": 263400,
+    "raw_data": {
+      "score": 62,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -0.03,
+      "estimated_cap_rate": 6.12,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "54f14dcc-befb-4dfa-b5c3-f2269e3d3453",
+    "address": "777 Bellevue St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 149200,
+    "raw_data": {
+      "score": 58,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -2.06,
+      "estimated_cap_rate": 5.31,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "0d827ae2-a363-4da9-91df-e11375aae1fa",
+    "address": "679 Chestnut St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 264200,
+    "raw_data": {
+      "score": 75,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 22.09,
+      "estimated_cap_rate": 4.78,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "7c9fa42c-fafc-4560-82ad-671eb33a002c",
+    "address": "985 Stuyvesant St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "condo",
+    "list_price": 183500,
+    "raw_data": {
+      "score": 81,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 32.29,
+      "estimated_cap_rate": 6.16,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "a943fd8d-f538-437b-958a-8a22a8d9fe55",
+    "address": "609 Bellevue St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 305900,
+    "raw_data": {
+      "score": 82,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 27.54,
+      "estimated_cap_rate": 6.45,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "2c644c24-e5ca-4c1f-ab58-10602cbad7ab",
+    "address": "743 Parkway St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 365800,
+    "raw_data": {
+      "score": 86,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 35.15,
+      "estimated_cap_rate": 6.26,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "114923a1-2608-4364-8a39-dcd759b5c295",
+    "address": "371 Prospect St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 376900,
+    "raw_data": {
+      "score": 78,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 20.17,
+      "estimated_cap_rate": 7.71,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "9c1b7fa9-9b92-4158-ba68-0317beecdff5",
+    "address": "918 Stuyvesant St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 129000,
+    "raw_data": {
+      "score": 70,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 18.24,
+      "estimated_cap_rate": 5.36,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "7ffc177e-c945-4747-acbb-f80f92553586",
+    "address": "644 Hamilton St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "multi_family",
+    "list_price": 188600,
+    "raw_data": {
+      "score": 55,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -6.45,
+      "estimated_cap_rate": 5.5,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "919533d2-6db4-415b-a5f1-a0d43733534f",
+    "address": "405 Chestnut St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 278500,
+    "raw_data": {
+      "score": 64,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -2.43,
+      "estimated_cap_rate": 5.61,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "cc246877-5f52-4f08-8e7d-9fe9593dc985",
+    "address": "866 Prospect St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "condo",
+    "list_price": 354200,
+    "raw_data": {
+      "score": 64,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 7.17,
+      "estimated_cap_rate": 5.23,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "c933c6cf-55ee-4f67-bd40-00294a916c02",
+    "address": "161 Greenwood St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 196900,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 9.18,
+      "estimated_cap_rate": 5.84,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "53371cab-57e3-49be-8b6d-e14203c4ca8a",
+    "address": "808 Hamilton St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "townhouse",
+    "list_price": 349100,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 1.27,
+      "estimated_cap_rate": 7.03,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "078ce72c-9e12-4579-b530-1e287aa09996",
+    "address": "468 Prospect St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "townhouse",
+    "list_price": 207600,
+    "raw_data": {
+      "score": 70,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 12.88,
+      "estimated_cap_rate": 6.76,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "f11e1dab-b0a6-4308-a6a7-6a22778a9f18",
+    "address": "951 Stuyvesant St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 290500,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 19.3,
+      "estimated_cap_rate": 8.28,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "7214e1a5-a25b-40e2-8412-39772d273a1d",
+    "address": "624 Chestnut St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "condo",
+    "list_price": 133000,
+    "raw_data": {
+      "score": 66,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 5.96,
+      "estimated_cap_rate": 8.22,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "05fe2227-b533-4e54-aa73-a278eeb22e18",
+    "address": "809 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 316900,
+    "raw_data": {
+      "score": 81,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 33.42,
+      "estimated_cap_rate": 7.04,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "ee1861d2-1f82-4ad8-afd4-a4dc0cacd674",
+    "address": "537 Stuyvesant St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "single_family",
+    "list_price": 274500,
+    "raw_data": {
+      "score": 72,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 11.42,
+      "estimated_cap_rate": 7.78,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "dd91a21d-b23d-410f-b845-322997c17d9b",
+    "address": "503 Parkway St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "single_family",
+    "list_price": 303300,
+    "raw_data": {
+      "score": 58,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": -1.89,
+      "estimated_cap_rate": 4.87,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "bb61ac75-a58d-4441-801a-a478f1054b8a",
+    "address": "824 Greenwood St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 215700,
+    "raw_data": {
+      "score": 79,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 18.83,
+      "estimated_cap_rate": 4.34,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "16b34d78-ba6c-4060-8cae-e723375b1c84",
+    "address": "748 Greenwood St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "multi_family",
+    "list_price": 368600,
+    "raw_data": {
+      "score": 73,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 23.5,
+      "estimated_cap_rate": 6.17,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "d2c0f9c8-de11-4f13-83a5-97a5558b23f3",
+    "address": "119 Hamilton St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "townhouse",
+    "list_price": 187100,
+    "raw_data": {
+      "score": 61,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -5.57,
+      "estimated_cap_rate": 4.3,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "059a5dfc-1ddb-4ab6-ae9e-cf9602123115",
+    "address": "406 Greenwood St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "single_family",
+    "list_price": 272500,
+    "raw_data": {
+      "score": 64,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 7.31,
+      "estimated_cap_rate": 5.14,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "bd229e69-2549-47b1-922c-afed63649961",
+    "address": "498 Prospect St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "condo",
+    "list_price": 258700,
+    "raw_data": {
+      "score": 69,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 1.08,
+      "estimated_cap_rate": 4.66,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "2680d890-8ffe-4f4b-a960-6db953282ba0",
+    "address": "786 Olden St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08609",
+    "property_type": "townhouse",
+    "list_price": 296300,
+    "raw_data": {
+      "score": 66,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 4.76,
+      "estimated_cap_rate": 6.19,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "8adaaeaa-ee2e-4bac-9e22-0b7ead6049b3",
+    "address": "616 Olden St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "condo",
+    "list_price": 334200,
+    "raw_data": {
+      "score": 83,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 28.55,
+      "estimated_cap_rate": 5.63,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "fc82565c-4e65-441a-ba39-f7dae1ebd5d4",
+    "address": "929 Stuyvesant St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "single_family",
+    "list_price": 146800,
+    "raw_data": {
+      "score": 69,
+      "recommended_strategy": "either",
+      "estimated_flip_roi": 6.81,
+      "estimated_cap_rate": 4.71,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "0d9c1e94-5cc4-488b-9a8e-e94734ee5032",
+    "address": "684 Prospect St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "single_family",
+    "list_price": 191100,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 9.51,
+      "estimated_cap_rate": 6.25,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "4f373c28-04ac-4447-90b5-3c18a09b1032",
+    "address": "788 Parkway St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "townhouse",
+    "list_price": 285200,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 0.48,
+      "estimated_cap_rate": 7.62,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "58b12a16-d3b7-4ad3-897b-34b6ac31384f",
+    "address": "777 Olden St",
+    "city": "Ewing",
+    "state": "NJ",
+    "zip": "08638",
+    "property_type": "condo",
+    "list_price": 267400,
+    "raw_data": {
+      "score": 74,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 15.09,
+      "estimated_cap_rate": 7.44,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "9920ac71-15b6-4650-9ce4-1de32a143bdb",
+    "address": "336 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 244600,
+    "raw_data": {
+      "score": 65,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 5.87,
+      "estimated_cap_rate": 6.54,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "bf9f8f58-0687-4e90-abae-d79984988013",
+    "address": "322 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 361400,
+    "raw_data": {
+      "score": 79,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 36.28,
+      "estimated_cap_rate": 6.25,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "0b7814b7-d5e4-47d5-bd57-ad55da961e55",
+    "address": "562 Bellevue St",
+    "city": "Trenton",
+    "state": "NJ",
+    "zip": "08618",
+    "property_type": "single_family",
+    "list_price": 155000,
+    "raw_data": {
+      "score": 71,
+      "recommended_strategy": "flip",
+      "estimated_flip_roi": 21.68,
+      "estimated_cap_rate": 4.35,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "4bb2020a-2c1b-4396-b373-3d6919dc18de",
+    "address": "652 Chestnut St",
+    "city": "Hamilton",
+    "state": "NJ",
+    "zip": "08610",
+    "property_type": "multi_family",
+    "list_price": 195300,
+    "raw_data": {
+      "score": 65,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": -6.9,
+      "estimated_cap_rate": 5.7,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  },
+  {
+    "id": "eb634279-475d-4b5d-afc6-ce3c46d96577",
+    "address": "436 Olden St",
+    "city": "Lawrenceville",
+    "state": "NJ",
+    "zip": "08648",
+    "property_type": "townhouse",
+    "list_price": 192400,
+    "raw_data": {
+      "score": 67,
+      "recommended_strategy": "rental",
+      "estimated_flip_roi": 4.41,
+      "estimated_cap_rate": 7.38,
+      "scouted_at": "2026-04-01",
+      "synthetic": true
+    }
+  }
+]
